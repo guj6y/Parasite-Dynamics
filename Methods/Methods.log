@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  24 MAR 2017 12:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  27 MAR 2017 16:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -620,124 +620,95 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 
-LaTeX Warning: Reference `sec:Structure' on page 1 undefined on input line 63.
-
-
 LaTeX Warning: Citation `Boit2012' on page 1 undefined on input line 63.
 
+
+LaTeX Warning: Citation `Brose2006' on page 1 undefined on input line 63.
+
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `Martinez2004' on page 2 undefined on input line 68.
+
+
+LaTeX Warning: Citation `Brown2004' on page 2 undefined on input line 72.
+
 
 LaTeX Warning: Citation `Yodzis1992' on page 2 undefined on input line 72.
 
 
 LaTeX Warning: Citation `Willams2007' on page 2 undefined on input line 72.
 
-
-! Package amsmath Error: Multiple \label's: label 'eq:FR0' will be lost.
-
-See the amsmath package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.82 \label
-           {fr0}
-? 
 [2] <../figures/Null.png, id=23, 1606.0pt x 1204.5pt>
 File: ../figures/Null.png Graphic file (type png)
 
 <use ../figures/Null.png>
-Package pdftex.def Info: ../figures/Null.png used on input line 105.
+Package pdftex.def Info: ../figures/Null.png used on input line 107.
 (pdftex.def)             Requested size: 193.50076pt x 145.12189pt.
 
 <../figures/Null+Ref.png, id=24, 1606.0pt x 1204.5pt>
 File: ../figures/Null+Ref.png Graphic file (type png)
 
 <use ../figures/Null+Ref.png>
-Package pdftex.def Info: ../figures/Null+Ref.png used on input line 109.
+Package pdftex.def Info: ../figures/Null+Ref.png used on input line 111.
 (pdftex.def)             Requested size: 193.50076pt x 145.12189pt.
 
 <../figures/Null+Con.png, id=25, 1606.0pt x 1204.5pt>
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
-Package pdftex.def Info: ../figures/Null+Con.png used on input line 114.
+Package pdftex.def Info: ../figures/Null+Con.png used on input line 116.
 (pdftex.def)             Requested size: 193.50076pt x 145.12189pt.
 
 <../figures/Con+Ref.png, id=26, 1606.0pt x 1204.5pt>
 File: ../figures/Con+Ref.png Graphic file (type png)
 
 <use ../figures/Con+Ref.png>
-Package pdftex.def Info: ../figures/Con+Ref.png used on input line 118.
+Package pdftex.def Info: ../figures/Con+Ref.png used on input line 120.
 (pdftex.def)             Requested size: 193.50076pt x 145.12189pt.
 
 
-LaTeX Warning: Reference `subfig:modelsB' on page 3 undefined on input line 123
-.
-
-
 LaTeX Warning: Reference `subfig:modeslsC' on page 3 undefined on input line 12
-3.
-
-
-LaTeX Warning: Reference `subfig:modelsC' on page 3 undefined on input line 123
-.
-
-! Undefined control sequence.
-<argument> ... two modifications (since it \texit 
-                                                  {isn't} realistic; neither...
-l.123 ...pportunity for a neat statistical test. }
-                                                    In the final model (figu...
-
-? 
-
-LaTeX Warning: Reference `subfig:modelsC' on page 3 undefined on input line 123
-.
-
-
-LaTeX Warning: Reference `subfig:modelsB' on page 3 undefined on input line 123
-.
-
-
-LaTeX Warning: Reference `subfig:modelsD' on page 3 undefined on input line 123
-.
-
-
-LaTeX Warning: Reference `subfig:modelsD' on page 3 undefined on input line 123
-.
+5.
 
 [3] [4 <../figures/Null.png> <../figures/Null+Ref.png> <../figures/Null+Con.png
-> <../figures/Con+Ref.png>] [5] [6] [7] [8] (./Methods.aux)
+> <../figures/Con+Ref.png>]
+
+LaTeX Warning: Reference `subeq:coneq1' on page 5 undefined on input line 171.
+
+[5]
+
+LaTeX Warning: Reference `coneq1' on page 6 undefined on input line 175.
+
+[6] [7] [8] (./Methods.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 14547 strings out of 494141
- 279103 string characters out of 6155521
- 333134 words of memory out of 5000000
- 17489 multiletter control sequences out of 15000+600000
- 11696 words of font info for 45 fonts, out of 8000000 for 9000
+ 14552 strings out of 494141
+ 279181 string characters out of 6155521
+ 334134 words of memory out of 5000000
+ 17494 multiletter control sequences out of 15000+600000
+ 11733 words of font info for 45 fonts, out of 8000000 for 9000
  581 hyphenation exceptions out of 8191
- 55i,13n,54p,2025b,652s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,13n,54p,2023b,652s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
-/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/l
 ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
 al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
 live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Methods.pdf (8 pages, 612873 bytes).
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
+Output written on Methods.pdf (8 pages, 621925 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 90 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
