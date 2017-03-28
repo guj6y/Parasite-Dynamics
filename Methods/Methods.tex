@@ -62,7 +62,7 @@ node {$j$};
 
 We simulated population dynamics on the food web structures described in section \ref{sec:structure} using the Allometric Trophic Network (ATN) model.  The ATN model is an easily parameterized and extensible model that is capable of reproducing realistic dynamics \cite{Boit2012}.  At the heart of the ATN model is the assumption that a species' metabolic rate controls both mortality and biomass accumulation (unless otherwise noted many of the choices that follow can be found in \cite{Brose2006}).  The dependence on this fundamental biological rate along with empirically supported allometric scaling laws means that the only species-specific parameter needed is body size.  We use the following formula to generate body sizes for any free-living species in a network structure:
 \begin{equation}
-M_i= Z_f^{TL_i-1}\label{eq:MFree}
+M_i= Z_f^{TL_i-1}\label{eq:mFree}
 \end{equation}
 
 Where $TL_i$ is the prey-averaged trophic level of species $i$ and $Z_f$ is the average body size ratio of consumer $i$ to its prey \cite{Martinez2004}.  $Z_f$ will therefore determine the average body size ratio of the entire food web.  This means that species at a given trophic level will be $Z_f$ times larger than species one trophic level lower.  However, this still allows for individual consumer-resource body size ratios to vary for each species since we use prey-averaged trophic level.  It is not possible to define body sizes such that all links have the same consumer-resource body size ratio.  We ran a full set of simulations for each of $Z_f = 10$ and $Z_f = 100$.  Using this body size, we define the mass-specific metabolic rate as
@@ -91,10 +91,35 @@ We controlled the number of parasites in our food webs by switching the roles of
  In this study, the most basic difference between a free-living consumer and a parasitic consumer is the body size ratio of the parasite to its host species.  On average, a parasitic species will be much smaller than its host, whereas a free-living consumer will generally be much larger than its prey.  The body sizes of parasitic species weres determined using the following formula (note that $k = \log Z_f$):
 
 \begin{equation}
-M_i = 10^{p + k(TL_i -2)} \label{eq:Mpara}
+M_i = 10^{p + k(TL_i -2)} \label{eq:mPara}
 \end{equation}
 
-With this choice of body size, parasites will be on average $10^{p}$ times the size of their free-living hosts, $10^k$ times the size of their parasitic prey (same as free-livers on free livers ) and $10^{p-2k}$ times the size of their free-living predators.  The last ratio ($10^{p-2k}$) is not ideal since it significanty increases the average body size ratio of free-living consumers.  From the parasitic body sizes we derive the parasitic mass-specific metabolic rate using equation \ref{eq:x}.  We a ran a full set of simulations with each of $p=-3$ and $p=-4$.
+With this choice of body size, parasites will be on average $10^{p}$ times the size of their free-living hosts, $10^k$ times the size of their parasitic prey (same as free-livers on free livers, the red dashed links in figure \ref{fig:bsrCartoon}) and $10^{p-2k}$ times the size of their free-living predators (the green dashed link in \ref{fig:bsrCartoon}.  The last ratio ($10^{p-2k}$) is not ideal since it significanty increases the average body size ratio of free-living consumers.  From the parasitic body sizes we derive the parasitic mass-specific metabolic rate using equation \eqref{eq:x}.  We a ran a full set of simulations with each of $p=-3$ and $p=-4$.  A schematic of the body size ratios is given in figure \ref{fig:bsrCartoon}.
+
+\begin{figure}
+\begin{tikzpicture}
+\node [inner sep = .05cm] (p1) at (3,1) {};
+\node [inner sep = .108cm] (p2) at (8,2) {};
+\node [inner sep = .5cm] (s1) at (0,-1) {};
+\node [inner sep = 1.08cm] (s2) at (3,-1) {};
+\node [inner sep = 2.313cm] (s3) at (8,-1) {};
+\draw[->,ultra thick] (s1) -> (s2);
+\draw[->,ultra thick] (s2) -> (s3);
+\draw [ultra thick, dashed] (8,2.5) node [anchor = south]  {$M_f = 100,M_p=10^{-2}$}--(8,-4) node [anchor = north] {TL = 3};
+\draw [ultra thick, dashed] (3,2.5) node [anchor = south]  {$M_f = 10,M_p=10^{-3}$}--(3,-4) node [anchor = north] {TL = 2};
+\draw [ultra thick, dashed] (0,2.5) node [anchor = south]  {$M_f = 1$}--(0,-4) node [anchor = north] {TL = 1};
+\draw[->,ultra thick] (s1) -> (p1);
+\draw[->,ultra thick] (s2) -> (p2);
+\draw[->,dashed,thick,red] (p1) -> (p2);
+\draw[->,dashed,thick,green] (p1) -> (s3);
+\shade [ball color=blue] (s1) circle (.5cm);
+\shade [ball color=blue] (s2) circle (1.08cm);
+\shade [ball color=blue] (s3) circle (2.313cm);
+\draw [ball color=red] (p1) circle (.05cm);
+\draw [ball color = red] (p2) circle (.108cm);
+\end{tikzpicture}
+\caption{This figure shows the body size hierarchy when body sizes are defined according to equations \eqref{eq:mPara} and \eqref{eq:mFree}. In this figure, the volume of the spheres scale logarithmically with the body size, and arrows denote biomass flow. \label{fig:bsrCartoon}}
+\end{figure}
 
 \subsection{Models\label{subsec:models}}
 
@@ -122,7 +147,7 @@ As described in section \ref{subsec:paraIntro}, each web will be tested with dif
 \caption{This cartoon illustrates the differences between the four different versions of ATN dynamics that were tested.  \label{fig:cartoons}}
 \end{figure}
 
-In the first (null) model (figure \ref{subfig:modelsa}) parasites are vulnerable to their predators while both inside and outside their hosts and they are not susecptible to concomittant predation.  In the null model, the only things that change when a species becomes a parasite are it's body size and metabolic rate.  In the second model, (figure \ref{subfig:modelsb})  we introduce a parameter, $\phi_i$, to the null model that controls the fraction of parasitic biomass outside of a host at any given time.  A parasite is protected from predation while inside its host.  However, the parasite is also not susceptible to concomittant predation.  This represents the situation in which parasites are most protected.  The third model (figure \ref{subfig:modeslsC}) modifies the null model by making parasites within their hosts susceptible to concomittant predation (see figure \ref{fig:concDiagram}).  Note that in this model we don't distinguish where a parasite is; the entire popluation is susceptible to both concomittant and normal predation.  The model in \ref{subfig:modelsc} represents the most vulnerable situation for parasites. \footnote{We could try to justify this model, but it might be better just to say that we did it this way in an attempt to separate the effects from the two modifications (since it \textit{isn't} realistic; neither \ref{subfig:modelsc} nor \ref{subfig:modelsb} are. In \ref{subfig:modelsd}, are the two modifications independent?  They do seem to be, but this is an opportunity for a neat statistical test.}  In the final model (figure \ref{subfig:modelsd}) we use the parameter $phi_i$ to determine what fraction of parasitic biomass is susceptible to concomittant predation.  The fraction of parasitic biomass that is inside a host is protected from 'normal' predation - we assume that parasites are not trophically consumed in their hosts\footnote{This is an area for potential improvement}  This was designed to be the most 'realistic' situation.
+In the first (null) model (figure \ref{subfig:modelsa}) parasites are vulnerable to their predators while both inside and outside their hosts and they are not susecptible to concomittant predation.  In the null model, the only things that change when a species becomes a parasite are it's body size and metabolic rate.  In the second model, (figure \ref{subfig:modelsb})  we introduce a parameter, $\phi_i$, to the null model that controls the fraction of parasitic biomass outside of a host at any given time.  A parasite is protected from predation while inside its host.  However, the parasite is also not susceptible to concomittant predation.  This represents the situation in which parasites are most protected.  The third model (figure \ref{subfig:modelsc}) modifies the null model by making parasites within their hosts susceptible to concomittant predation (see figure \ref{fig:concDiagram}).  Note that in this model we don't distinguish where a parasite is; the entire popluation is susceptible to both concomittant and normal predation.  The model in \ref{subfig:modelsc} represents the most vulnerable situation for parasites. \footnote{We could try to justify this model, but it might be better just to say that we did it this way in an attempt to separate the effects from the two modifications (since it \textit{isn't} realistic; neither \ref{subfig:modelsc} nor \ref{subfig:modelsb} are. In \ref{subfig:modelsd}, are the two modifications independent?  They do seem to be, but this is an opportunity for a neat statistical test.}  In the final model (figure \ref{subfig:modelsd}) we use the parameter $phi_i$ to determine what fraction of parasitic biomass is susceptible to concomittant predation.  The fraction of parasitic biomass that is inside a host is protected from 'normal' predation - we assume that parasites are not trophically consumed in their hosts\footnote{This is an area for potential improvement}  This was designed to be the most 'realistic' situation.
 
 %This is a schematic for concomittant predation.
 \begin{figure}
@@ -137,7 +162,7 @@ In the first (null) model (figure \ref{subfig:modelsa}) parasites are vulnerable
 \caption{This diagram illustrates concomittant predation.  The biomass of $p$ that is inside host $h$ is consumed when $h$ is eaten by its consumer, $j$. \label{fig:concDiagram}}
 \end{figure}
 
-In principal, the parameter $\phi_i$ can vary for each species for the second and fourth models (figures \ref{subfig:modelsb} and \ref{subfig:modelsd}).  Since this was not a focus of the study\footnote{though adding sensitivity to this could be in the future of this study} we used a constant fraction for all parasites and set it equal to 1 for free livers:
+In principle, the parameter $\phi_i$ can vary for each species for the second and fourth models (figures \ref{subfig:modelsb} and \ref{subfig:modelsd}).  Since this was not a focus of the study\footnote{though adding sensitivity to this could be in the future of this study} we used a constant fraction for all parasites and set it equal to 1 for free livers:
 
 \begin{equation}
 \phi_i = 
@@ -145,11 +170,10 @@ In principal, the parameter $\phi_i$ can vary for each species for the second an
 \begin{array}{c c c}
 \phi & \text{if} & i:\text{ parasite}\\
 1 & \text{if} & i:\text{ free-liver}\\
-\end{array}
-\right.\label{phidef}
+\end{array}\right.\label{eq:phi}
 \end{equation}
 
-The introduction of $\phi_i$, required significant changes to the ATN model (equations \ref{eq:atn0} and \ref{eq:fr0}):
+The introduction of $\phi_i$ required significant changes to the ATN model (equations \eqref{eq:atn0} and \eqref{eq:fr0}):
 
 
 \begin{subequations}\label{eq:atn1}
@@ -168,51 +192,38 @@ F_{ij}^\text{(para)} &= \frac{\omega_{ij}^{(para)}(\phi_iB_i)^{1+h}}{B_0^{1+h} +
 \end{align}
 \end{subequations}
 
-The idea is to split the functional response according to whether a link represents classic predation or parasitism.  In the case of classic predation (equation \ref{subeq:fr1troph}), only the portion of $j$'s biomass that is outside of a host can be a classic consumer (thus the fraction $\phi_c$ ahead of $F_kc^(\text{troph})$ in equation \ref{eq:atn0}).  Conversely, only the portion of biomass that is inside a host can be a parasitic consumer (thus the fractions $1-\phi_c$ and $1-\phi_k$ in equations \ref{subeq:coneq1} and \ref{subeq:basal1}).  Finally, a consumer (parasitic or classic) will only consume and search for the portion of biomass that is outside of hosts (Thus the $\phi_j$ and $\phi_k$ in the numerator and denominator, respectively, of equation (\ref{subeq:fr1troph}).
+The idea is to split the functional response according to whether a link represents classic predation or parasitism.  In the case of classic predation (equation \eqref{subeq:fr1troph}), only the portion of $j$'s biomass that is outside of a host can be a classic consumer (thus the fraction $\phi_c$ ahead of $F_{kc}^\text{(troph)}$ in equation \eqref{eq:atn0}).  Conversely, only the portion of biomass that is inside a host can be a parasitic consumer (thus the fractions $1-\phi_c$ and $1-\phi_k$ in equations \eqref{subeq:con1} and \eqref{subeq:basal1}).  Finally, a consumer (parasitic or classic) will only consume and search for the portion of biomass that is outside of hosts (Thus the $\phi_j$ and $\phi_k$ in the numerator and denominator, respectively, of equation \eqref{subeq:fr1troph}.  Thus, the preference for a particular species is now determined by $\omega_{ij}^\text{(troph)}$ in $F_{ij}^\text{(troph)}$ and $\omega_{ij}^\text{(para)}$ in $F_{ij}^\text{(para)}$.  These new preferences take into account the fact that a parasite does not have to divide its foraging time as a free liver among its hosts.  By the same token, the parasite doesn't have to divide its 'foraging' time among its free-living (i.e. trophic) prey items when within a host.
 
-two changes have been made to the original functional response.  first, all prey biomasses (in both functional response) have been multiplied by the fraction of free living time.  this is because only the portion $\phi_i$ of the biomass of species $i$ is available for consumption (either by free-livers or parasites) at any given time.  second, the preference for a particular species is now determined by $\omega_{ij}^\text{(troph)}$ in $f_{ij}^\text{(troph)}$ and $\omega_{ij}^\text{(para)}$ in $f_{ij}^\text{(para)}$.  these new preferences take into account the fact that a parasite does not have to divide its foraging time as a free liver among its hosts.  by the same token, it doesn't have to divide it's 'foraging' time among it's free-living (i.e. trophic) prey items when within a host.
-
-the second addition is concomitant predation on parasites.  this comes in as an added term subtracted at the end of equations \eqref{subeq:con0} or \eqref{coneq1}.  the term can be compactly expressed as 
+The second addition is concomittant predation on parasites.  In models with concomittant predation (figures \ref{subfig:modelsc} and \ref{subfig:modelsd}), this is included as an additional term subtracted at the end of the consumer's equation, \eqref{subeq:con0} or \eqref{subeq:con1}.  Note that this means we don't allow biomass accumulation from concomittant consumption \textit{of} parasites in hosts.  The term can be compactly expressed as 
 \begin{equation}
-i_p = \sum_ha_{ph}c_h \label{ip1}
+C_p = \sum_ha_{ph}c_h \label{cp1}
 \end{equation}
-where $a_{ph}$ is the biomass of parasite $p$ per unit of biomass of host $h$, and $c_h$ is the total trophic consumption (total rate of change) of host $h$.  breaking it down, we have
+where $a_{ph}$ is the amount of biomass of parasite $p$ per unit of biomass of host $h$, and $T_h$ is the total trophic consumption (total rate of biomass loss due to predation by classic consumers) of host $h$.  We define $a_{ph}$ as the relative biomass accumulation from parasitism of host $h$, relative to the total biomass accumulation to the parasite from all hosts.  So the equations are 
 \begin{equation}
-a_{ph} = \frac{(1-\phi_p)b_p}{b_h}\frac{y_{hp}f^\text{(para)}_{hp}}{\sum_{k}y_{kp}f^\text{(para)}_{kp}} \label{aph1}
+a_{ph} = \frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}} \label{aph1}
 \end{equation}
-when we separate the trophic and parasitic links of parasites, and
+when we separate the trophic and parasitic links of parasites (figure \ref{fig:modelsd}), and
 \begin{equation}
-a_{ph} = \frac{b_p}{b_h}\frac{y_{hp}f_{hp}}{\sum_{k}y_{kp}f_{kp}} \label{aph2}
+a_{ph} = \frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}} \label{aph0}
 \end{equation}
-when we treat all links to parasites as parasitic.  in \eqref{aph1} and \eqref{aph2}, i have defined the fraction of the biomass of parasite $p$ in host $h$ to be the ratio of parasite $p$'s (parasitic) attack rate on $h$ divided by it's total (parasitic) attack rate on all of $h$'s hosts.  finally,
+when we treat all links to parasites as parasitic (figure \ref{fig:modelsc}).  Finally,
 \begin{equation}
-c_h = \sum_kx_kb_k\frac{f^\text{(troph)}_{kh}y_{kh}}{e_{kh}} \label{cpheq}
+T_h = \sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
 \end{equation}
-so, putting it all together we have
+when we separate the trophic and parasitic links of parasites (figure \ref{fig:modelsd}), and
 \begin{equation}
-i_p = \sum_h \left(\frac{b_p}{b_h}\frac{y_{hp}f_{hp}}{\sum_{k}y_{kp}f_{kp}}\left[\sum_kx_kb_k\frac{f^\text{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{ip2}
+T_h = \sum_kx_kB_k\frac{F_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
 \end{equation}
-
-\subsection{parameter values}
-all simulations are run on niche model webs with $s = 40$ and $c = 0.15$.  in the atn model, most parameters are found via allometric scaling relationships.  body mass is then one of the most fundamental parameters.  since i want to test the effect of different body size ratios in this model, i define body mass for free-livers as follows:
-
+when we treat all links to parasites as parasitic (figure \ref{fig:modelsc}).  To summarize,
 \begin{equation}
-m_i = z_i^{t_i-1} \label{mf}
+C_p = \sum_h \left(\frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}}\left[\sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{cp2}
 \end{equation}
-
-
-where $z_i=z$ is the desired body mass ratio for free-livers, and $t_{i}$ is the trophic level of species $i$.  in my simulations i use the short-weighted trophic level.  thus, if i want predators to be, on average, 10 times larger than their prey, i would set $z = 10$.  if i desired 100 times larger, i would use $z=100$.  unfortunately it does not work so simply for parasites.  to describe how parasite body masses are determined i need a few more parameters. define $k$ as the common logarithm of the consumer-resource body size (c-r bsr) ratio for free livers, and $p$ as the common logarithm of the desired  c-r bsr for parasites preying on hosts.  then if we set the body size for parasites as 
-
-
+when we split trophic and parasitic links (\ref{subfig:modelsd}) and
 \begin{equation}
-x_i = a_xm_i^{-1/4}\label{xeq}
+C_p = \sum_h \left(\frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}}\left[\sum_kx_kB_k\frac{F_{kh}y_{kh}}{e_{kh}}\right] \right) \label{cp2}
 \end{equation}
 
-for all my simulations i take $a_x = 0.314$, the constant for invertebrates.  see the table below for the remaining parameter values.
-
-in the functional response, i use the strong generalist model, so $\omega_{ij} = 1 \forall i,j$.  i also use a 'type ii.2' functional response, so $h = 0.2$.  finally, i use $B_0 = 0.5$ (all from brose, williams, and martinez 2006).
-
-many of the other constants in the models are determined from allometry, though the actual values are simply taken to be consistent with other papers since they are defined such that they scale with $x_i$.  All parameters are summarized in the table below.
+We ran each model with each combination of body sizes with 11 different fractions of consumers as parasites with each web, for a total of $4\times4\times11\times 100 =17600$ simulations. 
 
 \begin{table}
 \begin{tabularx}{\textwidth}{|l|X|l|}
