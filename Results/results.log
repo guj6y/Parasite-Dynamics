@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  23 MAR 2017 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  23 MAR 2017 16:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -905,7 +905,14 @@ s/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2013/07/15 v3.0.1a (rcs-revision 1.9)
 )) (../data/figureCommands.tex)
 \tikzscale@accuracy=\skip61
- (./results.aux)
+ (./results.aux
+
+LaTeX Warning: Label `fig:persistencePara' multiply defined.
+
+
+LaTeX Warning: Label `fig:persistencePara' multiply defined.
+
+)
 \openout1 = `results.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
@@ -921,8 +928,7 @@ LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Try loading font information for U+msa on input line 21.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 21.
@@ -1164,104 +1170,39 @@ PGFPlots: reading {../data//persistence-small-small-subplot-1}
 PGFPlots: reading {../data//persistence-small-big-subplot-1}
 PGFPlots: reading {../data//persistence-big-small-subplot-1}
 PGFPlots: reading {../data//persistence-big-big-subplot-1}
-<../figures/Null.png, id=4, 1027.84pt x 770.88pt>
+<../figures/Null.png, id=4, 1606.0pt x 1204.5pt>
 File: ../figures/Null.png Graphic file (type png)
  <use ../figures/Null.png>
 Package pdftex.def Info: ../figures/Null.png used on input line 28.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
-<../figures/Null+Ref.png, id=6, 1027.84pt x 770.88pt>
+<../figures/Null+Ref.png, id=5, 1606.0pt x 1204.5pt>
 File: ../figures/Null+Ref.png Graphic file (type png)
 
 <use ../figures/Null+Ref.png>
 Package pdftex.def Info: ../figures/Null+Ref.png used on input line 28.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
-<../figures/Null+Con.png, id=7, 1027.84pt x 770.88pt>
+<../figures/Null+Con.png, id=6, 1606.0pt x 1204.5pt>
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
 Package pdftex.def Info: ../figures/Null+Con.png used on input line 28.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
-<../figures/Con+Ref.png, id=8, 1027.84pt x 770.88pt>
+<../figures/Con+Ref.png, id=7, 1606.0pt x 1204.5pt>
 File: ../figures/Con+Ref.png Graphic file (type png)
 
 <use ../figures/Con+Ref.png>
 Package pdftex.def Info: ../figures/Con+Ref.png used on input line 28.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
-
-
-LaTeX Warning: Reference `fig:persistenceAll' on page 1 undefined on input line
- 33.
-
-
-LaTeX Warning: Reference `fig:persistenceFree' on page 1 undefined on input lin
-e 33.
-
-
-LaTeX Warning: Reference `fig:persistencePara' on page 1 undefined on input lin
-e 33.
-
-
-LaTeX Warning: Reference `sec:persistenceFree' on page 1 undefined on input lin
-e 33.
-
-
-LaTeX Warning: Reference `sec:persistencePara' on page 1 undefined on input lin
-e 33.
-
-
-LaTeX Warning: Reference `fig:persistence-a' on page 1 undefined on input line 
-35.
-
-
-LaTeX Warning: Reference `fig:persistenceAll' on page 1 undefined on input line
- 35.
-
-[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../fi
-gures/Null.png> <../figures/Null+Ref.png> <../figures/Null+Con.png> <../figures
-/Con+Ref.png>]
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
+ [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../f
+igures/Null.png> <../figures/Null+Ref.png> <../figures/Null+Con.png> <../figure
+s/Con+Ref.png>]
 
 LaTeX Warning: Citation `Brose2006' on page 2 undefined on input line 41.
 
-
-LaTeX Warning: Reference `fig:persistence-c' on page 2 undefined on input line 
-42.
-
-
-LaTeX Warning: Reference `fig:persistence-b' on page 2 undefined on input line 
-44.
-
-
-LaTeX Warning: Reference `fig:persistence-d' on page 2 undefined on input line 
-45.
-
-
-LaTeX Warning: Reference `fig:persistenceAll' on page 2 undefined on input line
- 49.
-
-
-LaTeX Warning: Reference `fig:free-persistence-a' on page 2 undefined on input 
-line 51.
-
-
-LaTeX Warning: Reference `fig:free-persistence-c' on page 2 undefined on input 
-line 51.
-
 [2]
-
-LaTeX Warning: Reference `fig:free-persistence-b' on page 3 undefined on input 
-line 53.
-
-
-LaTeX Warning: Reference `fig:persistenceAll' on page 3 undefined on input line
- 53.
-
-
-LaTeX Warning: Reference `fig:free-persistence-d' on page 3 undefined on input 
-line 53.
-
 PGFPlots: reading {../data//free-persistence-small-small-subplot-1}
 PGFPlots: reading {../data//free-persistence-small-small-subplot-2}
 PGFPlots: reading {../data//free-persistence-small-small-subplot-3}
@@ -1382,52 +1323,23 @@ PGFPlots: reading {../data//free-persistence-small-big-subplot-1}
 PGFPlots: reading {../data//free-persistence-big-small-subplot-1}
 PGFPlots: reading {../data//free-persistence-big-big-subplot-1}
 File: ../figures/Null.png Graphic file (type png)
-<use ../figures/Null.png>
+ <use ../figures/Null.png>
 Package pdftex.def Info: ../figures/Null.png used on input line 56.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Ref.png Graphic file (type png)
  <use ../figures/Null+Ref.png>
 Package pdftex.def Info: ../figures/Null+Ref.png used on input line 56.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
 Package pdftex.def Info: ../figures/Null+Con.png used on input line 56.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Con+Ref.png Graphic file (type png)
  <use ../figures/Con+Ref.png>
 Package pdftex.def Info: ../figures/Con+Ref.png used on input line 56.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
-
-
-LaTeX Warning: Reference `fig:persistencePara' on page 3 undefined on input lin
-e 63.
-
-
-LaTeX Warning: Reference `fig:para-persistence-a' on page 3 undefined on input 
-line 63.
-
-[3]
-
-LaTeX Warning: Reference `fig:para-persistence-c' on page 4 undefined on input 
-line 65.
-
-
-LaTeX Warning: Reference `fig:para-persistence-a' on page 4 undefined on input 
-line 65.
-
-
-LaTeX Warning: Reference `fig:para-persistence-b' on page 4 undefined on input 
-line 67.
-
-
-LaTeX Warning: Reference `fig:para-persistence-a' on page 4 undefined on input 
-line 67.
-
-
-LaTeX Warning: Reference `fig:para-persistence-d' on page 4 undefined on input 
-line 69.
-
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
+ [3]
 PGFPlots: reading {../data//para-persistence-small-small-subplot-1}
 PGFPlots: reading {../data//para-persistence-small-small-subplot-2}
 PGFPlots: reading {../data//para-persistence-small-small-subplot-3}
@@ -1548,22 +1460,23 @@ PGFPlots: reading {../data//para-persistence-small-big-subplot-1}
 PGFPlots: reading {../data//para-persistence-big-small-subplot-1}
 PGFPlots: reading {../data//para-persistence-big-big-subplot-1}
 File: ../figures/Null.png Graphic file (type png)
+
 <use ../figures/Null.png>
 Package pdftex.def Info: ../figures/Null.png used on input line 72.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Ref.png Graphic file (type png)
  <use ../figures/Null+Ref.png>
 Package pdftex.def Info: ../figures/Null+Ref.png used on input line 72.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
 Package pdftex.def Info: ../figures/Null+Con.png used on input line 72.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Con+Ref.png Graphic file (type png)
  <use ../figures/Con+Ref.png>
 Package pdftex.def Info: ../figures/Con+Ref.png used on input line 72.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1690,20 +1603,20 @@ PGFPlots: reading {../data//frac-prey-first-big-big-subplot-1}
 File: ../figures/Null.png Graphic file (type png)
 <use ../figures/Null.png>
 Package pdftex.def Info: ../figures/Null.png used on input line 81.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Ref.png Graphic file (type png)
  <use ../figures/Null+Ref.png>
 Package pdftex.def Info: ../figures/Null+Ref.png used on input line 81.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
 Package pdftex.def Info: ../figures/Null+Con.png used on input line 81.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Con+Ref.png Graphic file (type png)
  <use ../figures/Con+Ref.png>
 Package pdftex.def Info: ../figures/Con+Ref.png used on input line 81.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1830,20 +1743,20 @@ PGFPlots: reading {../data//frac-pred-first-big-big-subplot-1}
 File: ../figures/Null.png Graphic file (type png)
 <use ../figures/Null.png>
 Package pdftex.def Info: ../figures/Null.png used on input line 86.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Ref.png Graphic file (type png)
  <use ../figures/Null+Ref.png>
 Package pdftex.def Info: ../figures/Null+Ref.png used on input line 86.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Null+Con.png Graphic file (type png)
 
 <use ../figures/Null+Con.png>
 Package pdftex.def Info: ../figures/Null+Con.png used on input line 86.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 File: ../figures/Con+Ref.png Graphic file (type png)
  <use ../figures/Con+Ref.png>
 Package pdftex.def Info: ../figures/Con+Ref.png used on input line 86.
-(pdftex.def)             Requested size: 205.24384pt x 153.92625pt.
+(pdftex.def)             Requested size: 205.24384pt x 153.9255pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1857,14 +1770,6 @@ or enter new name. (Default extension: textab)
 
 Enter file name: 
 
-LaTeX Warning: Reference `fig:persistenceAll' on page 5 undefined on input line
- 104.
-
-
-LaTeX Warning: Reference `fig:persistenceAll' on page 5 undefined on input line
- 104.
-
-
 ! LaTeX Error: File `../../data/free-persistenceRegressions.textab' not found.
 
 Type X to quit or <RETURN> to proceed,
@@ -1872,40 +1777,24 @@ or enter new name. (Default extension: textab)
 
 Enter file name: 
 
-LaTeX Warning: Reference `fig:persistenceFree' on page 5 undefined on input lin
-e 109.
-
-
-LaTeX Warning: Reference `fig:persistenceFree' on page 5 undefined on input lin
-e 109.
-
-
 ! LaTeX Error: File `../../data/para-persistenceRegressions.textab' not found.
 
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: textab)
 
 Enter file name: 
-
-LaTeX Warning: Reference `fig:persistencePara' on page 5 undefined on input lin
-e 114.
-
-
-LaTeX Warning: Reference `fig:persistencePara' on page 5 undefined on input lin
-e 114.
-
 [5] [6] [7] (./results.aux)
 
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  35709 strings out of 494141
  860388 string characters out of 6155521
- 1905773 words of memory out of 5000000
+ 1905224 words of memory out of 5000000
  38375 multiletter control sequences out of 15000+600000
  12079 words of font info for 47 fonts, out of 8000000 for 9000
  581 hyphenation exceptions out of 8191
@@ -1924,10 +1813,10 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
 16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on results.pdf (7 pages, 310513 bytes).
+Output written on results.pdf (7 pages, 703302 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 91 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  33 words of extra memory for PDF output out of 10000 (max. 10000000)
 
