@@ -23,7 +23,7 @@
 
 \subsection{Niche Models\label{sec:structure}}
 
-We first generated 100 food webs with 40 species and connectance $C=0.15\pm .0075$ using the Niche Model.  The Niche model is an algorithm that generates realistic food webs with minimal inputs \cite{Williams2001,Another?}.\footnote{'We looked at alternatives but they did not pass muster.' Keep this in your back pocket.}  Figure \ref{fig:nicheModel} illustrates the model.  A species, $j$ is placed on the niche axis, $[0,1]$, by choosing a niche value uniformly randomly from $[0,1]$.  This species is then given a diet center and a diet width.  The diet width is calculated as $r_j=n_jy_j$.  In the calculation of diet width, $y_j$, is a random variable drawn from a beta distribution with $\alpha = 1$, and $\beta$ chosen so that the expected width of a diet is the desired connetance, $C$ ($\beta = (1-2C)/2C$).  The beta distribution is chosen so that the distribution of diet widths is approximately exponential, which means the distribution of generalities will be approximately exponential.  We multiply $y_j$ by $n_j$ so that species with higher niche values will tend to be more generalist than species with lower niche values.  A diet center, $c_j$, is chosen uniformly randomly such that $c_j \leq n_j$ and the diet falls entirely within the niche axis.  Species $j$ consumes a species $i$ if $n_i$ falls within the feeding range of $j$.  
+We first generated 100 food webs with 40 species and connectance $C=0.15\pm .0075$ using the Niche Model.  The Niche model is an algorithm that generates realistic food webs with minimal inputs ~\cite{Williams2000}.\footnote{'We looked at alternatives but they did not pass muster.' Keep this in your back pocket.}  Figure \ref{fig:nicheModel} illustrates the model.  A species, $j$ is placed on the niche axis, $[0,1]$, by choosing a niche value uniformly randomly from $[0,1]$.  This species is then given a diet center and a diet width.  The diet width is calculated as $r_j=n_jy_j$.  In the calculation of diet width, $y_j$, is a random variable drawn from a beta distribution with $\alpha = 1$, and $\beta$ chosen so that the expected width of a diet is the desired connetance, $C$ ($\beta = (1-2C)/2C$).  The beta distribution is chosen so that the distribution of diet widths is approximately exponential, which means the distribution of generalities will be approximately exponential.  We multiply $y_j$ by $n_j$ so that species with higher niche values will tend to be more generalist than species with lower niche values.  A diet center, $c_j$, is chosen uniformly randomly such that $c_j \leq n_j$ and the diet falls entirely within the niche axis.  Species $j$ consumes a species $i$ if $n_i$ falls within the feeding range of $j$.  
 
 
 \begin{figure}{h}
@@ -61,18 +61,19 @@ node {$j$};
 
 \subsection{Allometric Trophic Network Model}
 
-We simulated population dynamics on the food web structures described in section \ref{sec:structure} using the Allometric Trophic Network (ATN) model.  The ATN model is an easily parameterized and extensible model that is capable of reproducing realistic dynamics \cite{Boit2012}.  At the heart of the ATN model is the assumption that a species' metabolic rate controls both mortality and biomass accumulation (unless otherwise noted many of the choices that follow can be found in \cite{Brose2006}).  The dependence on this fundamental biological rate along with empirically supported allometric scaling laws means that the only species-specific parameter needed is body size.  We use the following formula to generate body sizes for any free-living species in a network structure:
+We simulated population dynamics on the food web structures described in section \ref{sec:structure} using the Allometric Trophic Network (ATN) model.  The ATN model is an easily parameterized and extensible model that is capable of reproducing realistic dynamics ~\cite{Boit2012}.  At the heart of the ATN model is the assumption that a species' metabolic rate controls both mortality and biomass accumulation (unless otherwise noted the choices that follow can be found in ~\cite{Brose2006}).  The dependence on this fundamental biological rate along with empirically supported allometric scaling laws means that the only species-specific parameter needed is body size.  We use the following formula to generate body sizes for any free-living species in a network structure:
+
 \begin{equation}
 M_i= Z_f^{TL_i-1}\label{eq:mFree}
 \end{equation}
 
-Where $TL_i$ is the prey-averaged trophic level of species $i$ and $Z_f$ is the average body size ratio of consumer $i$ to its prey \cite{Martinez2004}.  $Z_f$ will therefore determine the average body size ratio of the entire food web.  This means that species at a given trophic level will be $Z_f$ times larger than species one trophic level lower.  However, this still allows for individual consumer-resource body size ratios to vary for each species since we use prey-averaged trophic level.  It is not possible to define body sizes such that all links have the same consumer-resource body size ratio.  We ran a full set of simulations for each of $Z_f = 10$ and $Z_f = 100$.  
+Where $TL_i$ is the prey-averaged trophic level of species $i$ and $Z_f$ is the average body size ratio of consumer $i$ to its prey ~\cite{Williams2004}.  $Z_f$ will therefore determine the average body size ratio of the entire food web.  This means that species at a given trophic level will be $Z_f$ times larger than species one trophic level lower.  However, this still allows for individual consumer-resource body size ratios to vary for each species since we use prey-averaged trophic level.  It is not possible to define body sizes such that all links have the same consumer-resource body size ratio.  We ran a full set of simulations for each of $Z_f = 10$ and $Z_f = 100$.  
 
 Using the body size as defined in \eqref{eq:mFree}, we define the mass-specific metabolic rate as
 \begin{equation}
 x_i = a_{x_i} M_i^{-0.25}\label{eq:x}
 \end{equation}
-The $-0.25$ power has both empirical and theoretical support (\cite{Brown2004}, others?).  The constant $a_{x_i}$ is the metabolic scaling constant that varies across metabolic classes of species.  In all simulations we take $a_{x_i}=0.314$, which is the value for a broad collection of invertebrate species.  With these fundamental constants in hand we can write the following dimensionless equations that govern the biomasses of all species in a food web (see \cite{Yodzis1992} for the original 2-species derivation and \cite{Willams2007} for an updated multi species derivation): 
+The $-0.25$ power has both empirical and theoretical support (~\cite{Brown2004}, others?).  The constant $a_{x_i}$ is the metabolic scaling constant that varies across metabolic classes of species.  In all simulations we take $a_{x_i}=0.314$, which is the value for a broad collection of invertebrate species.  With these fundamental constants in hand we can write the following dimensionless equations that govern the biomasses of all species in a food web (see ~\cite{Yodzis1992} for the original 2-species derivation and ~\cite{Williams2007} for an updated multi species derivation): 
 
 \begin{subequations}\label{eq:atn0}
 \begin{align}
@@ -203,11 +204,11 @@ C_p = \sum_ha_{ph}c_h \label{cp1}
 \end{equation}
 where $a_{ph}$ is the amount of biomass of parasite $p$ per unit of biomass of host $h$, and $T_h$ is the total trophic consumption (total rate of biomass loss due to predation by classic consumers) of host $h$.  We define $a_{ph}$ as the relative biomass accumulation from parasitism of host $h$, relative to the total biomass accumulation to the parasite from all hosts.  So the equations are 
 \begin{equation}
-a_{ph} = \frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}} \label{aph1}
+a_{ph} = \frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}} \label{eq:aph1}
 \end{equation}
 when we separate the trophic and parasitic links of parasites (figure \ref{subfig:modelsd}), and
 \begin{equation}
-a_{ph} = \frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}} \label{aph0}
+a_{ph} = \frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}} \label{eq:aph0}
 \end{equation}
 when we treat all links to parasites as parasitic (figure \ref{subfig:modelsc}).  Finally,
 \begin{equation}
@@ -215,11 +216,11 @@ T_h = \sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
 \end{equation}
 when we separate the trophic and parasitic links of parasites (figure \ref{subfig:modelsd}), and
 \begin{equation}
-T_h = \sum_kx_kB_k\frac{F_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
+T_h = \sum_kx_kB_k\frac{F_{kh}y_{kh}}{e_{kh}} \label{eq:Th0}
 \end{equation}
 when we treat all links to parasites as parasitic (figure \ref{subfig:modelsc}).  To summarize,
 \begin{equation}
-C_p = \sum_h \left(\frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}}\left[\sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{cp2}
+C_p = \sum_h \left(\frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}}\left[\sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{eq:cp2}
 \end{equation}
 when we split trophic and parasitic links (\ref{subfig:modelsd}) and
 \begin{equation}
@@ -280,6 +281,7 @@ $f_{par}$&Fraction of consumers as parasites (evenly spaced between 0 and .5)&11
 \end{tabularx}
 \caption{Values of all constants used in the models.  \label{tab:param}}
 \end{table}
-\newpage
 
+\bibliography{../Bib_green}{}
+\bibliographystyle{apalike}
 \end{document}  
