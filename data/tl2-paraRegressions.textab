@@ -1,0 +1,26 @@
+\begin{tabular}{|c | c|c c| c c |c c |c|}
+\hline\hline
+&&$\beta_0$&$p$-value&$\beta_1$&$p$-value&$\beta_2$&$p$-value&Adj. $R^2$\\
+ \hline
+\multirow{4}{*}{subplot A}&\tikzPlotStylea&0.421&6.820e-63&0.119&1.130e-01&&&0.002\\
+&\tikzPlotStyleb&0.210&6.762e-08&0.819&1.057e-02&-0.953&9.074e-02&0.018\\
+&\tikzPlotStylec&0.175&1.692e-14&0.518&1.003e-12&&&0.050\\
+&\tikzPlotStyled&0.119&9.319e-08&0.599&8.324e-17&&&0.067\\
+\hline
+\multirow{4}{*}{subplot B}&\tikzPlotStylea&0.420&7.405e-75&-0.361&1.006e-07&&&0.028\\
+&\tikzPlotStyleb&0.291&4.342e-44&-0.131&3.906e-02&&&0.003\\
+&\tikzPlotStylec&0.138&3.237e-06&0.214&3.810e-01&-0.488&2.572e-01&0.000\\
+&\tikzPlotStyled&0.097&6.026e-04&0.375&1.074e-01&-0.668&1.032e-01&0.001\\
+\hline
+\multirow{4}{*}{subplot C}&\tikzPlotStylea&0.295&2.386e-36&0.327&6.295e-06&&&0.020\\
+&\tikzPlotStyleb&0.159&1.850e-05&0.731&1.711e-02&-0.724&1.799e-01&0.023\\
+&\tikzPlotStylec&0.077&1.650e-04&0.619&2.096e-20&&&0.083\\
+&\tikzPlotStyled&0.066&1.313e-03&0.608&1.151e-19&&&0.080\\
+\hline
+\multirow{4}{*}{subplot D}&\tikzPlotStylea&0.304&9.639e-51&-0.210&6.457e-04&&&0.011\\
+&\tikzPlotStyleb&0.218&2.870e-32&-0.048&3.976e-01&&&-0.000\\
+&\tikzPlotStylec&0.090&9.989e-04&0.297&1.904e-01&-0.531&1.835e-01&-0.000\\
+&\tikzPlotStyled&0.066&1.129e-02&0.379&7.619e-02&-0.590&1.171e-01&0.002\\
+\hline
+\hline
+\end{tabular}
