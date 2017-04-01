@@ -19,6 +19,8 @@ cite
 \title{Results}
 \author{Nick}
 
+\usetikzlibrary{external}
+\tikzexternalize[prefix=figures/]
 
 \usepackage{hyperref}
 \begin{document}
@@ -89,7 +91,39 @@ The order of extinctions in food webs in general is an under-studied question (b
  
 \begin{figure}[h]
 \makeFigureAllSizes{frac-pred-first}{Fraction of a species' predators extinct first.}
-\caption{This figure shows the average fraction of a species' pred that go extinct first with 95\% confidence intervals in all models with all body size configurations.\caption{fig:frac-pred-first}}
+\caption{This figure shows the average fraction of a species' pred that go extinct first with 95\% confidence intervals in all models with all body size configurations.\label{fig:frac-pred-first}}
+\end{figure}
+
+\subsection{Persistence by Trophic Level}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl3-all}{Persistence of all species without an autotroph prey item.}
+\caption{This figure shows the persistence of all species that do not have a link directly from a basal species. \label{fig:tl3-all}}
+\end{figure}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl3-free}{Persistence of free-living species without an autotroph prey item.}
+\caption{This figure shows the persistence of all free-living species that do not have a link directly from a basal species.\label{tl3-free}}
+\end{figure}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl3-para}{Persistence of parasite species without an autotroph prey item.}
+\caption{This figure shows the persistence of all parasite species that do not have a link directly from a basal species.\label{tl3-para}}
+\end{figure}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl2-all}{Persistence of all species with an autotroph prey item.}
+\caption{This figure shows the persistence of all species that do have a link directly from a basal species.\label{tl2-all}}
+\end{figure}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl2-free}{Persistence of free-living species with an autotroph prey item.}
+\caption{This figure shows the persistence of free-living species that do have a link directly from a basal species.\label{tl2-free}}
+\end{figure}
+
+\begin{figure}[h]
+\makeFigureAllSizes{tl2-para}{Persistence of parasite species with an autotroph prey item.}
+\caption{This figure shows the persistence of parasite species that do have a link directly from a basal species.\label{tl2-para}}
 \end{figure}
 
 
