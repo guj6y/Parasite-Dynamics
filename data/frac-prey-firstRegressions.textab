@@ -2,7 +2,7 @@
 \hline\hline
 &&$\beta_0$&$p$-value&$\beta_1$&$p$-value&$\beta_2$&$p$-value&Adj. $R^2$\\
  \hline
-\multirow{4}{*}{subplot A}&\tikzPlotStylea&0.277&2.460e-154&0.389&2.718e-06&-0.429&6.952e-03&0.057\\
+\multirow{4}{*}{subplot A}&\tikzPlotStylea&0.277&1.219e-153&0.380&4.803e-06&-0.411&1.008e-02&0.057\\
 &\tikzPlotStyleb&0.263&1.711e-157&0.591&3.954e-14&-0.690&3.874e-06&0.127\\
 &\tikzPlotStylec&0.396&1.947e-317&0.001&9.538e-01&&&-0.001\\
 &\tikzPlotStyled&0.394&0.000e+00&0.018&4.305e-01&&&-0.000\\
