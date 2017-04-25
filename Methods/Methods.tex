@@ -10,14 +10,13 @@
 %\usepackage{tabularx}
 
 \usepackage{cite}
-\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 
 \usetikzlibrary{external}
 \tikzset{external/force remake}
 \tikzset{
 external/system call/.add={}
-{; convert -density 300 -transparent white  "\image.pdf" "\image.png"; rungs -dSAFER dBATCH dNOPAUSE sDEVICE=pngalpha -dGraphicsAlphaBits=4 -r110  -sOutputFile=\image.png \image.pdf} 
+{; convert -density 300 -transparent white  "\image.pdf" "\image.eps"; }
 }
 \makeatletter
 \@ifpackageloaded{tex4ht}{
@@ -175,6 +174,7 @@ As described in section \ref{subsec:paraIntro}, each web will be tested with dif
 In the first (null) model (figure \ref{subfig:modelsa}) parasites are vulnerable to their predators while both inside and outside their hosts and they are not susecptible to concomittant predation.  In the null model, the only things that change when a species becomes a parasite are it's body size and metabolic rate.  In the second model, (figure \ref{subfig:modelsb})  we introduce a parameter, $\phi_i$, to the null model that controls the fraction of parasitic biomass outside of a host at any given time.  A parasite is protected from predation while inside its host.  However, the parasite is also not susceptible to concomittant predation.  This represents the situation in which parasites are most protected.  The third model (figure \ref{subfig:modelsc}) modifies the null model by making parasites within their hosts susceptible to concomittant predation (see figure \ref{fig:concDiagram}).  Note that in this model we don't distinguish where a parasite is; the entire popluation is susceptible to both concomittant and normal predation.  The model in \ref{subfig:modelsc} represents the most vulnerable situation for parasites. \footnote{We could try to justify this model, but it might be better just to say that we did it this way in an attempt to separate the effects from the two modifications (since it \textit{isn't} realistic; neither \ref{subfig:modelsc} nor \ref{subfig:modelsb} are. In \ref{subfig:modelsd}, are the two modifications independent?  They do seem to be, but this is an opportunity for a neat statistical test.}  In the final model (figure \ref{subfig:modelsd}) we use the parameter $phi_i$ to determine what fraction of parasitic biomass is susceptible to concomittant predation.  The fraction of parasitic biomass that is inside a host is protected from 'normal' predation - we assume that parasites are not trophically consumed in their hosts\footnote{This is an area for potential improvement}  This was designed to be the most 'realistic' situation.
 
 %This is a schematic for concomittant predation.
+
 \begin{figure}
 \begin{tikzpicture}
 \node[draw,circle] at (0,0) (j) {$j$};

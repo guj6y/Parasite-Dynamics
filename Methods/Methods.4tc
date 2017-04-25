@@ -1,12 +1,3 @@
 \expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
 \doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-10001}{QQ2-1-1}{Including Parasites (or, changing a few body size ratios)}}{1}\relax 
 \doTocEntry\tocsubsection{1.1}{\csname a:TocLink\endcsname{1}{x1-20001.1}{QQ2-1-2}{Niche Models}}{1}\relax 
-\doTocEntry\toclof{}{\csname a:TocLink\endcsname{1}{x1-2003}{}{\numberline {1}{\ignorespaces This figure demonstrates how feeding relationships are determined in the Niche Model.\relax }}}{21}\relax 
-\doTocEntry\tocsubsection{1.2}{\csname a:TocLink\endcsname{1}{x1-30001.2}{QQ2-1-3}{Allometric Trophic Network Model}}{22}\relax 
-\doTocEntry\tocsubsection{1.3}{\csname a:TocLink\endcsname{1}{x1-40001.3}{QQ2-1-4}{Introducing Parasites}}{65}\relax 
-\doTocEntry\toclof{}{\csname a:TocLink\endcsname{1}{x1-4005}{}{\numberline {2}{\ignorespaces This figure shows the body size hierarchy when body sizes are defined according to equations \textup  {\hbox {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \let \prOteCt \relax \let \prOteCt \relax \Protect \::ref {eq:mPara}\unskip \@@italiccorr )}}} and \textup  {\hbox {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces \let \prOteCt \relax \let \prOteCt \relax \Protect \::ref {eq:mFree}\unskip \@@italiccorr )}}}. In this figure, the volume of the spheres scale with the body size, and arrows denote biomass flow. The situation in the model is also more complicated since we do allow fractional trophic levels.\relax }}}{76}\relax 
-\doTocEntry\tocsubsection{1.4}{\csname a:TocLink\endcsname{1}{x1-50001.4}{QQ2-1-5}{Models}}{77}\relax 
-\doTocEntry\toclof{}{\csname a:TocLink\endcsname{1}{x1-5007}{}{\numberline {3}{\ignorespaces This cartoon illustrates the differences between the four different versions of ATN dynamics that were tested. \relax }}}{79}\relax 
-\doTocEntry\toclof{}{\csname a:TocLink\endcsname{1}{x1-5011}{}{\numberline {4}{\ignorespaces This diagram illustrates concomittant predation. The biomass of $p$ that is inside host $h$ is consumed when $h$ is eaten by its consumer, $j$. \relax }}}{84}\relax 
-\doTocEntry\toclot{}{\csname a:TocLink\endcsname{1}{x1-5022}{}{\numberline {1}{\ignorespaces Values of all constants used in the models. \relax }}}{120}\relax 
-\doTocEntry\tocsection{}{\csname a:TocLink\endcsname{1}{x1-60001.4}{QQ2-1-6}{References}}{121}\relax 
