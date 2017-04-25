@@ -30,7 +30,7 @@ File: Methods-m16.4om
 File: Methods-m17.4om
 File: Methods-m18.4om
 File: Methods-m19.4om
-File: Methods-1.svg
+File: .4og
 File: Methods-m20.4om
 File: Methods-m21.4om
 File: Methods-m22.4om
@@ -84,16 +84,16 @@ File: Methods-m69.4om
 File: Methods-m70.4om
 File: Methods-m71.4om
 File: Methods-m72.4om
-File: Methods-2.svg
+File: .4og
 File: Methods-m73.4om
 Font_Class(4,"4"): <text:span  text:style-name="small-caps"></text:span>
-File: figures/Null.png.4og
-File: figures/Null+Ref.png.4og
-File: figures/Null+Con.png.4og
-File: figures/Con+Ref.png.4og
+File: .4og
+File: .4og
+File: .4og
+File: .4og
 File: Methods-m74.4om
 File: Methods-m75.4om
-File: Methods-3.svg
+File: .4og
 File: Methods-m76.4om
 File: Methods-m77.4om
 File: Methods-m78.4om
@@ -168,6 +168,13 @@ File: Methods-m146.4om
 File: Methods.4od
 File: Methods.odt
 Font_Size: 11
+File: Methods-figure0.png
+File: Methods-figure1.png
+File: figures/Null.png
+File: figures/Null+Ref.png
+File: figures/Null+Con.png
+File: figures/Con+Ref.png
+File: Methods-figure2.png
 --- characters ---
 Font("cmr","10","10","100")
 Font("cmr","10","10","109")

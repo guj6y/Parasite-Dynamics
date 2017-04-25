@@ -39,7 +39,9 @@ office:version="1.0" >
 </style:page-layout-properties> 
 <style:header-style/> <style:footer-style/> </style:page-layout> 
  
-</office:automatic-styles>     <office:body><office:text>
+</office:automatic-styles> 
+  <link href="basic.css" rel="stylesheet" type="text/css" /> 
+<office:body><office:text>
   <!--begin maketitle-->
   <text:p text:style-name="Title">
 METHODS
@@ -123,18 +125,25 @@ text:anchor-type="as-char" draw:z-index="0" ><draw:object
 xlink:href="./Methods-m19" 
 xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame> .
   </text:p> 
-<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+<div class="figure" 
+>
                                                                                   
 
                                                                                   
                                                                                   
 
                                                                                   
-<!--l. 50--><text:p text:style-name="Text-body">h <object data="Methods-1.svg" width="407.6469 " height="117.2408 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 50--><text:p text:style-name="Text-body">h   <draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/Methods-figure0.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:7.227.95em;" --></draw:frame>
 <t4htlink 
  href="#x1-2002r1" name="x1-2002r1"></t4htlink>
 <t4htlink 
  href="#x1-2003" name="x1-2003"></t4htlink>
+</text:p> 
+<!--l. 80--><text:p text:style-name="Text-body"></text:p> 
+
 <!--l. 80--><text:p text:style-name="Text-body"> 
 <text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
  href="#x1-2002r1" name="x1-2002r1">Figure<text:s/>1</t4htlink>: </text:span>This figure demonstrates how feeding relationships are determined in the Niche
@@ -143,7 +152,7 @@ Model.</text:span>
 
                                                                                   
   </text:p> 
-<text:p text:style-name="bigskip"></text:p></text:section>
+</div>
   <!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" ><text:span text:style-name="textup" >1.2. </text:span> </text:span><t4htlink 
 href="#x1-30001.2" name="x1-30001.2"></t4htlink>Allometric Trophic Network Model</text:h> 
 
@@ -298,7 +307,8 @@ xlink:href="./Methods-m49"
 xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  preying on <!--l. 106--><draw:frame draw:style-name="mml-inline" draw:name="mobj-50" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m50" 
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame> . Note that this functional response represents how the <text:span text:style-name="textit" ><tspan font-family="cmti" font-size="10">assimilation</tspan></text:span> of biomass changes with
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame> . Note that this functional response represents how the <text:span text:style-name="textit" ><text:span 
+text:style-name="cmti-10x-x-109">assimilation</text:span></text:span> of biomass changes with
 changes in prey biomass, not the consumption of prey biomass. It has the following form:
 </text:p> 
 <table:table table:style-name="equation"><table:table-column table:style-name="equ-col" /> 
@@ -426,14 +436,18 @@ href="#x1-3001r1">1<!--tex4ht:ref: eq:mFree --></t4htlink>)</text:span> is given
 <t4htlink 
 href="#x1-4004r2">2<!--tex4ht:ref: fig:bsrCartoon --></t4htlink>.
   </text:p> 
-<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+<div class="figure" 
+>
                                                                                   
 
                                                                                   
                                                                                   
 
                                                                                   
-<!--l. 145--><text:p text:style-name="Text-body"><object data="Methods-2.svg" width="422.01363 " height="295.7888 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 125--><text:p text:style-name="Text-body">  <draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/Methods-figure1.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:7.227.95em;" --></draw:frame>
 <t4htlink 
  href="#x1-4004r2" name="x1-4004r2"></t4htlink>
 <t4htlink 
@@ -453,7 +467,7 @@ we do allow fractional trophic levels.</text:span>
 
                                                                                   
   </text:p> 
-<text:p text:style-name="bigskip"></text:p></text:section>
+</div>
   <!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" ><text:span text:style-name="textup" >1.4. </text:span> </text:span><t4htlink 
 href="#x1-50001.4" name="x1-50001.4"></t4htlink>Models</text:h> 
 
@@ -474,58 +488,67 @@ consumer-resource body size ratios, we tested four different models that are mod
 standard ATN model, equation <text:span text:style-name="textup" >(<t4htlink 
 href="#x1-30030">3<!--tex4ht:ref: eq:atn0 --></t4htlink>)</text:span>.
   </text:p> 
-<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+<div class="figure" 
+>
                                                                                   
 
                                                                                   
                                                                                   
 
                                                                                   
-<!--l. 155--><text:p text:style-name="Text-body"><t4htlink 
+<div class="subfigure"><t4htlink 
  href="#x1-5002r1" name="x1-5002r1"></t4htlink>
+<!--l. 156--><text:p text:style-name="Text-body"><text:span 
+text:style-name="cmcsc-10">(<text:span 
+text:style-name="small-caps">a</text:span>) </text:span><text:span 
+text:style-name="cmr-10">Null Model</text:span>
+
 </text:p> 
-<!--l. 156--><text:p text:style-name="Text-body"><tspan font-family="cmcsc" font-size="10">(<text:span 
-text:style-name="small-caps">a</text:span>) </tspan><tspan font-family="cmr" font-size="10">Null Model</tspan>
+<!--l. 157--><text:p text:style-name="Text-body"><draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/figures/Null.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:19.35008.95em;" --></draw:frame>
 </text:p> 
-<!--l. 157--><text:p text:style-name="Text-body"><draw:frame draw:name="Null.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
-xlink:href="Pictures/Null.png"  
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
---></draw:frame><t4htlink 
+</div> <div class="subfigure"><t4htlink 
  href="#x1-5003r2" name="x1-5003r2"></t4htlink>
+<!--l. 160--><text:p text:style-name="Text-body"><text:span 
+text:style-name="cmcsc-10">(<text:span 
+text:style-name="small-caps">b</text:span>) </text:span><text:span 
+text:style-name="cmr-10">refuge</text:span>
 </text:p> 
-<!--l. 160--><text:p text:style-name="Text-body"><tspan font-family="cmcsc" font-size="10">(<text:span 
-text:style-name="small-caps">b</text:span>) </tspan><tspan font-family="cmr" font-size="10">refuge</tspan>
-</text:p> 
-<!--l. 161--><text:p text:style-name="Text-body"><draw:frame draw:name="Null+Ref.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
-xlink:href="Pictures/Null+Ref.png"  
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
---></draw:frame>
-</text:p> 
-<!--l. 164--><text:p text:style-name="Text-body"><t4htlink 
+<!--l. 161--><text:p text:style-name="Text-body"><draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/figures/Null+Ref.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:19.35008.95em;" --></draw:frame></text:p> 
+</div>
+<div class="subfigure"><t4htlink 
  href="#x1-5004r3" name="x1-5004r3"></t4htlink>
+<!--l. 165--><text:p text:style-name="Text-body"><text:span 
+text:style-name="cmcsc-10">(<text:span 
+text:style-name="small-caps">c</text:span>) </text:span><text:span 
+text:style-name="cmr-10">concomittant</text:span>
+
 </text:p> 
-<!--l. 165--><text:p text:style-name="Text-body"><tspan font-family="cmcsc" font-size="10">(<text:span 
-text:style-name="small-caps">c</text:span>) </tspan><tspan font-family="cmr" font-size="10">concomittant</tspan>
+<!--l. 166--><text:p text:style-name="Text-body"><draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/figures/Null+Con.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:19.35008.95em;" --></draw:frame>
 </text:p> 
-<!--l. 166--><text:p text:style-name="Text-body"><draw:frame draw:name="Null+Con.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
-xlink:href="Pictures/Null+Con.png"  
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
---></draw:frame><t4htlink 
+</div> <div class="subfigure"><t4htlink 
  href="#x1-5005r4" name="x1-5005r4"></t4htlink>
+<!--l. 169--><text:p text:style-name="Text-body"><text:span 
+text:style-name="cmcsc-10">(<text:span 
+text:style-name="small-caps">d</text:span>) </text:span><text:span 
+text:style-name="cmr-10">refuge with concomittant</text:span>
 </text:p> 
-<!--l. 169--><text:p text:style-name="Text-body"><tspan font-family="cmcsc" font-size="10">(<text:span 
-text:style-name="small-caps">d</text:span>) </tspan><tspan font-family="cmr" font-size="10">refuge with concomittant</tspan>
-</text:p> 
-<!--l. 170--><text:p text:style-name="Text-body"><draw:frame draw:name="Con+Ref.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
-xlink:href="Pictures/Con+Ref.png"  
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
---></draw:frame><t4htlink 
+<!--l. 170--><text:p text:style-name="Text-body"><draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/figures/Con+Ref.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:19.35008.95em;" --></draw:frame></text:p> 
+</div><t4htlink 
  href="#x1-5006r3" name="x1-5006r3"></t4htlink>
 <t4htlink 
  href="#x1-5007" name="x1-5007"></t4htlink>
-</text:p> 
-<!--l. 172--><text:p text:style-name="Text-body"></text:p> 
-
 <!--l. 172--><text:p text:style-name="Text-body"> 
 <text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
  href="#x1-5006r3" name="x1-5006r3">Figure<text:s/>3</t4htlink>: </text:span>This cartoon illustrates the differences between the four different versions of ATN
@@ -534,7 +557,7 @@ dynamics that were tested. </text:span>
 
                                                                                   
   </text:p> 
-<text:p text:style-name="bigskip"></text:p></text:section>
+</div>
 <!--l. 175--><text:p text:style-name="First-line-indent">  In the first (null) model (figure <t4htlink 
 href="#x1-5002r1">3a<!--tex4ht:ref: subfig:modelsa --></t4htlink>) parasites are vulnerable to their predators while both
 inside and outside their hosts and they are not susecptible to concomittant predation. In the null
@@ -576,14 +599,18 @@ text:note-class="footnote" text:id="fn6x0"><text:note-citation>6</text:note-cita
 text:style-name="Footnote">This is an area for potential improvement</text:p></text:note-body></text:note>
 This was designed to be the most &#x2019;realistic&#x2019; situation.
   </text:p> 
-<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+<div class="figure" 
+>
                                                                                   
 
                                                                                   
                                                                                   
 
                                                                                   
-<!--l. 186--><text:p text:style-name="Text-body"><object data="Methods-3.svg" width="103.83823 " height="104.58789 " type="image/svg+xml"><p>SVG-Viewer needed.</p></object>
+<!--l. 179--><text:p text:style-name="Text-body">  <draw:frame draw:name="" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/Methods-figure2.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="pict"  
+style="width:7.227.95em;" --></draw:frame>
 <t4htlink 
  href="#x1-5010r4" name="x1-5010r4"></t4htlink>
 <t4htlink 
@@ -610,7 +637,7 @@ xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame> . 
 
                                                                                   
   </text:p> 
-<text:p text:style-name="bigskip"></text:p></text:section>
+</div>
 <!--l. 190--><text:p text:style-name="First-line-indent">  In principle, the parameter <!--l. 190--><draw:frame draw:style-name="mml-inline" draw:name="mobj-80" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m80" 
@@ -645,7 +672,8 @@ href="#x1-3006r4">4<!--tex4ht:ref: eq:fr0 --></t4htlink>)</text:span>):
 <!--l. 212--><text:p text:style-name="First-line-indent">  Where the new functional responses are given by
 </text:p> 
 <!--l. 220--><text:p text:style-name="First-line-indent">  The idea is to split the functional response according to whether a link represents classic
-predation or parasitism. In the case of classic predation (equation <text:span text:style-name="textup" >(<tspan font-family="cmbx" font-size="10">??</tspan>)</text:span>), only the portion of <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-83" 
+predation or parasitism. In the case of classic predation (equation <text:span text:style-name="textup" >(<text:span 
+text:style-name="cmbx-10x-x-109">??</text:span>)</text:span>), only the portion of <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-83" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m83" 
 xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame> &#x2019;s biomass that is outside of a host can be a classic consumer (thus the fraction <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-84" 
@@ -662,14 +690,17 @@ xlink:href="./Methods-m86"
 xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  and <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-87" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m87" 
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  in equations <text:span text:style-name="textup" >(<tspan font-family="cmbx" font-size="10">??</tspan>)</text:span> and <text:span text:style-name="textup" >(<tspan font-family="cmbx" font-size="10">??</tspan>)</text:span>). Finally, a consumer (parasitic or classic) will only
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  in equations <text:span text:style-name="textup" >(<text:span 
+text:style-name="cmbx-10x-x-109">??</text:span>)</text:span> and <text:span text:style-name="textup" >(<text:span 
+text:style-name="cmbx-10x-x-109">??</text:span>)</text:span>). Finally, a consumer (parasitic or classic) will only
 consume and search for the portion of biomass that is outside of hosts (Thus the <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-88" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m88" 
 xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  and <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-89" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m89" 
-xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  in the numerator and denominator, respectively, of equation <text:span text:style-name="textup" >(<tspan font-family="cmbx" font-size="10">??</tspan>)</text:span>.
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /></draw:frame>  in the numerator and denominator, respectively, of equation <text:span text:style-name="textup" >(<text:span 
+text:style-name="cmbx-10x-x-109">??</text:span>)</text:span>.
 Thus, the preference for a particular species is now determined by <!--l. 220--><draw:frame draw:style-name="mml-inline" draw:name="mobj-90" 
 text:anchor-type="as-char" draw:z-index="0" ><draw:object 
 xlink:href="./Methods-m90" 
@@ -692,8 +723,10 @@ predation (figures <t4htlink
 href="#x1-5004r3">3c<!--tex4ht:ref: subfig:modelsc --></t4htlink> and <t4htlink 
 href="#x1-5005r4">3d<!--tex4ht:ref: subfig:modelsd --></t4htlink>), this is included as an additional term subtracted at the end of the
 consumer&#x2019;s equation, <text:span text:style-name="textup" >(<t4htlink 
-href="Methods-m33.4om#x33-3005r2">3b<!--tex4ht:ref: subeq:con0 --></t4htlink>)</text:span> or <text:span text:style-name="textup" >(<tspan font-family="cmbx" font-size="10">??</tspan>)</text:span>. Note that this means we don&#x2019;t allow biomass accumulation
-from concomittant consumption <text:span text:style-name="textit" ><tspan font-family="cmti" font-size="10">of </tspan></text:span> parasites in hosts. The term can be compactly expressed as
+href="Methods-m33.4om#x33-3005r2">3b<!--tex4ht:ref: subeq:con0 --></t4htlink>)</text:span> or <text:span text:style-name="textup" >(<text:span 
+text:style-name="cmbx-10x-x-109">??</text:span>)</text:span>. Note that this means we don&#x2019;t allow biomass accumulation
+from concomittant consumption <text:span text:style-name="textit" ><text:span 
+text:style-name="cmti-10x-x-109">of </text:span></text:span> parasites in hosts. The term can be compactly expressed as
 </text:p> 
 <table:table table:style-name="equation"><table:table-column table:style-name="equ-col" /> 
 <table:table-column table:style-name="equ-num-col" /> 
@@ -837,7 +870,7 @@ table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" tab
  table:style-name="TBL-2-1-"><table:table-cell  
 table:number-columns-spanned="3" 
  table:style-name="TBL-2-1-1"><text:p  
-text:style-name="sty-LR11L" >                                                                                                                                                                                                                                                                                                                                                                                                               <text:span text:style-name="multicolumn-LR11L-sty-LR11L"></text:span>Allometric Parameters
+text:style-name="sty-LR11C" >                                                                                                                                                                                                                                                                                                                                                                                                               <text:span text:style-name="multicolumn-LR11C-sty-LR11C"></text:span>Allometric Parameters
 </text:p></table:table-cell></table:table-row><table:table-row  
 table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
 <table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
@@ -898,7 +931,7 @@ table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" tab
  table:style-name="TBL-2-5-"><table:table-cell  
 table:number-columns-spanned="3" 
  table:style-name="TBL-2-5-1"><text:p  
-text:style-name="sty-LR11L" >                                                                                                                                                                                                                                                                                                                                                                                                         <text:span text:style-name="multicolumn-LR11L-sty-LR11L"></text:span>Functional Response Parameters
+text:style-name="sty-LR11C" >                                                                                                                                                                                                                                                                                                                                                                                                         <text:span text:style-name="multicolumn-LR11C-sty-LR11C"></text:span>Functional Response Parameters
 </text:p></table:table-cell></table:table-row><table:table-row  
 table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
 <table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
@@ -982,7 +1015,7 @@ table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" tab
  table:style-name="TBL-2-10-"><table:table-cell  
 table:number-columns-spanned="3" 
  table:style-name="TBL-2-10-1"><text:p  
-text:style-name="sty-LR11L" >                                                                                                                                                                                                                                                                                                                                                                                                                    <text:span text:style-name="multicolumn-LR11L-sty-LR11L"></text:span>ATN Parameters
+text:style-name="sty-LR11C" >                                                                                                                                                                                                                                                                                                                                                                                                                   <text:span text:style-name="multicolumn-LR11C-sty-LR11C"></text:span>ATN Parameters
 </text:p></table:table-cell></table:table-row><table:table-row  
 table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
 <table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
@@ -1111,7 +1144,7 @@ table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" tab
  table:style-name="TBL-2-18-"><table:table-cell  
 table:number-columns-spanned="3" 
  table:style-name="TBL-2-18-1"><text:p  
-text:style-name="sty-LR11L" >                                                                                                                                                                                                                                                                                                                                                                                                                <text:span text:style-name="multicolumn-LR11L-sty-LR11L"></text:span>Food Web Parameters
+text:style-name="sty-LR11C" >                                                                                                                                                                                                                                                                                                                                                                                                                <text:span text:style-name="multicolumn-LR11C-sty-LR11C"></text:span>Food Web Parameters
 </text:p></table:table-cell></table:table-row><table:table-row  
 table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
 <table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
@@ -1166,7 +1199,7 @@ table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" tab
  table:style-name="TBL-2-22-"><table:table-cell  
 table:number-columns-spanned="3" 
  table:style-name="TBL-2-22-1"><text:p  
-text:style-name="sty-LR11L" >                                                                                                                                                                                                                                                                                                                                                                                                                <text:span text:style-name="multicolumn-LR11L-sty-LR11L"></text:span>Independent Variables
+text:style-name="sty-LR11C" >                                                                                                                                                                                                                                                                                                                                                                                                                <text:span text:style-name="multicolumn-LR11C-sty-LR11C"></text:span>Independent Variables
 </text:p></table:table-cell></table:table-row><table:table-row  
 table:style-name="hline-row"><table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
 <table:table-cell table:style-name="hline-cell" table:value-type="string"><text:p text:style-name="hline-p-hr" /></table:table-cell> 
@@ -1283,35 +1316,93 @@ text:bibliography-type="custom1" text:style-name="Bibliography11" >
 </text:bibliography-source> 
 <text:index-body> 
 <text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Boit et</tspan><tspan font-family="cmr" font-size="9"><text:s/>al., 2012]</tspan> <t4htlink 
- href="#XBoit2012" name="XBoit2012"></t4htlink> <tspan font-family="cmr" font-size="9">Boit, A., Martinez, N.</tspan><tspan font-family="cmr" font-size="9"><text:s/>D., Williams, R.</tspan><tspan font-family="cmr" font-size="9"><text:s/>J., and Gaedke, U. (2012). Mechanistic thoery</tspan>
- <tspan font-family="cmr" font-size="9">and modelling of complex food-web dynamics in Lake Constance. </tspan><tspan font-family="cmti" font-size="9">Ecology Letters</tspan><tspan font-family="cmr" font-size="9">, 15:594&#x2013;602.</tspan>
+<text:span 
+text:style-name="cmr-9">[Boit et</text:span><text:span 
+text:style-name="cmr-9"><text:s/>al., 2012]</text:span> <t4htlink 
+ href="#XBoit2012" name="XBoit2012"></t4htlink> <text:span 
+text:style-name="cmr-9">Boit, A., Martinez, N.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>D., Williams, R.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>J., and Gaedke, U. (2012). Mechanistic thoery</text:span>
+ <text:span 
+text:style-name="cmr-9">and modelling of complex food-web dynamics in Lake Constance. </text:span><text:span 
+text:style-name="cmti-9">Ecology Letters</text:span><text:span 
+text:style-name="cmr-9">, 15:594&#x2013;602.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Brose et</tspan><tspan font-family="cmr" font-size="9"><text:s/>al., 2006]</tspan> <t4htlink 
- href="#XBrose2006" name="XBrose2006"></t4htlink> <tspan font-family="cmr" font-size="9">Brose, U., Williams, R.</tspan><tspan font-family="cmr" font-size="9"><text:s/>J., and Martinez, N.</tspan><tspan font-family="cmr" font-size="9"><text:s/>D. (2006). Allometric scaling enhances</tspan>
- <tspan font-family="cmr" font-size="9">stability in complex food webs. </tspan><tspan font-family="cmti" font-size="9">Ecology Letters</tspan><tspan font-family="cmr" font-size="9">, 9:1228&#x2013;1236.</tspan>
+<text:span 
+text:style-name="cmr-9">[Brose et</text:span><text:span 
+text:style-name="cmr-9"><text:s/>al., 2006]</text:span> <t4htlink 
+ href="#XBrose2006" name="XBrose2006"></t4htlink> <text:span 
+text:style-name="cmr-9">Brose, U., Williams, R.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>J., and Martinez, N.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>D. (2006). Allometric scaling enhances</text:span>
+ <text:span 
+text:style-name="cmr-9">stability in complex food webs. </text:span><text:span 
+text:style-name="cmti-9">Ecology Letters</text:span><text:span 
+text:style-name="cmr-9">, 9:1228&#x2013;1236.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Brown et</tspan><tspan font-family="cmr" font-size="9"><text:s/>al., 2004]</tspan> <t4htlink 
- href="#XBrown2004" name="XBrown2004"></t4htlink> <tspan font-family="cmr" font-size="9">Brown, J.</tspan><tspan font-family="cmr" font-size="9"><text:s/>H., Gillooly, J.</tspan><tspan font-family="cmr" font-size="9"><text:s/>F., Allen, A.</tspan><tspan font-family="cmr" font-size="9"><text:s/>P., Savage, V.</tspan><tspan font-family="cmr" font-size="9"><text:s/>M., and West, G.</tspan><tspan font-family="cmr" font-size="9"><text:s/>B. (2004).</tspan>
- <tspan font-family="cmr" font-size="9">Toward a metabolic thoery of ecology. </tspan><tspan font-family="cmti" font-size="9">Ecology</tspan><tspan font-family="cmr" font-size="9">, 85(7):1771&#x2013;1789.</tspan>
+<text:span 
+text:style-name="cmr-9">[Brown et</text:span><text:span 
+text:style-name="cmr-9"><text:s/>al., 2004]</text:span> <t4htlink 
+ href="#XBrown2004" name="XBrown2004"></t4htlink> <text:span 
+text:style-name="cmr-9">Brown, J.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>H., Gillooly, J.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>F., Allen, A.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>P., Savage, V.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>M., and West, G.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>B. (2004).</text:span>
+ <text:span 
+text:style-name="cmr-9">Toward a metabolic thoery of ecology. </text:span><text:span 
+text:style-name="cmti-9">Ecology</text:span><text:span 
+text:style-name="cmr-9">, 85(7):1771&#x2013;1789.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Williams and Brose, 2007]</tspan> <t4htlink 
- href="#XWilliams2007" name="XWilliams2007"></t4htlink> <tspan font-family="cmr" font-size="9">Williams, R.</tspan><tspan font-family="cmr" font-size="9"><text:s/>J. and Brose, Ulrich</tspan><tspan font-family="cmr" font-size="9"><text:s/>Martinez, N.</tspan><tspan font-family="cmr" font-size="9"><text:s/>D. (2007). Homage to Yodzis</tspan>
- <tspan font-family="cmr" font-size="9">and Innes 1992: Scaling up feeding-based population dynamics to complex ecological networks. In Rooney,</tspan>
- <tspan font-family="cmr" font-size="9">N. and et</tspan><tspan font-family="cmr" font-size="9"><text:s/>al., editors, </tspan><tspan font-family="cmti" font-size="9">From Energetics to Ecosystems: The Dynamics and Structure of Ecological Systems</tspan><tspan font-family="cmr" font-size="9">,</tspan>
- <tspan font-family="cmr" font-size="9">chapter</tspan><tspan font-family="cmr" font-size="9"><text:s/>2, pages 37&#x2013;52. Springer.</tspan>
+<text:span 
+text:style-name="cmr-9">[Williams and Brose, 2007]</text:span> <t4htlink 
+ href="#XWilliams2007" name="XWilliams2007"></t4htlink> <text:span 
+text:style-name="cmr-9">Williams, R.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>J. and Brose, Ulrich</text:span><text:span 
+text:style-name="cmr-9"><text:s/>Martinez, N.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>D. (2007). Homage to Yodzis</text:span>
+ <text:span 
+text:style-name="cmr-9">and Innes 1992: Scaling up feeding-based population dynamics to complex ecological networks. In Rooney,</text:span>
+ <text:span 
+text:style-name="cmr-9">N. and et</text:span><text:span 
+text:style-name="cmr-9"><text:s/>al., editors, </text:span><text:span 
+text:style-name="cmti-9">From Energetics to Ecosystems: The Dynamics and Structure of Ecological Systems</text:span><text:span 
+text:style-name="cmr-9">,</text:span>
+ <text:span 
+text:style-name="cmr-9">chapter</text:span><text:span 
+text:style-name="cmr-9"><text:s/>2, pages 37&#x2013;52. Springer.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Williams and Martinez, 2000]</tspan> <t4htlink 
- href="#XWilliams2000" name="XWilliams2000"></t4htlink> <tspan font-family="cmr" font-size="9">Williams, R.</tspan><tspan font-family="cmr" font-size="9"><text:s/>J. and Martinez, N.</tspan><tspan font-family="cmr" font-size="9"><text:s/>D. (2000). Simple rules yield complex</tspan>
- <tspan font-family="cmr" font-size="9">food webs. </tspan><tspan font-family="cmti" font-size="9">Nature</tspan><tspan font-family="cmr" font-size="9">, 404:180&#x2013;183.</tspan>
+<text:span 
+text:style-name="cmr-9">[Williams and Martinez, 2000]</text:span> <t4htlink 
+ href="#XWilliams2000" name="XWilliams2000"></t4htlink> <text:span 
+text:style-name="cmr-9">Williams, R.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>J. and Martinez, N.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>D. (2000). Simple rules yield complex</text:span>
+ <text:span 
+text:style-name="cmr-9">food webs. </text:span><text:span 
+text:style-name="cmti-9">Nature</text:span><text:span 
+text:style-name="cmr-9">, 404:180&#x2013;183.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Williams and Martinez, 2004]</tspan> <t4htlink 
- href="#XWilliams2004" name="XWilliams2004"></t4htlink> <tspan font-family="cmr" font-size="9">Williams, R.</tspan><tspan font-family="cmr" font-size="9"><text:s/>J. and Martinez, N.</tspan><tspan font-family="cmr" font-size="9"><text:s/>D. (2004). Limits to trophic levels and</tspan>
- <tspan font-family="cmr" font-size="9">omnivory in complex food webs: Theory and data. </tspan><tspan font-family="cmti" font-size="9">The American Naturalist</tspan><tspan font-family="cmr" font-size="9">, 163(3):458&#x2013;468.</tspan>
+<text:span 
+text:style-name="cmr-9">[Williams and Martinez, 2004]</text:span> <t4htlink 
+ href="#XWilliams2004" name="XWilliams2004"></t4htlink> <text:span 
+text:style-name="cmr-9">Williams, R.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>J. and Martinez, N.</text:span><text:span 
+text:style-name="cmr-9"><text:s/>D. (2004). Limits to trophic levels and</text:span>
+ <text:span 
+text:style-name="cmr-9">omnivory in complex food webs: Theory and data. </text:span><text:span 
+text:style-name="cmti-9">The American Naturalist</text:span><text:span 
+text:style-name="cmr-9">, 163(3):458&#x2013;468.</text:span>
  </text:p><text:p text:style-name="p-bibitem" >
-<tspan font-family="cmr" font-size="9">[Yodzis and Innes, 1992]</tspan> <t4htlink 
- href="#XYodzis1992" name="XYodzis1992"></t4htlink> <tspan font-family="cmr" font-size="9">Yodzis, P. and Innes, S. (1992). Body size and consumer-resource dynamics. </tspan><tspan font-family="cmti" font-size="9">The</tspan>
- <tspan font-family="cmti" font-size="9">American Naturalist</tspan><tspan font-family="cmr" font-size="9">, 139(6):1151&#x2013;1175.</tspan>
+<text:span 
+text:style-name="cmr-9">[Yodzis and Innes, 1992]</text:span> <t4htlink 
+ href="#XYodzis1992" name="XYodzis1992"></t4htlink> <text:span 
+text:style-name="cmr-9">Yodzis, P. and Innes, S. (1992). Body size and consumer-resource dynamics. </text:span><text:span 
+text:style-name="cmti-9">The</text:span>
+ <text:span 
+text:style-name="cmti-9">American Naturalist</text:span><text:span 
+text:style-name="cmr-9">, 139(6):1151&#x2013;1175.</text:span>
  </text:p></text:index-body></text:bibliography>
   <!--end of section--></office:text></office:body> 
 </office:document-content>
