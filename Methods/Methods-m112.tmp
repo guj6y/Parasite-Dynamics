@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE math:math PUBLIC "-//W3C//DTD MathML 2.0//EN" "math.dtd"> 
+ <?xtpipes file="oo-math.4xt" ?> 
+<!-- Methods-m112 by TeX4ht from Methods.tex line 261 2016-11-23-15:49 
+(http://www.cse.ohio-state.edu/~gurari/TeX4ht/) --> 
+ <math:math 
+ xmlns:math="http://www.w3.org/1998/Math/MathML" 
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+><math:mi 
+>n</math:mi> <math:mo 
+ >=</math:mo> <math:mn>4</math:mn></math:math>

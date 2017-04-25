@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE math:math PUBLIC "-//W3C//DTD MathML 2.0//EN" "math.dtd"> 
+<?xtpipes file="oo-math.4xt" ?> 
+<!-- Methods-m33 by TeX4ht from Methods.tex line 103 2016-11-23-15:49 
+(http://www.cse.ohio-state.edu/~gurari/TeX4ht/) --> 
+<math:math 
+ xmlns:math="http://www.w3.org/1998/Math/MathML" 
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+><math:mtable 
+math:columnalign="left"  >
+                  <math:mtr><math:mtd 
+math:columnalign="right"  ><math:mfrac><math:mrow 
+><math:mi 
+>d</math:mi><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi></math:mrow></math:msub 
+></math:mrow>
+ <math:mrow 
+><math:mi 
+>d</math:mi><math:mi 
+>t</math:mi></math:mrow></math:mfrac> </math:mtd>                  <math:mtd 
+ > <math:mo 
+ >=</math:mo> <math:msub><math:mrow 
+><math:mi 
+>r</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi></math:mrow></math:msub 
+> <math:mfenced math:separators="" 
+math:open="("  math:close=")" ><math:mrow><math:mn>1</math:mn> <math:mo 
+ >&#x2212;</math:mo><math:mfrac><math:mrow 
+><math:munder  ><math:mrow 
+><math:mo mathsize="big" 
+>&#x2211;</math:mo>
+  </math:mrow><math:mrow 
+><math:mi 
+>k</math:mi><math:mo 
+ >&#x2208;</math:mo><math:mstyle 
+ ><math:mtext  >basal</math:mtext></math:mstyle></math:mrow></math:munder 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:msub 
+></math:mrow> 
+        <math:mrow 
+><math:mi 
+>K</math:mi></math:mrow></math:mfrac>       </math:mrow></math:mfenced> <math:mo 
+ >&#x2212;</math:mo><math:munder  ><math:mrow 
+><math:mo mathsize="big" 
+>&#x2211;</math:mo>
+   </math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:munder 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>x</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:mfrac><math:mrow 
+><math:msub><math:mrow 
+><math:mi 
+>y</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>F</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+></math:mrow> 
+   <math:mrow 
+><math:msub><math:mrow 
+><math:mi 
+>e</math:mi></math:mrow><math:mrow 
+><math:mi 
+>b</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+></math:mrow></math:mfrac>   <math:mspace width="2em"/></math:mtd>                                       <math:mtd 
+math:columnalign="right"  ><math:mstyle 
+ href="#x33-3004r1"   id="x33-3004r1"    ></math:mstyle><!--endlabel--><math:mstyle 
+ ><math:mtext  >(3a)&#x00A0;</math:mtext></math:mstyle>
+                  </math:mtd></math:mtr><math:mtr><math:mtd 
+math:columnalign="right"  ><math:mfrac><math:mrow 
+><math:mi 
+>d</math:mi><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi></math:mrow></math:msub 
+></math:mrow>
+ <math:mrow 
+><math:mi 
+>d</math:mi><math:mi 
+>t</math:mi></math:mrow></math:mfrac> </math:mtd>                  <math:mtd 
+ > <math:mo 
+ >=</math:mo> <math:mo 
+ >&#x2212;</math:mo><math:msub><math:mrow 
+><math:mi 
+>x</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi></math:mrow></math:msub 
+> <math:mo 
+ >+</math:mo> <math:msub><math:mrow 
+><math:mi 
+>x</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi></math:mrow></math:msub 
+><math:munder  ><math:mrow 
+><math:mo mathsize="big" 
+> &#x2211;</math:mo>
+   </math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:munder 
+><math:msub><math:mrow 
+><math:mi 
+>y</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi><math:mi 
+>c</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>F</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi><math:mi 
+>c</math:mi></math:mrow></math:msub 
+> <math:mo 
+ >&#x2212;</math:mo><math:munder  ><math:mrow 
+><math:mo mathsize="big" 
+>&#x2211;</math:mo>
+   </math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:munder 
+><math:msub><math:mrow 
+><math:mi 
+>x</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>B</math:mi></math:mrow><math:mrow 
+><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:mfrac><math:mrow 
+><math:msub><math:mrow 
+><math:mi 
+>y</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+><math:msub><math:mrow 
+><math:mi 
+>F</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+></math:mrow> 
+   <math:mrow 
+><math:msub><math:mrow 
+><math:mi 
+>e</math:mi></math:mrow><math:mrow 
+><math:mi 
+>c</math:mi><math:mi 
+>k</math:mi></math:mrow></math:msub 
+></math:mrow></math:mfrac>   <math:mspace width="2em"/></math:mtd>                                    <math:mtd 
+math:columnalign="right"  ><math:mstyle 
+ href="#x33-3005r2"   id="x33-3005r2"    ></math:mstyle><!--endlabel--><math:mstyle 
+ ><math:mtext  >(3b)&#x00A0;</math:mtext></math:mstyle>
+  </math:mtd></math:mtr></math:mtable></math:math>

@@ -7,15 +7,34 @@
 \usepackage{amssymb,tikz}
 \usepackage{epstopdf}
 %\usepackage{multicolumn}
-\usepackage{tabularx}
-\usepackage{subcaption}
+%\usepackage{tabularx}
+
 \usepackage{cite}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+\usetikzlibrary{external}
+\tikzset{external/force remake}
+\tikzset{
+external/system call/.add={}
+{; convert -density 300 -transparent white  "\image.pdf" "\image.png"; rungs -dSAFER dBATCH dNOPAUSE sDEVICE=pngalpha -dGraphicsAlphaBits=4 -r110  -sOutputFile=\image.png \image.pdf} 
+}
+\makeatletter
+\@ifpackageloaded{tex4ht}{
+\usepackage[compatibility=false]{caption}
+\def\pgfsysdriver{pgfsys-tex4ht.def}
+}{
+	\tikzexternalize
+\usepackage[]{caption}
+}
+\makeatother
+\usepackage{subcaption}
+
 
 \title{Methods}
 \author{Nick Kappler}
 
-\usepackage{hyperref}
+%\usepackage{hyperref}
 %TODO: Add a section about the statistics that I report.
 
 \begin{document}
@@ -92,7 +111,7 @@ Here $h$ quantifies deviation from a multi-species type II functional response, 
 
 \subsection{Introducing Parasites\label{subsec:paraIntro}}
 
-We controlled the number of parasites in our food webs by switching the roles of certain consumers from free-living species to parasitic species.  We chose which consumers to switch by first randomly ordering all consumers.  We then assigned the first fraction, $f_\text{par}$ of those species in the list to be parasites.  In this way, parasites at low levels of parasitism are also always parasites at higher levels of parasitism.  The same sequence of consumers was used for each simulation but each web necessarily had a different sequence.  This allowed for direct comparisons between models.  We used 11 different fractions of parasites evenly spaced from 0 up to 0.5, that is, from 0\% up to 50\% of consumers as parasites in increments of 5\%\footnote{We did not go past 50\% since interpreting parasites as parasites becomes difficult since their average consumer-resource body size ratio becomes close to the original value for free-living consumers}.
+We controlled the number of parasites in our food webs by switching the roles of certain consumers from free-living species to parasitic species.  We chose which consumers to switch by first randomly ordering all consumers.  We then assigned the first fraction, $f_{par}$ of those species in the list to be parasites.  In this way, parasites at low levels of parasitism are also always parasites at higher levels of parasitism.  The same sequence of consumers was used for each simulation but each web necessarily had a different sequence.  This allowed for direct comparisons between models.  We used 11 different fractions of parasites evenly spaced from 0 up to 0.5, that is, from 0\% up to 50\% of consumers as parasites in increments of 5\%\footnote{We did not go past 50\% since interpreting parasites as parasites becomes difficult since their average consumer-resource body size ratio becomes close to the original value for free-living consumers}.
 
  In this study, the most basic difference between a free-living consumer and a parasitic consumer is the body size ratio of the parasite to its host species.  On average, a parasitic species will be much smaller than its host, whereas a free-living consumer will generally be much larger than its prey.  The body sizes of parasitic species were determined using the following formula (note that $k = \log Z_f$):
 
@@ -124,7 +143,7 @@ With this choice of body size, parasites will be on average $10^{p}$ times the s
 \draw [ball color=red] (p1) circle (.05cm);
 \draw [ball color = red] (p2) circle (.108cm);
 \end{tikzpicture}
-\caption{This figure shows the body size hierarchy when body sizes are defined according to equations \eqref{eq:mPara} and \eqref{eq:mFree}. In this figure, the volume of the spheres scale logarithmically with the body size, and arrows denote biomass flow.  The situation in the model is also more complicated since we do allow fractional trophic levels.\label{fig:bsrCartoon}}
+\caption{This figure shows the body size hierarchy when body sizes are defined according to equations \eqref{eq:mPara} and \eqref{eq:mFree}. In this figure, the volume of the spheres scale with the body size, and arrows denote biomass flow.  The situation in the model is also more complicated since we do allow fractional trophic levels.\label{fig:bsrCartoon}}
 \end{figure}
 
 \subsection{Models\label{subsec:models}}
@@ -135,20 +154,20 @@ As described in section \ref{subsec:paraIntro}, each web will be tested with dif
 \begin{figure}
 \begin{subfigure}{.45\textwidth}
 \caption{Null Model\label{subfig:modelsa}}
-\includegraphics[width=\textwidth]{../figures/Null.png}
+\includegraphics[width=\textwidth]{figures/Null.png}
 \end{subfigure}
 \begin{subfigure}{.45\textwidth}
 \caption{refuge\label{subfig:modelsb}}
-\includegraphics[width=\textwidth]{../figures/Null+Ref.png}
+\includegraphics[width=\textwidth]{figures/Null+Ref.png}
 \end{subfigure}
 
 \begin{subfigure}{.45\textwidth}
 \caption{concomittant\label{subfig:modelsc}}
-\includegraphics[width=\textwidth]{../figures/Null+Con.png}
+\includegraphics[width=\textwidth]{figures/Null+Con.png}
 \end{subfigure}
 \begin{subfigure}{.45\textwidth}
 \caption{refuge with concomittant\label{subfig:modelsd}}
-\includegraphics[width=\textwidth]{../figures/Con+Ref.png}
+\includegraphics[width=\textwidth]{figures/Con+Ref.png}
 \end{subfigure}
 \caption{This cartoon illustrates the differences between the four different versions of ATN dynamics that were tested.  \label{fig:cartoons}}
 \end{figure}
@@ -182,23 +201,23 @@ In principle, the parameter $\phi_i$ can vary for each species for the second an
 The introduction of $\phi_i$ required significant changes to the ATN model (equations \eqref{eq:atn0} and \eqref{eq:fr0}):
 
 
-\begin{subequations}\label{eq:atn1}
-\begin{align}
-\frac{dB_{b}}{dt} &= r_bB_b\left(1-\frac{\sum_{k\in\text{basal}}B_k}{K}\right) - \sum_k\phi_kB_kx_k\frac{y_{bk}F_{bk}^\text{(troph)}}{e_{bk}} - \sum_k(1-\phi_k)B_kx_k\frac{y_{bk}F^\text{(para)}_{bk}}{e_{bk}}\label{subeq:basal1} \\ 
-\frac{dB_{c}}{dt} &= -x_cB_c + \phi_cx_cB_c\sum_ky_{kc}F^\text{(troph)}_{kc} + (1-\phi_c)x_cB_c\sum_ky_{kc}F^\text{(para)}_{kc} \label{subeq:con1}\\ 
-& - \sum_k \phi_kx_kB_k\frac{y_{ck}F^\text{(troph)}_{ck}}{e_{ck}} - \sum_k (1-\phi_k)x_kB_k\frac{y_{ck}F^\text{(para)}_{ck}}{e_{ck}}\nonumber
-\end{align}
-\end{subequations}
+%\begin{subequations}\label{eq:atn1}
+%\begin{align}
+%\frac{dB_{b}}{dt} &= r_bB_b\left(1-\frac{\sum_{k\in\text{basal}}B_k}{K}\right) - \sum_k\phi_kB_kx_k\frac{y_{bk}F_{bk}^{(troph)}}{e_{bk}} - \sum_k(1-\phi_k)B_kx_k\frac{y_{bk}F^{(para)}_{bk}}{e_{bk}}\label{subeq:basal1} \\ 
+%\frac{dB_{c}}{dt} &= -x_cB_c + \phi_cx_cB_c\sum_ky_{kc}F^{(troph)}_{kc} + (1-\phi_c)x_cB_c\sum_ky_{kc}F^{(para)}_{kc} \label{subeq:con1}\\ 
+%& - \sum_k \phi_kx_kB_k\frac{y_{ck}F^{(troph)}_{ck}}{e_{ck}} - \sum_k (1-\phi_k)x_kB_k\frac{y_{ck}F^{(para)}_{ck}}{e_{ck}}\nonumber
+%\end{align}
+%\end{subequations}
 
 Where the new functional responses are given by 
 
-\begin{subequations}\label{eq:fr1}
-\begin{align}F_{ij}^\text{(troph)} &= \frac{\omega_{ij}^{(troph)}(\phi_iB_i)^{1+h}}{B_0^{1+h} + \sum_k\omega^\text{(troph)}_{kj}(\phi_kB_k)^{1+h}} \label{subeq:fr1troph}\\
-F_{ij}^\text{(para)} &= \frac{\omega_{ij}^{(para)}(\phi_iB_i)^{1+h}}{B_0^{1+h} + \sum_k\omega^\text{(para)}_{kj}(\phi_kB_k)^{1+h}} \label{subeq:fr1para}
-\end{align}
-\end{subequations}
+%\begin{subequations}\label{eq:fr1}
+%\begin{align}F_{ij}^{(troph)} &= \frac{\omega_{ij}^{(troph)}(\phi_iB_i)^{1+h}}{B_0^{1+h} + \sum_k\omega^{(troph)}_{kj}(\phi_kB_k)^{1+h}} \label{subeq:fr1troph}\\
+%F_{ij}^{(para)} &= \frac{\omega_{ij}^{(para)}(\phi_iB_i)^{1+h}}{B_0^{1+h} + \sum_k\omega^{(para)}_{kj}(\phi_kB_k)^{1+h}} \label{subeq:fr1para}
+%\end{align}
+%\end{subequations}
 
-The idea is to split the functional response according to whether a link represents classic predation or parasitism.  In the case of classic predation (equation \eqref{subeq:fr1troph}), only the portion of $j$'s biomass that is outside of a host can be a classic consumer (thus the fraction $\phi_c$ ahead of $F_{kc}^\text{(troph)}$ in equation \eqref{eq:atn0}).  Conversely, only the portion of biomass that is inside a host can be a parasitic consumer (thus the fractions $1-\phi_c$ and $1-\phi_k$ in equations \eqref{subeq:con1} and \eqref{subeq:basal1}).  Finally, a consumer (parasitic or classic) will only consume and search for the portion of biomass that is outside of hosts (Thus the $\phi_j$ and $\phi_k$ in the numerator and denominator, respectively, of equation \eqref{subeq:fr1troph}.  Thus, the preference for a particular species is now determined by $\omega_{ij}^\text{(troph)}$ in $F_{ij}^\text{(troph)}$ and $\omega_{ij}^\text{(para)}$ in $F_{ij}^\text{(para)}$.  These new preferences take into account the fact that a parasite does not have to divide its foraging time as a free-liver among its hosts.  By the same token, the parasite doesn't have to divide its 'foraging' time among its free-living (i.e. trophic) prey items when within a host.
+The idea is to split the functional response according to whether a link represents classic predation or parasitism.  In the case of classic predation (equation \eqref{subeq:fr1troph}), only the portion of $j$'s biomass that is outside of a host can be a classic consumer (thus the fraction $\phi_c$ ahead of $F_{kc}^{(troph)}$ in equation \eqref{eq:atn0}).  Conversely, only the portion of biomass that is inside a host can be a parasitic consumer (thus the fractions $1-\phi_c$ and $1-\phi_k$ in equations \eqref{subeq:con1} and \eqref{subeq:basal1}).  Finally, a consumer (parasitic or classic) will only consume and search for the portion of biomass that is outside of hosts (Thus the $\phi_j$ and $\phi_k$ in the numerator and denominator, respectively, of equation \eqref{subeq:fr1troph}.  Thus, the preference for a particular species is now determined by $\omega_{ij}^{(troph)}$ in $F_{ij}^{(troph)}$ and $\omega_{ij}^{(para)}$ in $F_{ij}^{(para)}$.  These new preferences take into account the fact that a parasite does not have to divide its foraging time as a free-liver among its hosts.  By the same token, the parasite doesn't have to divide its 'foraging' time among its free-living (i.e. trophic) prey items when within a host.
 
 The second addition is concomittant predation on parasites.  In models with concomittant predation (figures \ref{subfig:modelsc} and \ref{subfig:modelsd}), this is included as an additional term subtracted at the end of the consumer's equation, \eqref{subeq:con0} or \eqref{subeq:con1}.  Note that this means we don't allow biomass accumulation from concomittant consumption \textit{of} parasites in hosts.  The term can be compactly expressed as 
 \begin{equation}
@@ -206,7 +225,7 @@ C_p = \sum_ha_{ph}c_h \label{cp1}
 \end{equation}
 where $a_{ph}$ is the amount of biomass of parasite $p$ per unit of biomass of host $h$, and $T_h$ is the total trophic consumption (total rate of biomass loss due to predation by classic consumers) of host $h$.  We define $a_{ph}$ as the relative biomass accumulation from parasitism of host $h$, relative to the total biomass accumulation to the parasite from all hosts.  So the equations are 
 \begin{equation}
-a_{ph} = \frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}} \label{eq:aph1}
+a_{ph} = \frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^{(para)}_{hp}}{\sum_{k}y_{kp}F^{(para)}_{kp}} \label{eq:aph1}
 \end{equation}
 when we separate the trophic and parasitic links of parasites (figure \ref{subfig:modelsd}), and
 \begin{equation}
@@ -214,7 +233,7 @@ a_{ph} = \frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}} \label{eq:aph0
 \end{equation}
 when we treat all links to parasites as parasitic (figure \ref{subfig:modelsc}).  Finally,
 \begin{equation}
-T_h = \sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
+T_h = \sum_kx_kB_k\frac{F^{(troph)}_{kh}y_{kh}}{e_{kh}} \label{eq:Th1}
 \end{equation}
 when we separate the trophic and parasitic links of parasites (figure \ref{subfig:modelsd}), and
 \begin{equation}
@@ -222,7 +241,7 @@ T_h = \sum_kx_kB_k\frac{F_{kh}y_{kh}}{e_{kh}} \label{eq:Th0}
 \end{equation}
 when we treat all links to parasites as parasitic (figure \ref{subfig:modelsc}).  To summarize,
 \begin{equation}
-C_p = \sum_h \left(\frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^\text{(para)}_{hp}}{\sum_{k}y_{kp}F^\text{(para)}_{kp}}\left[\sum_kx_kB_k\frac{F^\text{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{eq:cp2}
+C_p = \sum_h \left(\frac{(1-\phi_p)B_p}{B_h}\frac{y_{hp}F^{(para)}_{hp}}{\sum_{k}y_{kp}F^{(para)}_{kp}}\left[\sum_kx_kB_k\frac{F^{(troph)}_{kh}y_{kh}}{e_{kh}}\right] \right) \label{eq:cp2}
 \end{equation}
 when we split trophic and parasitic links (\ref{subfig:modelsd}) and
 \begin{equation}
@@ -232,9 +251,9 @@ C_p = \sum_h \left(\frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}}\left
 We ran each model with each combination of body sizes with 11 different fractions of consumers as parasites with each web, for a total of $4\times4\times11\times 100 =17600$ simulations. 
 
 \begin{table}
-\begin{tabularx}{\textwidth}{|l|X|l|}
+\begin{tabular}{|l|c|l|}
 \hline
-\multicolumn{3}{|X|}{Allometric Parameters}\\
+\multicolumn{3}{|c|}{Allometric Parameters}\\
 \hline
 Parameter&Description&Value\\
 \hline
@@ -242,7 +261,7 @@ $a_x^{(inv)}$&Scaling constant for metabolic rate of invertebrate consumers & $0
 $z$&Consumer-resource body size ratio&variable, $n=4$\\
 \hline
 \hline
-\multicolumn{3}{|X|}{Functional Response Parameters}\\
+\multicolumn{3}{|c|}{Functional Response Parameters}\\
 \hline
 Parameter&Description&Value\\
 \hline
@@ -251,7 +270,7 @@ $h$&Hill coefficient modifier& $0.2$\\
 $\omega_{ij}$&Preference of $i$ for $j$&$1$ or $0$\\
 \hline
 \hline
-\multicolumn{3}{|X|}{ATN Parameters}\\
+\multicolumn{3}{|c|}{ATN Parameters}\\
 \hline
 Parameter&Description&Value\\
 \hline
@@ -263,7 +282,7 @@ $e_{ij}^{(carn.)}$&Assimilation efficiency of $j$ by $i$ for a consumer $j$ (car
 $e_{ij}^{(herb.)}$&Assimilation efficiency of $j$ by $i$ for a producer $j$ (herbivory) & 0.45\\
 \hline
 \hline
-\multicolumn{3}{|X|}{Food Web Parameters}\\
+\multicolumn{3}{|c|}{Food Web Parameters}\\
 \hline
 Parameter&Description&Value\\
 \hline
@@ -271,16 +290,16 @@ $s$&Species richness&40\\
 $c$&Connectance & 0.15\\
 \hline
 \hline
-\multicolumn{3}{|X|}{Independent Variables}\\
+\multicolumn{3}{|c|}{Independent Variables}\\
 \hline
 Parameter & Values or Description & Replicates\\
-$z_\text{free}$&$z=10,100$&2\\
-$z_\text{para}$&$z=.001,.0001$&2\\
+$z_{free}$&$z=10,100$&2\\
+$z_{para}$&$z=.001,.0001$&2\\
 $i_p$&concomittant loss (y/n)&2\\
 $\phi$&Differentiate parasitic biomasses inside and outside hosts (y/n)&2\\
 $f_{par}$&Fraction of consumers as parasites (evenly spaced between 0 and .5)&11\\
 \hline
-\end{tabularx}
+\end{tabular}
 \caption{Values of all constants used in the models.  \label{tab:param}}
 \end{table}
 
