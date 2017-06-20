@@ -124,7 +124,7 @@ table[draw = none, mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep 
 			ylabel = {#2},
 			x label style = {font=\tiny},
 			y label style = {font=\tiny},
-		    legend style={ ,at={(-.0,-.23)},
+		    legend style={ ,at={(-.15,-.23)},
 						   anchor=north,
 						   font=\tiny},
 			legend columns = 4,
@@ -162,10 +162,10 @@ $Z_f=100;Z_p = 10^{-4}$}
 \node [text width =.5\linewidth,align=center,anchor=south] at (the plots c1r2.north) {\subcaption[]{Concomittant \label{fig:#1-c}}};
 \node [text width =.5\linewidth,align=center,anchor=south] at (the plots c2r2.north) {\subcaption[]{Refuge with Concomittant\label{fig:#1-d}}};
 \begin{pgfonlayer}{axis background}
-\node [opacity = 0.4,] at (the plots c1r1.center) {\includegraphics[width=.4\linewidth]{../figures/Null.png}};
-\node [opacity = 0.4,] at (the plots c2r1.center) {\includegraphics[width=.4\linewidth]{../figures/Null+Ref.png}};
-\node [opacity = 0.4,] at (the plots c1r2.center) {\includegraphics[width=.4\linewidth]{../figures/Null+Con.png}};
-\node [opacity = 0.4,] at (the plots c2r2.center) {\includegraphics[width=.4\linewidth]{../figures/Con+Ref.png}};
+\node [opacity = 0.4,] at (the plots c1r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Null.png}};
+\node [opacity = 0.4,] at (the plots c2r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Null+Ref.png}};
+\node [opacity = 0.4,] at (the plots c1r2.center) {\includegraphics[width=.4\linewidth]{../../figures/Null+Con.png}};
+\node [opacity = 0.4,] at (the plots c2r2.center) {\includegraphics[width=.4\linewidth]{../../figures/Con+Ref.png}};
 \end{pgfonlayer}
 \end{tikzpicture}
 }
@@ -175,7 +175,7 @@ $Z_f=100;Z_p = 10^{-4}$}
 \begin{axis}[
 		    xlabel = {Fraction Consumers as parasites},
 			ylabel = {#2},
-		    legend style={ ,at={(.5,-.33)},
+		    legend style={ ,at={(-.45,-.33)},
 						   ,anchor=south},
 			legend columns = 2,
 ]

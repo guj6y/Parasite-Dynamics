@@ -1,4 +1,3 @@
-\maketitle
 \section{Including Parasites (or, changing a few body size ratios)}
 
 
@@ -9,7 +8,7 @@ We first generated 100 food webs with 40 species and connectance $C=0.15\pm .007
 
 \begin{figure}[b]
     \centering
-    \includegraphics[width=\textwidth]{figures/diagram-NicheModel.png}
+    \includegraphics[width=\textwidth]{../floats/methods/diagram-NicheModel.png}
     \caption{This figure demonstrates how feeding relationships are determined in the Niche Model.\label{fig:nicheModel}}
 \end{figure}
 
@@ -55,7 +54,7 @@ M_i = 10^{p + k(TL_i -2)} \label{eq:mPara}
 With this choice of body size, parasites will be on average $10^{p}$ times the size of their free-living hosts, $10^k$ times the size of their parasitic prey (same as free-livers on free-livers, the red dashed links in figure \ref{fig:bsrCartoon}), and $10^{p-2k}$ times the size of their free-living predators (the green dashed link in \ref{fig:bsrCartoon}.  The last ratio ($10^{p-2k}$) is not ideal since it significanty increases the average body size ratio of free-living consumers\footnote{Need to look at these plots}.  From the parasitic body sizes we derive the parasitic mass-specific metabolic rate using equation \eqref{eq:x}.  We a ran a full set of simulations with each of $p=-3$ and $p=-4$.  A schematic of the body size hierarchy defined by equations \eqref{eq:mPara} and \eqref{eq:mFree} is given in figure \ref{fig:bsrCartoon}.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{figures/diagram-BsrCartoon.png}
+\includegraphics[width=\textwidth]{../floats/methods/diagram-BsrCartoon.png}
 \caption{This figure shows the body size hierarchy when body sizes are defined according to equations \eqref{eq:mPara} and \eqref{eq:mFree}. In this figure, the volume of the spheres scale with the body size, and arrows denote biomass flow.  The situation in the model is also more complicated since we do allow fractional trophic levels.\label{fig:bsrCartoon}}
 \end{figure}
 
@@ -63,34 +62,49 @@ With this choice of body size, parasites will be on average $10^{p}$ times the s
 
 As described in section \ref{subsec:paraIntro}, each web will be tested with different average body size ratios: free-livers will be on average 10 times larger than their prey in one set of simulations and 100 times larger in another set\footnote{These ratios correspond to the two highest persistence levels in the null model when tested over a large range of values of $Z_f$; they are also the most empirically realisitc; that data could be in SI?}.  Likewise, parasites will be on average 1,000 or 10,000 times smaller than their host.  These two factors lead to 4 sets of simulations.  For each combination of free-liver and parasitic average consumer-resource body size ratios, we tested four different models that are modifications to the standard ATN model, equation \eqref{eq:atn0}.
 
-
 \begin{figure}
-\begin{subfigure}{.45\textwidth}
-\caption{Null Model\label{subfig:modelsa}}
-\includegraphics[width=\textwidth]{cartoon/Null.png}
-\end{subfigure}
-\begin{subfigure}{.45\textwidth}
-\caption{refuge\label{subfig:modelsb}}
-\includegraphics[width=\textwidth]{cartoon/Null+Ref.png}
-\end{subfigure}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{subfig:modelsa}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{subfig:modelsb}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/methods/diagram-Cartoon.png}
 
-\begin{subfigure}{.45\textwidth}
-\caption{concomittant\label{subfig:modelsc}}
-\includegraphics[width=\textwidth]{cartoon/Null+Con.png}
-\end{subfigure}
-\begin{subfigure}{.45\textwidth}
-\caption{refuge with concomittant\label{subfig:modelsd}}
-\includegraphics[width=\textwidth]{cartoon/Con+Ref.png}
-\end{subfigure}
-\caption{This cartoon illustrates the differences between the four different versions of ATN dynamics that were tested.  \label{fig:cartoons}}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{subfig:modelsc}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{subfig:modelsd}}
+    \end{minipage}
+\caption{This cartoon illustrates the differences between the four different versions of ATN dynamics that were tested.  \label{fig:models}}
 \end{figure}
+
+%\begin{figure}
+%\caption{Null Model\label{subfig:modelsa}}
+%\includegraphics[width=.45\textwidth]{cartoon/Null.png}
+%\end{figure}
+%\begin{figure}
+%\caption{refuge\label{subfig:modelsb}}
+%\includegraphics[width=.45\textwidth]{cartoon/Null+Ref.png}
+%\end{figure}
+%
+%\begin{figure}
+%\caption{concomittant\label{subfig:modelsc}}
+%\includegraphics[width=.45\textwidth]{cartoon/Null+Con.png}
+%\end{figure}
+%\begin{figure}
+%\caption{refuge with concomittant\label{subfig:modelsd}}
+%\includegraphics[width=.45\textwidth]{cartoon/Con+Ref.png}
+%\end{figure}
+
 
 In the first (null) model (figure \ref{subfig:modelsa}) parasites are vulnerable to their predators while both inside and outside their hosts and they are not susecptible to concomittant predation.  In the null model, the only things that change when a species becomes a parasite are it's body size and metabolic rate.  In the second model, (figure \ref{subfig:modelsb})  we introduce a parameter, $\phi_i$, to the null model that controls the fraction of parasitic biomass outside of a host at any given time.  A parasite is protected from predation while inside its host.  However, the parasite is also not susceptible to concomittant predation.  This represents the situation in which parasites are most protected.  The third model (figure \ref{subfig:modelsc}) modifies the null model by making parasites within their hosts susceptible to concomittant predation (see figure \ref{fig:concDiagram}).  Note that in this model we don't distinguish where a parasite is; the entire popluation is susceptible to both concomittant and normal predation.  The model in \ref{subfig:modelsc} represents the most vulnerable situation for parasites. \footnote{We could try to justify this model, but it might be better just to say that we did it this way in an attempt to separate the effects from the two modifications (since it \textit{isn't} realistic; neither \ref{subfig:modelsc} nor \ref{subfig:modelsb} are. In \ref{subfig:modelsd}, are the two modifications independent?  They do seem to be, but this is an opportunity for a neat statistical test.}  In the final model (figure \ref{subfig:modelsd}) we use the parameter $phi_i$ to determine what fraction of parasitic biomass is susceptible to concomittant predation.  The fraction of parasitic biomass that is inside a host is protected from 'normal' predation - we assume that parasites are not trophically consumed in their hosts\footnote{This is an area for potential improvement}  This was designed to be the most 'realistic' situation.
 
 %This is a schematic for concomittant predation.
 
 \begin{figure}
-    \includegraphics[width=.3\textwidth]{figures/diagram-ConcomittantPredation.png}
+    \includegraphics[width=.3\textwidth]{../floats/methods/diagram-ConcomittantPredation.png}
     \caption{This diagram illustrates concomittant predation.  The biomass of $p$ that is inside host $h$ is consumed when $h$ is eaten by its consumer, $j$. \label{fig:concDiagram}}
 \end{figure}
 
@@ -158,57 +172,8 @@ C_p = \sum_h \left(\frac{B_p}{B_h}\frac{y_{hp}F_{hp}}{\sum_{k}y_{kp}F_{kp}}\left
 We ran each model with each combination of body sizes with 11 different fractions of consumers as parasites with each web, for a total of $4\times4\times11\times 100 =17600$ simulations. 
 
 \begin{table}
-\begin{tabular}{|l|c|l|}
-\hline
-\multicolumn{3}{|c|}{Allometric Parameters}\\
-\hline
-Parameter&Description&Value\\
-\hline
-$a_x^{(inv)}$&Scaling constant for metabolic rate of invertebrate consumers & $0.314$\\
-$z$&Consumer-resource body size ratio&variable, $n=4$\\
-\hline
-\hline
-\multicolumn{3}{|c|}{Functional Response Parameters}\\
-\hline
-Parameter&Description&Value\\
-\hline
-$b_0$&Half-saturation density&$0.5$\\
-$h$&Hill coefficient modifier& $0.2$\\
-$\omega_{ij}$&Preference of $i$ for $j$&$1$ or $0$\\
-\hline
-\hline
-\multicolumn{3}{|c|}{ATN Parameters}\\
-\hline
-Parameter&Description&Value\\
-\hline
-$r_i$&Intrinsic growth of producer $i$&$\mathcal{N}(1,0.1)$\\
-$K$&Community carrying capacity of producers &5\\
-$x_i$&Metabolic rate of consumer $i$&$a_x m_i^{-0.25}$\\
-$y_i$&Maximum rate of assimilation relative to metabolic rate for invertebrate consumers & 8\\
-$e_{ij}^{(carn.)}$&Assimilation efficiency of $j$ by $i$ for a consumer $j$ (carnivory) & 0.85\\
-$e_{ij}^{(herb.)}$&Assimilation efficiency of $j$ by $i$ for a producer $j$ (herbivory) & 0.45\\
-\hline
-\hline
-\multicolumn{3}{|c|}{Food Web Parameters}\\
-\hline
-Parameter&Description&Value\\
-\hline
-$s$&Species richness&40\\
-$c$&Connectance & 0.15\\
-\hline
-\hline
-\multicolumn{3}{|c|}{Independent Variables}\\
-\hline
-Parameter & Values or Description & Replicates\\
-$z_{free}$&$z=10,100$&2\\
-$z_{para}$&$z=.001,.0001$&2\\
-$i_p$&concomittant loss (y/n)&2\\
-$\phi$&Differentiate parasitic biomasses inside and outside hosts (y/n)&2\\
-$f_{par}$&Fraction of consumers as parasites (evenly spaced between 0 and .5)&11\\
-\hline
-\end{tabular}
-\caption{Values of all constants used in the models.  \label{tab:param}}
+    \centering
+    \includegraphics[width=\textwidth]{../floats/methods/table-ParameterValues.png}
+    \caption{Values of all constants used in the models.  \label{tab:param}}
 \end{table}
 
-\bibliography{../Bib_green}{}
-\bibliographystyle{apalike}

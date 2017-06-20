@@ -1,0 +1,12 @@
+\documentclass{standalone}
+\usepackage{subcaption,graphicx}
+\begin{document}
+\begin{tabular}{c c}
+    a. Null Model& b. Refuge\\
+\includegraphics[width=4.5in]{./cartoons/Null.png}&
+\includegraphics[width=4.5in]{./cartoons/Null+Ref.png}\\
+c. Concomittant& d. Refuge and Concomittant\\
+\includegraphics[width=4.5in]{./cartoons/Null+Con.png}&
+\includegraphics[width=4.5in]{./cartoons/Con+Ref.png}\\
+\end{tabular}
+\end{document}

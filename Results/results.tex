@@ -1,3 +1,5 @@
+% !TeX encoding = UTF-8
+
 \documentclass[11pt]{amsart}
 
 \usepackage{tikz,
@@ -9,28 +11,37 @@ tikzscale,
 multirow,
 appendix,
 pgfplotstable,
-cite
+cite,
+hyperref
 }
 \usepackage[margin=0.7in]{geometry}
-\pgfplotsset{table/search path={../data/},compat=newest}
-\usepgfplotslibrary{groupplots}
 \input{../data/figureCommands.tex}
 
+\pgfplotsset{table/search path={../data/},compat=newest}
 \title{Results}
 \author{Nick}
 
-\usetikzlibrary{external}
-\tikzexternalize[prefix=figures/]
 
-\usepackage{hyperref}
 \begin{document}
 \section{Persistence of Final States}
 
-\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
 
 \begin{figure}[h] 
-\makeFigureAllSizes{persistence}{Persistence of All Species}
-\caption{The figure shows the total persistence with 95\% confidence intervals of all species in all models with all body size configurations.  Differences plots and fix scales.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perAll.png}
+        \caption{The figure shows the total persistence with 95\% confidence intervals of all species in all models with all body size configurations.  Differences plots and fix scales.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:persistence-d}}
+    \end{minipage}
 \label{fig:persistenceAll}
 \end{figure}
 
@@ -56,9 +67,22 @@ In the null model (figure \ref{fig:free-persistence-a}) the most striking differ
 
 When parasites are split into fractions inside and outside of their hosts (figure (\ref{fig:free-persistence-b}), the results again follow the same general pattern as in figure \ref{fig:persistenceAll}.  The only deviation is that both data series with a consumer-resource BSR of 10 experience a steeper decline in persistence with increasing fractions of parasites.  At the 50\% parasite level, free livers only have 20\% persistence in these webs, again about 10 percentage points lower than the persistence of all species. This is in contrast to the webs with a consumer-resource BSR of 100, which are only about 3 points lower than the total persistence result.  That is about the decrease we would expect to see just from changing our accounting from all species to free livers, since that is about the decrease in the case with no parasites.  Adding concomittant predation to the model with parasitic life stages (figure \ref{fig:free-persistence-d}) does very little to this pattern. 
 
-\begin{figure}[h]
-\makeFigureAllSizes{free-persistence}{Persistence of Free-Livers}
+\begin{figure}[h] 
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:free-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:free-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perFree.png}
 \caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:free-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:free-persistence-d}}
+    \end{minipage}
 \label{fig:persistenceFree}
 \end{figure}
 
@@ -73,7 +97,21 @@ Adding a refuge for a fixed percentage of parasitic biomass (figure \ref{fig:par
   Adding concomittant predation (figure \ref{fig:para-persistence-d}) doesn't change the qualitative behavior but each data series is once again shifted down by a few percentage points.  Average persistence never really drops below about 8\%, so the brown and black data series only saw a drop of 2-3\%, while the blue data series experienced a drop of about 10\% in average persistence at low parasite levels.  At high levels of parasitism all four combinations of parasite and free liver body sizes have persistence in the 10-12\% range.
 
 \begin{figure}[h]
-\makeFigureAllSizes{para-persistence}{Persistence of Parasites}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:para-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:para-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perPara.png}
+\caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:para-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:para-persistence-d}}
+    \end{minipage}
 \caption{The figure shows the persistence of parasites with 95\% confidence intervals in all models with all body size configurations.}
 \label{fig:persistencePara}
 \end{figure}
@@ -82,45 +120,155 @@ Adding a refuge for a fixed percentage of parasitic biomass (figure \ref{fig:par
 \subsection{Order of extinctions\label{sec:extinctionOrders}}
 
 \begin{figure}[h]
-\makeFigureAllSizes{frac-prey-first}{Fraction of species' prey extinct first.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:pred-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:pred-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/preyFirst.png}
+\caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:pred-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:pred-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the average fraction of a species' prey that go extinct first with 95\% confidence intervals in all models with all body size configurations. \label{fig:frac-prey-first}}
 \end{figure}
 %TODO explain the calculation better
 The order of extinctions in food webs in general is an under-studied question (but see the NU people).  In this section we attempt to understand how the fraction of parasites in food webs affects the order of extinctions in ATN models.  Figure \ref{fig:frac-prey-first} shows the average (over all webs) of the average (over all species in a web) fraction of prey items that go extinct before each species\footnote{Surprisingly difficult to caculate/ambiguous since I had to make quite a few choices here.}.  Here we see a striking differene between the more resilient free-livers and the less resilient free lievers.  The simulations with more resilient free-livers tended to see about half a species diet go extinct before
  
 \begin{figure}[h]
-\makeFigureAllSizes{frac-pred-first}{Fraction of a species' predators extinct first.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:prey-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:prey-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/predFirst.png}
+\caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:prey-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:prey-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the average fraction of a species' pred that go extinct first with 95\% confidence intervals in all models with all body size configurations.\label{fig:frac-pred-first}}
 \end{figure}
 
 \subsection{Persistence by Trophic Level}
 
 \begin{figure}[h]
-\makeFigureAllSizes{tl3-all}{Persistence of all species without an autotroph prey item.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL3.png}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the persistence of all species that do not have a link directly from a basal species. \label{fig:tl3-all}}
 \end{figure}
 
 \begin{figure}[h]
-\makeFigureAllSizes{tl3-free}{Persistence of free-living species without an autotroph prey item.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-free-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-free-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL3Free.png}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-free-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-free-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the persistence of all free-living species that do not have a link directly from a basal species.\label{tl3-free}}
 \end{figure}
 
 \begin{figure}[h]
-\makeFigureAllSizes{tl3-para}{Persistence of parasite species without an autotroph prey item.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-para-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-para-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL3Para.png}
+\caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-para-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl3-para-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the persistence of all parasite species that do not have a link directly from a basal species.\label{tl3-para}}
 \end{figure}
 
 \begin{figure}[h]
-\makeFigureAllSizes{tl2-all}{Persistence of all species with an autotroph prey item.}
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL2.png}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-persistence-d}}
+    \end{minipage}
 \caption{This figure shows the persistence of all species that do have a link directly from a basal species.\label{tl2-all}}
 \end{figure}
 
 \begin{figure}[h]
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-free-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-free-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL2Free.png}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-free-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-free-persistence-d}}
+    \end{minipage}
 \makeFigureAllSizes{tl2-free}{Persistence of free-living species with an autotroph prey item.}
 \caption{This figure shows the persistence of free-living species that do have a link directly from a basal species.\label{tl2-free}}
 \end{figure}
 
 \begin{figure}[h]
+\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-para-persistence-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-para-persistence-b}}
+    \end{minipage}
+    \includegraphics[width=\textwidth]{../floats/results/perTL2Para.png}
+\caption{The figure shows the total persistence with 95\% confidence intervals of free livers in all models with all body size configurations.}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-para-persistence-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:tl2-para-persistence-d}}
+    \end{minipage}
 \makeFigureAllSizes{tl2-para}{Persistence of parasite species with an autotroph prey item.}
 \caption{This figure shows the persistence of parasite species that do have a link directly from a basal species.\label{tl2-para}}
 \end{figure}

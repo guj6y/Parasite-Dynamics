@@ -1,0 +1,16 @@
+\documentclass[preview=true]{standalone}
+
+\usepackage{subcaption,tikz,pgfplots,graphicx,tikzscale,pgfplotstable}
+
+\usepgfplotslibrary{groupplots}
+
+\pgfplotsset{table/search path={../../data/},compat=newest}
+
+\input{../../data/figureCommands.tex}
+
+\begin{document}
+
+\begin{figure}
+\makeFigureAllSizes{tl2-free}{Fraction of Species}
+\end{figure}
+\end{document}
