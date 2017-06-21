@@ -29,9 +29,9 @@ while [ "$1" != "" ]; do
     shift
 done
 #Option for remaking figures
-cd ../floats/results
 
 if [ "$redraw" = true ]; then
+    cd ../floats/results
     echo "Making Figures ... "
     latexmk -interaction=batchmode -pdf -silent > log
     echo "Cleaning up ..."
