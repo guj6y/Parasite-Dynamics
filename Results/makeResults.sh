@@ -1,25 +1,51 @@
 #!/bin/bash
 
-#Option for remaking figures
-echo "Making Figures ... "
-
-
-cd ../floats/methods 
-
-latexmk -interaction=batchmode -pdf -silent > log
-
-echo "Cleaning up ..."
-
-latexmk -silent -c
-
-echo "Converting to .png ..."
-
-for pdffile in *.pdf; do
-    convert -density 500 "${pdffile}" "${pdffile%.*}".png
+redraw=
+convert=
+graphicsExtension=png
+while [ "$1" != "" ]; do
+    case $1 in
+     -r | --redraw)
+         redraw=true
+         convert=true
+         ;;
+     -jpg)
+         convert=true
+         graphicsExtension=jpg
+         ;;
+     -bmp)
+         convert=true
+         graphicsExtension=bmp
+         ;;
+     -g | --graphics-type)
+         convert=true
+         shift
+         graphicsExtension=$1
+         ;;
+     -c | --forceReConversion)
+         convert=true
+         ;;
+    esac
+    shift
 done
+#Option for remaking figures
+cd ../floats/results
 
-cd ../../Methods
-echo "Done with figures."
+if [ "$redraw" = true ]; then
+    echo "Making Figures ... "
+    latexmk -interaction=batchmode -pdf -silent > log
+    echo "Cleaning up ..."
+    latexmk -silent -c
+fi
+
+if [ "$convert" = true ]; then
+    echo "Converting to .png ..."
+    for pdffile in *.pdf; do
+        convert -density 500 "${pdffile}" "${pdffile%.*}.$graphicsExtension"
+    done
+    cd ../../Results
+    echo "Done with figures."
+fi
 echo "Typesetting Document as pdf ... "
 
 latexmk -interaction=batchmode -pdf -silent > log
