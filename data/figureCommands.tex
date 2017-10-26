@@ -106,10 +106,6 @@ table[draw = none,mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep =
 table[draw = none, mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep = comma]{#1-big-big-subplot-#2};
 }
 \newcommand{\makeFigureAllSizes}[2]{
-\pgfplotstableread{#1-small-small-subplot-1}\tableA
-\pgfplotstableread{#1-small-small-subplot-2}\tableB
-\pgfplotstableread{#1-small-small-subplot-3}\tableC
-\pgfplotstableread{#1-small-small-subplot-4}\tableD
 \pgfplotssetlayers
 \begin{tikzpicture}
 \begin{groupplot}[group style = {group size =2 by 2,
@@ -170,6 +166,50 @@ $Z_f=100;Z_p = 10^{-4}$}
 \end{tikzpicture}
 }
 
+\newcommand{\makeFigureTwoModels}[2]{
+\pgfplotstableread{#1-small-small-subplot-1}\tableA
+\pgfplotstableread{#1-small-small-subplot-4}\tableD
+\pgfplotssetlayers
+\begin{tikzpicture}
+\begin{groupplot}[group style = {group size =2 by 1,
+			group name = the plots,
+			xlabels at = edge bottom,
+			ylabels at = edge left
+                                },
+			width = .4\linewidth,
+			height = .3\linewidth,
+			scale only axis = true,		    
+   			xlabel = {Fraction Consumers as parasites},
+			ylabel = {#2},
+			x label style = {font=\tiny},
+			y label style = {font=\tiny},
+		    legend style={ ,at={(-.15,-.23)},
+						   anchor=north,
+						   font=\tiny},
+			legend columns = 4,
+			grid = both,
+			unbounded coords = jump,
+			%ymin = 0,ymax = 1,
+]
+\nextgroupplot
+\addGroupPlotToFigure{#1}{1}
+\addGhostGroupPlotToFigure{#1}{4}
+\nextgroupplot[yticklabels={}]
+\addGroupPlotToFigure{#1}{4}
+\addGhostGroupPlotToFigure{#1}{1}
+\legend{$Z_f=10;Z_p = 10^{-3}$,
+$Z_f=10;Z_p = 10^{-4}$,
+$Z_f=100;Z_p = 10^{-3}$,
+$Z_f=100;Z_p = 10^{-4}$}
+\end{groupplot}
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c1r1.north) {\subcaption[]{ Null Model\label{fig:#1-a}}};
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c2r1.north) {\subcaption[]{Parasite Model\label{fig:#1-b}}};
+\begin{pgfonlayer}{axis background}
+\node [opacity = 0.4,] at (the plots c1r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Null.png}};
+\node [opacity = 0.4,] at (the plots c2r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Con+Ref.png}};
+\end{pgfonlayer}
+\end{tikzpicture}
+}
 \newcommand{\makeFigureAllModels}[2]{
 \begin{tikzpicture}
 \begin{axis}[
@@ -209,5 +249,100 @@ table[black,x =x,y =y,y error =yp,col sep = comma]{#1-4};
  Concomittant Only,
  Refuge with Concomittant}
 \end{axis}
+\end{tikzpicture}
+}
+
+
+\newcommand{\addMainEffectPlotToFigureToFigure}[2]{
+\addplot+[
+		  plotoptsa,
+          error bars/.cd,
+		  y explicit, y dir=both,
+		]
+table[linecolora,x =x,y =y,y error =yp,col sep = comma]{#1-effect-on-subplot-#2};
+\addplot+[
+		  plotoptsb,
+          error bars/.cd,
+		  y explicit, y dir=both,
+		]
+table[linecolorb,x =x,y =y,y error =yp,col sep = comma]{#1-effect-off-subplot-#2};
+}
+
+\newcommand{\addMainEffectGhostGroupPlotToFigure}[2]{
+\addplot+[
+		  draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{y}+\thisrow{yp}},col sep = comma]{#1-effect-on-subplot-#2};
+\addplot+[
+          draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{y}+\thisrow{yp}},col sep = comma]{#1-effect-off-subplot-#2};
+\addplot+[
+		  draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep = comma]{#1-effect-on-subplot-#2};
+\addplot+[
+          draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep = comma]{#1-effect-off-subplot-#2};
+}
+\newcommand{/makeMainEffectsFigure}[2]{
+\pgfplotssetlayers
+\begin{tikzpicture}
+\begin{groupplot}[group style = {group size =2 by 2,
+			group name = the plots,
+			xlabels at = edge bottom,
+			ylabels at = edge left
+                                },
+			width = .4\linewidth,
+			height = .3\linewidth,
+			scale only axis = true,		    
+   			xlabel = {Fraction Consumers as parasites},
+			ylabel = {#2},
+			x label style = {font=\tiny},
+			y label style = {font=\tiny},
+		    legend style={ ,at={(-.15,-.23)},
+						   anchor=north,
+						   font=\tiny},
+			legend columns = 4,
+			grid = both,
+			unbounded coords = jump,
+			%ymin = 0,ymax = 1,
+]
+\nextgroupplot[xticklabels={}]
+\addMainEffectPlotToFigureToFigure{#1}{1}
+\addMainEffectGhostGroupPlotToFigure{#1}{2}
+\addMainEffectGhostGroupPlotToFigure{#1}{3}
+\addMainEffectGhostGroupPlotToFigure{#1}{4}
+\nextgroupplot[xticklabels={},yticklabels={}]
+\addMainEffectGhostGroupPlotToFigure{#1}{1}
+\addMainEffectPlotToFigureToFigure{#1}{2}
+\addMainEffectGhostGroupPlotToFigure{#1}{3}
+\addMainEffectGhostGroupPlotToFigure{#1}{4}
+\nextgroupplot
+\addMainEffectGhostGroupPlotToFigure{#1}{1}
+\addMainEffectGhostGroupPlotToFigure{#1}{2}
+\addMainEffectPlotToFigureToFigure{#1}{3}
+\addMainEffectGhostGroupPlotToFigure{#1}{4}
+\nextgroupplot[yticklabels={}]
+\addMainEffectGhostGroupPlotToFigure{#1}{1}
+\addMainEffectGhostGroupPlotToFigure{#1}{2}
+\addMainEffectGhostGroupPlotToFigure{#1}{3}
+\addMainEffectPlotToFigureToFigure{#1}{4}
+\legend{$Z_f=10;Z_p = 10^{-3}$,
+$Z_f=10;Z_p = 10^{-4}$,
+$Z_f=100;Z_p = 10^{-3}$,
+$Z_f=100;Z_p = 10^{-4}$}
+\end{groupplot}
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c1r1.north) {\subcaption[]{ Null model\label{fig:#1-a}}};
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c2r1.north) {\subcaption[]{Refuge\label{fig:#1-b}}};
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c1r2.north) {\subcaption[]{Concomittant \label{fig:#1-c}}};
+\node [text width =.5\linewidth,align=center,anchor=south] at (the plots c2r2.north) {\subcaption[]{Refuge with Concomittant\label{fig:#1-d}}};
+\begin{pgfonlayer}{axis background}
+\node [opacity = 0.4,] at (the plots c1r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Null.png}};
+\node [opacity = 0.4,] at (the plots c2r1.center) {\includegraphics[width=.4\linewidth]{../../figures/Null+Ref.png}};
+\node [opacity = 0.4,] at (the plots c1r2.center) {\includegraphics[width=.4\linewidth]{../../figures/Null+Con.png}};
+\node [opacity = 0.4,] at (the plots c2r2.center) {\includegraphics[width=.4\linewidth]{../../figures/Con+Ref.png}};
+\end{pgfonlayer}
 \end{tikzpicture}
 }
