@@ -11,6 +11,6 @@
 \begin{document}
 
 \begin{figure}
-\makeFigureTwoModels{persistence}{Persistence of All Species}
+\makeFigureAllSizes{persistence}{Persistence of All Species}
 \end{figure}
 \end{document}

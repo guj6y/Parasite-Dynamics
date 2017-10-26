@@ -11,6 +11,6 @@
 \begin{document}
 
 \begin{figure}
-\makeFigureTwoModels{persistence}{Persistence of All Species}
+\makeFigureTwoModels{net-extct-per-para}{Net extinctions per parasite added}
 \end{figure}
 \end{document}

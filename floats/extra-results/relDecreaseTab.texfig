@@ -1,0 +1,41 @@
+\documentclass[preview=true]{standalone}
+
+\usepackage{booktabs,multirow,subcaption,tikz,pgfplots,graphicx,tikzscale,pgfplotstable}
+
+\usepgfplotslibrary{groupplots}
+
+\pgfplotsset{table/search path={../../data/},compat=newest}
+
+
+\begin{document}
+
+        \begin{tabular}{r c c c c c c c c c c}
+            \cmidrule{2-11}
+            &\multicolumn{5}{l}{Without Host Refuge}&\multicolumn{5}{l}{With Host Refuge}\\
+            \cmidrule{3-6} \cmidrule{8-11}
+            &&\multicolumn{2}{c}{Smaller Free}&\multicolumn{2}{c}{Larger Free}&
+            &\multicolumn{2}{c}{Smaller Free}&\multicolumn{2}{c}{Larger Free}\\
+            \cmidrule{3-6} \cmidrule{8-11}
+            &&\multicolumn{4}{c}{Relative Change (\%)  At}&&\multicolumn{4}{c}{Relative Change (\%) At}\\
+            && 25\% & 50\% & 25\% & 50\% && 25\% & 50\% & 25\% & 50\% \\
+            \toprule
+            \multirow{2}{1.7cm}{No Conc. Losses}&
+                                           % small Free     Big Free
+            \multicolumn{1}{l}{Larger Para}& 27.8 & 32.8 & 14.9 & 16.1 & %Without Refuge
+            \multicolumn{1}{l }{Larger Para}& 40.7 & 54.8 & 30.4 & 46.6\\ %WIth Refuge
+            \cmidrule{2-11}
+            \multicolumn{1}{l}{}&
+            \multicolumn{1}{l}{Smaller Para}& 34.2  & 44.1  & 17.5  & 23.1  & %Without REfuge
+            \multicolumn{1}{l }{Smaller Para}& 39.8  & 55.4  & 30.3  & 47.6  \\  %With Refuge
+            \midrule
+            \midrule
+            \multirow{2}{1.7cm}{Conc. Losses}&
+            \multicolumn{1}{l}{Larger Para}& 28.2 & 33.5 & 16.5  & 19.2  & %without Refuge
+            \multicolumn{1}{l }{Larger Para}& 37.6 & 56.9 & 29.7  & 46.8  \\ %With Refuge
+            \cmidrule{2-11}
+            \multicolumn{1}{l}{}&
+            \multicolumn{1}{l}{Smaller Para}& 33.5 & 44.6  & 18.7  & 25.5  & %Without Refuge
+            \multicolumn{1}{l }{Smaller Para}& 38.9 & 56.3  & 30.2  & 48.7  \\ %With Refuge
+            \bottomrule
+    \end{tabular}
+\end{document}

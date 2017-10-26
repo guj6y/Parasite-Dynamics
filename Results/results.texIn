@@ -10,51 +10,24 @@
     \begin{minipage}{.45\textwidth}
         \phantomsubcaption{\label{fig:persistence-b}}
     \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:persistence-c}}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:persistence-d}}
-    \end{minipage}
     \includegraphics[width=\textwidth]{../floats/results/perAll.png}
-        \caption{The figure shows the total persistence with 95\% confidence intervals of all species in all models with all body size configurations.  Differences plots and fix scales.}
+        \caption{The figure shows the total persistence with 95\% confidence intervals of all species in the two models with all body size configurations.}
 \label{fig:persistenceAll}
 \end{figure}
 
-Figure \ref{fig:persistenceAll} shows the average persistence of the web ensemble with different body size ratios and the different dynamic models\footnote{Think about what a null hypothesis might be in this setting: show what the line is if all parasites go extinct?  If free livers maintain the same extinction level?  Is that necessary.. Look up the numbers from Brose 2006; compare those results with the average body size ratio in each model (NB: Actually, I don't think it's a good idea; averaging the new bsr distributions is a bit silly since they become trimodal).  Also compare average body size ratios within my models (NB: This could be useful): compare the free-living and parasitic subsets (and their average body size ratios) with the Brose results, for more direct connection to previous work.}.   The decline in overall persistence with larger parasite fractions cannot be entirely explained by higher parasite mortality as the persistence of free-living consumers also decreases with higher levels of parasitism.
+Figure \ref{fig:persistenceAll} shows the average persistence of the web ensemble with different body size ratios in the two dynamic models\footnote{Think about what a null hypothesis might be in this setting: show what the line is if all parasites go extinct?  If free livers maintain the same extinction level?  Is that necessary.. Look up the numbers from Brose 2006; compare those results with the average body size ratio in each model (NB: Actually, I don't think it's a good idea; averaging the new bsr distributions is a bit silly since they become trimodal).  Also compare average body size ratios within my models (NB: This could be useful): compare the free-living and parasitic subsets (and their average body size ratios) with the Brose results, for more direct connection to previous work.}.   The decline in overall persistence with increasing parasite fractions cannot be entirely explained by higher parasite mortality as the persistence of free-living consumers also decreases with higher levels of parasitism; parasites cause non-parasite extinctions, especially at low levels of parasitism.
 
-For the dynamical models without parasite refuge, we found that food webs with $Z_f=10$ had higher levels of persistence in the absence of parasites then webs with $Z_f=100$.  However, at the highest levels of parasitism this pattern revereses; the webs with $Z_f=10$ saw a much larger relative decrease than the food webs with $Z_f=100$ (see table \ref{tab:relDecrease}).  Furthermore, parasites with $Z_p=10^{-3}$ caused smaller relative decreases in persistence than parasites with $Z_p=10^{-4}$.  The persistence levels in all four body size configurations were roughly constant after 25\% parasitism.
+\begin{table}[b]
+    \includegraphics[width=.5\textwidth]{../floats/results/relDecreaseTab.png}
+    \caption{This table gives the relative decrease at 25\% parasitism and 50\% parasitism for all models shown in figure \ref{fig:persistenceAll} \label{tab:relDecrease}}
+\end{table}
 
-When parasites had protection from predation inside their hosts, overall persistence decreased monotonically with increasing parasite fraction.  All four body size configurations had nearly identical overall persistence levels past 25\% parasitism.  The inclusion of concomittant losses had no qualitative effect on the overall patterns\footnote{Species with low metabolic rates can 'outlast' high pressure from the parasites? Parasites themselves are larger and have lower absolute metabolic rats? Something more complicated?  Maybe after all the extinctions we get two sort of parallel structures, one of mostly free-livers and one of mostly parasites?  It probably has a lot to do with the amount of energy extracted from basal species; the interface of the changing $x_i$ with the static $r_i$.}. 
+We found that food webs with smaller free livers ($Z_f=10$) had higher levels of persistence in the absence of parasites then webs with larger free livers ($Z_f=100$) at low levels of parasitism in the null model.  However, this pattern reverses at higher levels of parasitism.  As a result, the webs with smaller free livers saw much larger relative decreases than the food webs with larger free livers (table \ref{tab:relDecrease}).  Furthermore, larger parasites ($Z_p=10^{-3}$) caused smaller relative decreases in persistence than smaller parasites ($Z_p=10^{-4}$).  The persistence levels in three body size configurations were roughly constant after 25\% parasitism.  The final body size configuration combined the less resilient free-livers with the more disruptive parasites; persistence in this configuration continued a slight decrease up to 50\% parasitism.  
 
-It should of course be noted that when parasites comprise 50\% of all consumers, there is quite a bit of 'cross-pollination' of links\footnote{Need to quantify this.  Can look at average bsr, different connectances might also be interesting here.  Regardless, should expand on this slightly.}.  
+In the parasite model, overall persistence decreased monotonically with increasing parasite fraction and all four body size configurations had nearly identical overall persistence levels past 25\% parasitism.
 
-Parasites experienced higher average mortality than free-living species in virtually all models and all body size configurations.  While the qualitative pattern of persistence of free-living species was the same as the pattern for all species, the parasitic pattern was different.  Without a host-refuge, the persistence of parasites tended to increase or stay the same with increasing levels of parasitism. In the host-refuge model, their levels either stayed the same or decreased.  The average persistence was lower with the refuge in virtually all body size configurations and all levels of parasitism.  Concomittant predation had virtually no effect on the qualitative pattern of parasite persistence.
-
-
-
-
-\begin{figure}[h]
-\captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:para-persistence-a}}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:para-persistence-b}}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:para-persistence-c}}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:para-persistence-d}}
-    \end{minipage}
-    \includegraphics[width=\textwidth]{../floats/results/perPara.png}
-\caption{The figure shows the total persistence with 95\% confidence intervals of parasites in all models with all body size configurations.}
-\label{fig:persistencePara}
-\end{figure}
 
 \newpage
 \bibliography{Bib_green.bib}
 \bibliographystyle{apalike}
 
-\newpage

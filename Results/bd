@@ -1,0 +1,9 @@
+
+It should of course be noted that when parasites comprise 50\% of all consumers, there is quite a bit of 'cross-pollination' of links.
+\begin{figure}
+    \includegraphics[width=\textwidth]{../floats/results/bsrHistOver.png}    
+    \caption{Histograms of body size ratios in all webs at two levels of parasitism.  Different types of links correspond to different colors in the histograms. \label{fig:hists}}
+\end{figure}
+
+\footnote{Species with low metabolic rates can 'outlast' high pressure from the parasites? Parasites themselves are larger and have lower absolute metabolic rats? Something more complicated?  Body size ratio is important, but I doubt that it is scale invariant.  That is, the actual metabolic rates at a given trophic level is also important (metabolic rates fall along a -.25 power law with body size; this certainly matters but the question is: how much does it matter?  Body sizes (and therefore metabolic rates) vary geometrically with trophic level.  If species with high TL have lower metabolic rates why are they more likely to go extinct?  Their metabolic needs are much smaller and anyway they always have the same potential to meet those needs.  Less food at higher levels.  So, explaining the amount of food available to higher trophic levels is probably important.  My sense is that if we can get biomass available at each trophic level to scale in the right way (i.e. in the same way as the body sizes and metabolic rates) we will get persistent webs.  This means getting the actual values of metabolic rates right, not just the hierarchy of body sizes.).  In our models it probably has a lot to do with the amount of energy extracted from basal species; the interface of the changing $x_i$ with the static $r_i$.}. 
+
