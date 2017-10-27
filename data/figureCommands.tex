@@ -286,7 +286,7 @@ table[draw = none,mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep =
 		]
 table[draw = none,mark =none, x =x,y expr = {\thisrow{y}-\thisrow{ym}},col sep = comma]{#1-effect-off-subplot-#2};
 }
-\newcommand{/makeMainEffectsFigure}[2]{
+\newcommand{\makeMainEffectsFigure}[2]{
 \pgfplotssetlayers
 \begin{tikzpicture}
 \begin{groupplot}[group style = {group size =2 by 2,

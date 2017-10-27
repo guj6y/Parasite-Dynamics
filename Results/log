@@ -1,3 +1,33 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Errors, so I did not complete making targets
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Errors, so I did not complete making targets
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Errors, so I did not complete making targets
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: applying rule 'bibtex results'...
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+Latexmk: Errors, so I did not complete making targets
+Latexmk: All targets (results.pdf) are up-to-date
