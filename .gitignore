@@ -2,3 +2,9 @@
 *.pdf
 *.log
 *.textab
+*.aux
+*.blg
+*.fls
+*.out
+*.fdb*
+*.nfs*
