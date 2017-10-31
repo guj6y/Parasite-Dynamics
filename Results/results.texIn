@@ -1,30 +1,16 @@
-
-
 \section{Persistence of Final States}
 \subsection{Fixed web size}
 \begin{figure}[h] 
 \captionsetup[subfigure]{labelfont = it, textfont = it,labelformat = parens,labelsep = space}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:persistence-a}}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:persistence-b}}
-    \end{minipage}
-    \includegraphics[width=\textwidth]{../floats/results/perAll.png}
-        \caption{The figure shows the total persistence with 95\% confidence intervals of all species in the two models with all body size configurations.}
-\label{fig:persistenceAll}
+    \includegraphics[width=\textwidth]{../floats/results/perAll.jpg}
+    \label{fig:persistenceAll}
 \end{figure}
 
-Figure \ref{fig:persistenceAll} shows the average persistence of the web ensemble with different body size ratios in the two dynamic models\footnote{Think about what a null hypothesis might be in this setting: show what the line is if all parasites go extinct?  If free livers maintain the same extinction level?  Is that necessary.. Look up the numbers from Brose 2006; compare those results with the average body size ratio in each model (NB: Actually, I don't think it's a good idea; averaging the new bsr distributions is a bit silly since they become trimodal).  Also compare average body size ratios within my models (NB: This could be useful): compare the free-living and parasitic subsets (and their average body size ratios) with the Brose results, for more direct connection to previous work.}.   The decline in overall persistence with increasing parasite fractions cannot be entirely explained by higher parasite mortality as the persistence of free-living consumers also decreases with higher levels of parasitism; parasites cause non-parasite extinctions, especially at low levels of parasitism.
+Figure \ref{fig:persistenceAll} shows the main effect of each model component on the overall persistence of species in the foodweb. The first panel shows the effect of changing the predator-prey body size ratio. In webs with no parasites, there is a clear difference in overall persistence between webs with the two predator-prey body size ratios. As more parasites are added, the difference between free living body size ratios of 10 and 100 decreases until the mean persistence for each is indistinguishable at the 100\% parastism level. This is somewhat surprising because the predator-prey body size ratio applies for parasite-parasite interactions\footnote{This is worth investigating further. Make a figure that shows just for the null model (possible that lower persistence in the refuge models is dragging it down. If still present, would point to significance of interactions between basal species and their consumers. It doesn't seem to have been seperated out from the work in Brose, WIlliams, and Martinez 2006 (this has to do with metabolic scaling, but I don't think the impact that had on those basal links was specifically stressed}. 
+Predictably, the parasite-host body size ratio had hittle effect on overall persistence at low levels of parasitism. However, we do observe a small but consistent advantage in terms of persistence for parasite-host body size ratios of $10^{-3}$, which gradually increases to a maximum of about 3\% at 100\% parasitism.
+Concomittant predation had virtually no effect on average persistence of foodwebs\footnote{though possibly on individual biomasses}. 
+Introducing a host-refuge had a significant impact on overall persistence, especially at higher levels of parasitism. At 100\% parasitism, the persistence decreased by nearly 40\% (an absolute increase in extinctions of about 5.5 out of 40 species). However, even at the more reasonable parasitism level of 35\%, the persistence decreased by nearly 20\% (or, just under 3 additional species in a 40 species web). 
 
-\begin{table}[b]
-    \includegraphics[width=.5\textwidth]{../floats/results/relDecreaseTab.png}
-    \caption{This table gives the relative decrease at 25\% parasitism and 50\% parasitism for all models shown in figure \ref{fig:persistenceAll} \label{tab:relDecrease}}
-\end{table}
-
-We found that food webs with smaller free livers ($Z_f=10$) had higher levels of persistence in the absence of parasites then webs with larger free livers ($Z_f=100$) at low levels of parasitism in the null model.  However, this pattern reverses at higher levels of parasitism.  As a result, the webs with smaller free livers saw much larger relative decreases than the food webs with larger free livers (table \ref{tab:relDecrease}).  Furthermore, larger parasites ($Z_p=10^{-3}$) caused smaller relative decreases in persistence than smaller parasites ($Z_p=10^{-4}$).  The persistence levels in three body size configurations were roughly constant after 25\% parasitism.  The final body size configuration combined the less resilient free-livers with the more disruptive parasites; persistence in this configuration continued a slight decrease up to 50\% parasitism.  
-
-In the parasite model, overall persistence decreased monotonically with increasing parasite fraction and all four body size configurations had nearly identical overall persistence levels past 25\% parasitism.
 
 
 \newpage
