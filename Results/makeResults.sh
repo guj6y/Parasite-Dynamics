@@ -36,7 +36,7 @@ done
 
 if [ "$redraw" = true ]; then
     cd ../floats/results
-    if ["$verbose" = true]; then 
+    if [ "$verbose" = true ]; then 
         echo "Making Figures ... "
         latexmk -interaction=batchmode -pdf >> log
         echo "Cleaning up ..."
@@ -51,7 +51,7 @@ fi
 
 if [ "$convert" = true ]; then
     echo "Converting to .png ..."
-    if ["$verbose" = true]; then
+    if [ "$verbose" = true  ]; then
         for pdffile in *.pdf; do
             convert -v -density 500 "${pdffile}" "${pdffile%.*}.$graphicsExtension"
         done
@@ -64,7 +64,7 @@ if [ "$convert" = true ]; then
     echo "Done with figures."
 fi
 echo "Typesetting Document as pdf ... "
-if ["$verbose" = true]; then
+if [ "$verbose" = true ]; then
     latexmk -interaction=batchmode -pdf -silent >> log
 else
     latexmk -interaction=batchmode -pdf >> log
@@ -72,7 +72,7 @@ fi
 
 echo "Converting document to .docx ..."
 
-if ["$verbose" = true]; then
+if [ "$verbose" = true ]; then
     for texfile in *.tex; do
         pandoc -v -f latex -t docx -o "${texfile%.*}".docx --bibliography=Bib_green.bib -M link-citations=true "${texfile}"
     done
