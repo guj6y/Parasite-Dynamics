@@ -1,30 +1,12 @@
-\documentclass{amsart}
-\listfiles 
-\usepackage{subcaption,tikz,pgfplots,graphicx,tikzscale,pgfplotstable}
-\pgfplotsset{compat=1.10}
-
+\documentclass[preview=true]{standalone}
+\usepackage{subcaption,tikz,pgfplots,graphicx,tikzscale,pgfplotstable} 
+\pgfplotsset{compat=1.14}
 \usepgfplotslibrary{groupplots}
-%\pgfplotsset{table/search path={../../data/},compat=newest}
-
+\pgfplotsset{table/search path={../../data/},compat=newest}
 \input{../../data/figureCommands.tex}
-
 \begin{document}
-
+\begin{figure}
 \makeFigureTwoModels{persistence}{Persistence of All Species}
-
-\begin{tikzpicture}
-    \begin{groupplot}[group style = {group size=2 by 2},]
-\nextgroupplot
-\addplot[domain=-1:1] {x};
-%\addGroupPlotToFigure{#1}{1};
-%\addGhostGroupPlotToFigure{#1}{4};
-\nextgroupplot
-\addplot[domain = 2:3] {-x};
-\nextgroupplot
-\addplot[domain=-1:1] {x};
-\nextgroupplot
-\addplot[domain = 2:3] {-x};
-    \end{groupplot}
-\end{tikzpicture}
+\end{figure}
 
 \end{document}
