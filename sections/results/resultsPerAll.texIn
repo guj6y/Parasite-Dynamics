@@ -1,0 +1,37 @@
+\section{Persistence of Final States}
+\subsection{Fixed web size}
+
+\begin{figure}[h] 
+    \includegraphics[width=\textwidth]{../floats/results/perAllSplit.pdf}
+    \label{fig:persistenceAll}
+\end{figure}
+
+Figure \ref{fig:persistenceAll} shows the main effect of each model component on the overall persistence of species in the food web. The first panel shows the effect of changing the predator-prey body size ratio. In webs with no parasites, there is a clear difference in overall persistence between webs with the two predator-prey body size ratios. As more parasites are added, the difference between free living body size ratios of 10 and 100 decreases until the mean persistence for each is indistinguishable at the 100\% parasitism level. This is somewhat surprising because the predator-prey body size ratio applies for parasite-parasite interactions 
+\footnote{ This is worth investigating further. Make a figure that shows just for the null model (possible that lower persistence in the refuge models is dragging it down. If still present, would point to significance of interactions between basal species and their consumers. It doesn't seem to have been separated out from the work in Brose, Williams, and Martinez 2006 (this has to do with metabolic scaling, but I don't think the impact that had on those basal links was specifically stressed)}. 
+Predictably, the parasite-host body size ratio had little effect on overall persistence at low levels of parasitism. However, we do observe a small but consistent advantage in terms of persistence for parasite-host body size ratios of $10^{-3}$, which gradually increases to a maximum of about 3\% at 100\% parasitism.
+Concomittant predation had virtually no effect on average persistence of food webs\footnote{though possibly on individual biomasses}. 
+Introducing a host-refuge had a significant impact on overall persistence, especially at higher levels of parasitism. At 100\% parasitism, the persistence decreased by nearly 40\% (an absolute increase in extinctions of about 5.5 out of 40 species). However, even at the more reasonable parasitism level of 35\%, the persistence decreased by nearly 20\% (or, just under 3 additional species in a 40 species web). 
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{../floats/results/perAllDiff.pdf}
+    \caption{This figure shows the effect of each dynamical model and of changing the average predator-prey and parasite-host body size ratios. The effect of adding concomittant predation had very little effect on the overall persistence of each web. Changing the parasite-host body size ratio had no discernible effect at low levels of parasitism. Past about 20\% parasitism decreasing the parasite-host body size ratio form $10^{-3}$ to $10^{-4}$ resulted in a small decrease in overall persistence. Changing the predator-prey body size ratio had a significant effect on overall persistence at low levels of parasitism, and gradually decreased until at 100\% parasitism there was no discernible difference. Adding a host refuge resulted in a decrease of about 2.5\% when only one parasite was present (this corresponds to one additional species going extinct). This difference gradually increased until at the fully parasitic web, the difference was about 13\%, or 5 additional species in a  40 species web.}
+    \label{fig:persistenceEfx}
+\end{figure}
+
+%\begin{figure}[h]
+%    \includegraphics[width=\textwidth]{../floats/results/perPara.jpg}
+%    \label{fig:persistencePara}
+%\end{figure}
+
+%Figure \ref{fig:persistencePara} shows the main effect of each model component on the persistence of parasitic species in the food web. 
+%Notice that in all cases, parasites are much more likely to go extinct than free livers: the average persistence never exceeds 25\%. 
+%The free-living body size ratio had a significant impact on the persistence of parasitic species at low parasitism levels. 
+%However, this effect becomes less pronounced at higher levels of parasitism until in the fully parasitic webs, the average effect of predator-prey body size ratios was negligible.
+%The parasite-host body size ratio also had a significant effect on parasite persistence, with an average of about 5\% higher persistence( roughly 40\% higher in relative terms; the numerical increase in parasite species is difficult to determine as webs had different numbers of free livers (and therefore also of parasite at each level of parasitism\footnote{May be a good idea to re-run these simulations with only a fixed number of free-living species: easy enough to do. 
+%Worth checking, anyway?}). 
+%The addition of a host refuge significantly lowered persistence of parasitic species. This effect was negligible at low levels of parasitism, but became much more pronounced at higher parasitism levels. This is likely due to the fact that 
+ 
+\newpage
+\bibliography{Bib_green}
+\bibliographystyle{apalike}
+

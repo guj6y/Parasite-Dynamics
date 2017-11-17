@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage{subcaption,tikz,pgfplots,pgfplotstable,filecontents}
+
+\pgfplotsset{compat=newest,table/search path={../../../data}}
+\usepgfplotslibrary{groupplots}
+
+\input{figureCommands.tex}
+\input{pngExport.tex}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=pdf/]
+\tikzset{png export}
+
+\begin{document}
+\tikzsetnextfilename{perAllDiff}
+\begin{figure}
+    \makeDiffFigure{perAll}{Mean Difference in Persistence}
+\end{figure}
+
+\tikzsetnextfilename{perAllSplit}
+\begin{figure}
+    \makeSplitFigure{perAll}{Mean Persistence of All Species}
+\end{figure}
+
+\tikzsetnextfilename{perParaDiff}
+\begin{figure}
+    \makeDiffFigure{perPara}{Mean Difference in Parasite Persistence}
+\end{figure}
+
+\tikzsetnextfilename{perParaSplit}
+\begin{figure}
+    \makeSplitFigure{perPara}{Mean Persistence of Parasites}
+\end{figure}
+
+\tikzsetnextfilename{perFreeDiff}
+\begin{figure}
+    \makeDiffFigure{perFree}{Mean Difference in Free Liver Persistence}
+\end{figure}
+
+\tikzsetnextfilename{perFreeSplit}
+\begin{figure}
+    \makeSplitFigure{perFree}{Mean Persistence of Free Livers}
+\end{figure}
+
+%\tikzsetnextfilename{cvAllDiff}
+%\begin{figure}
+%    \makeDiffFigure{cvAll}{Mean Difference in Total Biomass Covariation}
+%\end{figure}
+%
+%\tikzsetnextfilename{cvAllSplit}
+%\begin{figure}
+%    \makeSplitFigure{cvAll}{Mean Persistence of Parasitic Species}
+%\end{figure}
+%
+%\tikzsetnextfilename{cvFreeDiff}
+%\begin{figure}
+%    \makeDiffFigure{cvFree}{Mean Difference in Parasitic Persistence}
+%\end{figure}
+%
+%\tikzsetnextfilename{cvFreeSplit}
+%\begin{figure}
+%    \makeSplitFigure{cvFree}{Mean Persistence of Parasitic Species}
+%\end{figure}
+%
+%\tikzsetnextfilename{cvParaDiff}
+%\begin{figure}
+%    \makeDiffFigure{cvPara}{Mean Difference in Parasitic Persistence}
+%\end{figure}
+%
+%\tikzsetnextfilename{cvParaSplit}
+%\begin{figure}
+%    \makeSplitFigure{cvPara}{Mean Persistence of Parasitic Species}
+%\end{figure}
+
+\tikzsetnextfilename{fracParaBioSplit}
+\begin{figure}
+    \makeSplitFigure{fracParaBio}{Mean Fraction of Parasitic Biomass}
+\end{figure}
+
+\tikzsetnextfilename{fracParaBioDifff}
+\begin{figure}
+    \makeDiffFigure{fracParaBio}{Mean Difference in Fraction of Parasitic Biomass}
+\end{figure}
+
+\tikzsetnextfilename{totalBioDiff}
+\begin{figure}
+    \makeDiffFigure{totalBio}{Mean Difference in Total Biomass}
+\end{figure}
+
+\tikzsetnextfilename{totalBioSplit}
+\begin{figure}
+    \makeSplitFigure{totalBio}{Mean Total Biomass}
+\end{figure}
+
+\end{document}

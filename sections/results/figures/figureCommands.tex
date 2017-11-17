@@ -1,0 +1,202 @@
+\usetikzlibrary{plotmarks}
+\usepgfplotslibrary{groupplots}
+
+\colorlet{linecolora}{blue}
+\colorlet{linecolorb}{red}
+\colorlet{linecolorc}{brown}
+\colorlet{linecolord}{black}
+
+\newcommand{\markOne}{*}
+\newcommand{\markTwo}{triangle*}
+\newcommand{\markThree}{square*}
+\newcommand{\markFour}{diamond*}
+
+
+\newcommand{\tikzPlotStylea}{
+\begin{tikzpicture}
+\draw[linecolora] plot[mark = \markOne] (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\tikzPlotStyleb}{
+\begin{tikzpicture}
+\draw [linecolorb] plot[mark = \markTwo] (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\tikzPlotStylec}{
+\begin{tikzpicture}
+\draw [linecolorc] plot[mark = \markThree] (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\tikzPlotStyled}{
+\begin{tikzpicture}
+\draw [linecolord] plot[mark = \markFour] (0,0);
+\end{tikzpicture}
+}
+
+\pgfplotsset{
+plotoptsa/.style={color=linecolora,mark=\markOne},
+plotoptsb/.style={color=linecolorb,mark=\markTwo},
+plotoptsc/.style={color=linecolorc,mark=\markThree},
+plotoptsd/.style={color=linecolord,mark=\markFour}
+}
+
+
+\newcommand{\addSplitPlotToFigure}[2]{
+\addplot+[
+		  plotoptsa,
+                  error bars/.cd,
+		  y explicit, y dir=both,
+		]
+table[linecolora,x =x,y =yOn,y error =yMarginOn,col sep = comma]{#1-values-subplot-#2};
+\addplot+[
+		  plotoptsb,
+          error bars/.cd,
+		  y explicit, y dir=both,
+		]
+table[linecolorb,x =x,y =yOff,y error =yMarginOff,col sep = comma]{#1-values-subplot-#2};
+}
+
+\newcommand{\addGhostSplitPlotToFigure}[2]{
+\addplot+[
+		  draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}+\thisrow{yMarginOn}},col sep = comma]{#1-values-subplot-#2};
+\addplot+[
+          draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}+\thisrow{yMarginOff}},col sep = comma]{#1-values-subplot-#2}; \addplot+[
+		  draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}-\thisrow{yMarginOn}},col sep = comma]{#1-values-subplot-#2};
+\addplot+[
+          draw = none,
+		]
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{yMarginOff}},col sep = comma]{#1-values-subplot-#2};
+}
+
+
+%in \makeSplitFigure, arg1 is the code for the statistic being plotteed
+%arg 2 is the label on the yaxis.
+\newcommand{\makeSplitFigure}[2]{
+\begin{tikzpicture}
+    \begin{groupplot}[
+                        group style = {group size =2 by 2,
+                                       group name = thePlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {#2},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        %x label style = {font=\tiny},
+                        %y label style = {font=\tiny},
+                        legend columns = 2,
+                        legend style={at={(.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0, xmax=0.5,
+                    ]
+        \setcounter{subfigure}{0}
+        \nextgroupplot[legend style={name={RefLegend}}]
+            \addSplitPlotToFigure{#1}{3}
+            \addGhostSplitPlotToFigure{#1}{2}
+            \addGhostSplitPlotToFigure{#1}{1}
+            \addGhostSplitPlotToFigure{#1}{4}
+            \legend{With,Without}
+        \nextgroupplot[legend style={name={ConLegend}}]
+            \addSplitPlotToFigure{#1}{4}
+            \addGhostSplitPlotToFigure{#1}{2}
+            \addGhostSplitPlotToFigure{#1}{3}
+            \addGhostSplitPlotToFigure{#1}{1}
+            \legend{With,Without}
+        \nextgroupplot[legend style={name={ZfLegend}}]
+            \addSplitPlotToFigure{#1}{1}
+            \addGhostSplitPlotToFigure{#1}{2}
+            \addGhostSplitPlotToFigure{#1}{3}
+            \addGhostSplitPlotToFigure{#1}{4}
+            \legend{100,10}
+        \nextgroupplot[legend style={name={ZpLegend}}]
+            \addSplitPlotToFigure{#1}{2}
+            \addGhostSplitPlotToFigure{#1}{1}
+            \addGhostSplitPlotToFigure{#1}{3}
+            \addGhostSplitPlotToFigure{#1}{4}
+            \legend{$10^{-4}$,$10^{-3}$}
+    \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (RefLegend.north) {\subcaption[]{Refuge\label{fig:#1-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (ConLegend.north) {\subcaption[]{Concomittant\label{fig:#1-b}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (ZfLegend.north) {\subcaption[]{Predator-Prey BSR\label{fig:#1-c}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (ZpLegend.north) {\subcaption[]{Parasite-Host BSR\label{fig:#1-d}}};
+\end{tikzpicture}
+}
+
+\newcommand{\makeDiffFigure}[2]{
+    \begin{tikzpicture}
+        \begin{axis}[
+                    y tick label style = {font=\small,
+                                          /pgf/number format/fixed,
+                                          /pgf/number format/precision=2}, 
+                    x tick label style = {font=\small, 
+                                          /pgf/number format/fixed,
+                                          /pgf/number format/precision=2}, 
+                    scaled y ticks=false,
+                    scaled x ticks=false,
+                    xlabel = {Fraction Consumers as parasites},
+                    ylabel = {#2},
+                    %x label style = {font=\tiny},
+                    %y label style = {font=\tiny},
+                    %legend style = {font=\tiny}, 
+                    grid = both,
+                    unbounded coords = jump,
+                    %ymin = 0,ymax = 1,
+                    xmin=0, xmax=0.5,
+                    x=1.95\textwidth,
+		    legend style={name=boo,
+                                   at={(0.5,1)},
+				   anchor=center,
+				   font=\tiny},
+		    legend columns = 4,
+            ]
+            \addplot+[
+		  plotoptsa,
+                  error bars/.cd,
+		  y explicit, y dir=both,
+	             ]
+            table[linecolora,x =x,y =y3,y error =y3Margin,col sep = comma]{#1-diffs};
+            \addplot+[
+		  plotoptsb,
+                  error bars/.cd,
+		  y explicit, y dir=both,
+	             ]
+            table[linecolorb,x =x,y =y4,y error =y4Margin,col sep = comma]{#1-diffs};
+            \addplot+[
+		  plotoptsc,
+                  error bars/.cd,
+		  y explicit, y dir=both,
+	             ]
+            table[linecolorc,x =x,y =y1,y error =y1Margin,col sep = comma]{#1-diffs};
+            \addplot+[
+		  plotoptsd,
+                  error bars/.cd,
+		  y explicit, y dir=both,
+	             ]
+            table[linecolord,x =x,y =y2,y error =y2Margin,col sep = comma]{#1-diffs};
+            \legend{Adding Refuge,Adding Concomittant,Predator BSR $10$ to $10^2$, Parasite BSR $10^{-3}$ to $10^{-4}$};
+        \end{axis}
+            \node [text width =.5\linewidth,align=center,anchor=south] at (boo.north) {Main Effect of Each Factor};
+    \end{tikzpicture}
+}

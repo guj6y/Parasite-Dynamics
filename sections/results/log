@@ -1,0 +1,92 @@
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'bibtex results'...
+For rule 'bibtex results', running '&run_bibtex(  )' ...
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: results.aux
+The style file: apalike.bst
+I found no \citation commands---while reading file results.aux
+Database file #1: Bib_green.bib
+(There was 1 error message)
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: applying rule 'bibtex results'...
+For rule 'bibtex results', running '&run_bibtex(  )' ...
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: results.aux
+The style file: apalike.bst
+I found no \citation commands---while reading file results.aux
+Database file #1: Bib_green.bib
+(There was 1 error message)
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: Errors, so I did not complete making targets
+Latexmk: applying rule 'bibtex results'...
+For rule 'bibtex results', running '&run_bibtex(  )' ...
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: results.aux
+The style file: apalike.bst
+I found no \citation commands---while reading file results.aux
+Database file #1: Bib_green.bib
+(There was 1 error message)
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: Errors, so I did not complete making targets
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: Errors, so I did not complete making targets
+Latexmk: All targets (results.pdf) are up-to-date
+Latexmk: applying rule 'bibtex results'...
+For rule 'bibtex results', running '&run_bibtex(  )' ...
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: results.aux
+The style file: apalike.bst
+Database file #1: Bib_green.bib
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'bibtex results'...
+For rule 'bibtex results', running '&run_bibtex(  )' ...
+This is BibTeX, Version 0.99d (TeX Live 2016)
+The top-level auxiliary file: results.aux
+The style file: apalike.bst
+Database file #1: Bib_green.bib
+Latexmk: applying rule 'pdflatex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets (results.pdf) are up-to-date

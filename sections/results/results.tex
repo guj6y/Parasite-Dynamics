@@ -1,0 +1,31 @@
+
+ \documentclass[11pt]{amsart}
+
+\usepackage{tikz,
+pgfplots,
+graphicx,
+caption,
+subcaption,
+tikzscale,
+multirow,
+appendix,
+pgfplotstable,
+cite,
+hyperref,
+booktabs
+}
+\usepackage[margin=0.7in]{geometry}
+\input{figures/figureCommands.tex}
+
+\pgfplotsset{table/search path={../data/},compat=newest}
+
+
+\title{Results}
+\author{Nick}
+
+\begin{document}
+
+\input{results.texIn}
+
+
+\end{document}
