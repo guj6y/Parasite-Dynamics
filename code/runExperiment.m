@@ -7,11 +7,37 @@ try
     load '../metaSimData.mat'
     load '../simParams.mat'
     load '../webData.mat'
+catch     
+    nWeb = 0;
+
+    kFrees = [];    %Models(1): BSR exponents for free livers
+    kParas = [];  %Models(2): BSR exponents for free livers
+    fracFrees = []; %Models(3): including fraction of free living time
+    fracParas = []; %Models(4): including concomittant links
+
+    nFact1 = numel(kFrees);
+    nFact2 = numel(kParas);
+    nFact3 = numel(fracFrees);
+    nFact4 = numel(fracParas);
+
+    nFacts = [nFact1,nFact2,nFact3,nFact4];
+
+    models = fullfact(nFacts);
+    nModels = length(models);
+
+    fParAll0 = [];
+    nfPar = numel(fParAll0);
+    fprintf('got CAUGHT!\n');
+    save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
+    
     kFreesDone = kFrees;
     nKFreesDone = 1:numel(kFrees);
+    
     kParasDone = kParas;
     nKParasDone = 1:numel(kParas);
+    
     nWebsDone = nWeb;
+    
     fParDone = fParAll0;
     nFParDone = numel(fParAll0);
     
@@ -19,11 +45,6 @@ try
     %I could imagine ways to allow for new dynamical models, new factors, new fractions of paras-
     %ites, more webs... but I don't think it will come to that, and Don't want to take the time to
     %figure that out.
-    %New factors would need to have an 'off' option; that off option would need to be counted as 
-    %done. I think it will be tricky to add in new factors. Also, adding new fractions of parasites
-    %or of webs would need ALL models; actually, not too bad to figure out, just check if the cur-
-    %rent web or fraction of parasites has been done; if yes, sim only new models, if no, sim over
-    %all models. 
     %All this could mix up the out.mat arrays, BUT they get processed in that linear order anyway.
     
     newKFrees = 3;
@@ -51,29 +72,9 @@ try
     fParAll0 = [fParDone, fParNew];
     nFParAll = numel(fParAll0);
     nWeb = nWebsDone + nWebNew;
+
 catch ERRRRmsg
-    nWeb = 0;
 
-    kFrees = [];    %Models(1): BSR exponents for free livers
-    kParas = [];  %Models(2): BSR exponents for free livers
-    fracFrees = []; %Models(3): including fraction of free living time
-    fracParas = []; %Models(4): including concomittant links
-
-    nFact1 = numel(kFrees);
-    nFact2 = numel(kParas);
-    nFact3 = numel(fracFrees);
-    nFact4 = numel(fracParas);
-
-    nFacts = [nFact1,nFact2,nFact3,nFact4];
-
-    models = fullfact(nFacts);
-    nModels = length(models);
-
-    fParAll0 = [];
-    nfPar = numel(fParAll0);
- fprintf('got CAUGHT!\n')   
-    save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
-    return
 end
 
 save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')

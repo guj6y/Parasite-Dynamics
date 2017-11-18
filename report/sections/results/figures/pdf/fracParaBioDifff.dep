@@ -1,4 +1,4 @@
-pdf/fracParaBioDifff.pdf: ../../../data/fracParaBio-diffs
-pdf/fracParaBioDifff.pdf: ../../../data/fracParaBio-diffs
-pdf/fracParaBioDifff.pdf: ../../../data/fracParaBio-diffs
-pdf/fracParaBioDifff.pdf: ../../../data/fracParaBio-diffs
+pdf/fracParaBioDifff.pdf: ../../../../data/figures/fracParaBio-diffs
+pdf/fracParaBioDifff.pdf: ../../../../data/figures/fracParaBio-diffs
+pdf/fracParaBioDifff.pdf: ../../../../data/figures/fracParaBio-diffs
+pdf/fracParaBioDifff.pdf: ../../../../data/figures/fracParaBio-diffs
