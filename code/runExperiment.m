@@ -1,35 +1,25 @@
 %This code sets up parameters structures for a parallel implementation of
-%the parasites experiment.
+%the parasites experiment, then calls the actual integrating function and
+% also parses the data.
 
 %Setting up the arrays and structures.
 
 try 
-    load '../metaSimData.mat'
-    load '../simParams.mat'
-    load '../webData.mat'
+    load 'metaSimData.mat'
+    load 'simParams.mat'
+    load 'webData.mat'
+ 
+    appending = true;
+    fprintf('We are appending data to a simulation that has already been run.\n');
+
 catch     
-    nWeb = 0;
+    appending = false;
+    fprintf('We are doing a brand-new simulation!\n')
+end 
 
-    kFrees = [];    %Models(1): BSR exponents for free livers
-    kParas = [];  %Models(2): BSR exponents for free livers
-    fracFrees = []; %Models(3): including fraction of free living time
-    fracParas = []; %Models(4): including concomittant links
-
-    nFact1 = numel(kFrees);
-    nFact2 = numel(kParas);
-    nFact3 = numel(fracFrees);
-    nFact4 = numel(fracParas);
-
-    nFacts = [nFact1,nFact2,nFact3,nFact4];
-
-    models = fullfact(nFacts);
-    nModels = length(models);
-
-    fParAll0 = [];
-    nfPar = numel(fParAll0);
-    fprintf('got CAUGHT!\n');
-    save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
-    
+%Code can handle appending new values of factors or starting fresh.
+%This sets up the structure of the experiments themselves. 
+if appending 
     kFreesDone = kFrees;
     nKFreesDone = 1:numel(kFrees);
     
@@ -73,18 +63,41 @@ catch
     nFParAll = numel(fParAll0);
     nWeb = nWebsDone + nWebNew;
 
-catch ERRRRmsg
+    nSims = nWeb*(nFact1-numel(nKFreesDone))... Run the new kFrees on all websat 0 percent parasites.
+        + nWeb*nAllModels*nFParNew ... All models and all webs need to be run on the new parasite fractions
+        + nWebNew*nAllModels*(nFParDone-1) ... All models and old parasite fractions run on the new webs.
+        + nWebsDone*nNewModels*(nFParDone-1) ... New Models on Old Webs with Old Fractions.
+        + nWebNew*(numel(nKFreesDone)); ... Old kFrees on new webs.
+else %If we're not appending
+    nWeb = 100;
+    
+    kFrees = [1 2];    %Models(1): BSR exponents for free livers
+    kParas = [-3 -4 -17 -20];  %Models(2): BSR exponents for free livers
+    fracFrees = [false true]; %Models(3): including fraction of free living time (binary)
+    fracParas = [false true]; %Models(4): including concomittant links (binary)
 
+    nFact1 = numel(kFrees);
+    nFact2 = numel(kParas);
+    nFact3 = numel(fracFrees);
+    nFact4 = numel(fracParas);
+
+    nFacts = [nFact1,nFact2,nFact3,nFact4];
+
+    models = fullfact(nFacts);
+    nModels = length(models);
+
+    fParAll0 = [0 0.025 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5];
+    nfPar = numel(fParAll0);
+
+    nSims = nWeb*(nFact1) ... Run 1 simulation for each kFree @ 0% parasites.
+          + nWeb*nModels*(nfPar-1); ... run each web for each model for all but one fraction of parasites.
+    
+    nWebsDone = 0;
+    nKFreesDone = [];
+    nFParDone = 0;
+    nKParasDone = [];
 end
-
 save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
-
-
-nSims = nWeb*(nFact1-numel(nKFreesDone))... Run the new kFrees on all websat 0 percent parasites.
-    + nWeb*nAllModels*nFParNew ... All models and all webs need to be run on the new parasite fractions
-    + nWebNew*nAllModels*(nFParDone-1) ... All models and old parasite fractions run on the new webs.
-    + nWebsDone*nNewModels*(nFParDone-1) ... New Models on Old Webs with Old Fractions.
-    + nWebNew*(numel(nKFreesDone)); ... Old kFrees on new webs.
 
 simParams = cell(nSims,1);
 [simParams{:}] = deal(struct('web',0 ...
@@ -116,7 +129,14 @@ S = 40;
 C = .15;
 
 simNo = 0;
-for ii = 1:nWeb %Generate new niche webs each time this code is run:
+
+%This populates the necessary web data for each simulation. The parameters that vary according to the
+%needs of the factors.
+
+for ii = 1:nWeb 
+    %Generate nichewebs or load old one; save the web data separately for ease of access. Will also
+    %get saved in the structure used by theparfor loop. Slight redundancy, but the memory usage pales
+    %comparison to the time series data, so I think it is okay. It makes life much easier later on. 
     if ii <= nWebsDone
         B0 = webData{ii}.B0;
         res = webData{ii}.LL(:,1);
@@ -193,7 +213,7 @@ for ii = 1:nWeb %Generate new niche webs each time this code is run:
             para = false(S,1);
             nPar = round(fPar*nFree);
             para(idxPar(1:nPar)) = true;
-            
+            %simParams is what gets split up by the parfor loop and defines how each simulation goes.
             simNo = simNo+1;
             simParams{simNo}.web = ii;
             simParams{simNo}.fPar = fPar;
@@ -214,13 +234,12 @@ for ii = 1:nWeb %Generate new niche webs each time this code is run:
     end
 end
 
+%Save the webData.
 save('../webData.mat','webData')
-TS= zeros(40,1000,nSims);
-extcts = cell(nSims,1);
 
-%Web Structure parameters
-S = 40;
-C = 0.15;
+%%%All these parameters are the same for all simulations. Can change these, but it would have to be done
+%%%manually (i.e. would need to copy webData files to a new directory, modify code so that it loads
+%%%those webs and runs all simulations on those webs with the new parameters... yeesh.)
 
 %Metabolic parameters for body sizes, metabolic rates
 axFree = .314;
@@ -266,6 +285,8 @@ params = struct(...
     ,'halfSat',halfSat...
     ,'phi',.15...
     ,'h',h...
+    ,'eijBas',0.45 ...
+    ,'eijCon',0.85 ...
     ... Link Level properties:
     ,'res',[]...
     ,'con',[]...
@@ -290,111 +311,27 @@ params = struct(...
     ,'odeSolver',@ode45... .
     ,'options',odeset()...
     );
-%This automatically makes the parallel pool use ever core possible. on ocelote, their
-%default is (for some reason?) 12.
 
-nCores = feature('numcores');
-parpool('local',nCores)
+[TS, extcts,bs,rs] = integrateExperiment(simParams,params);
 
-parfor  (simNo = 1:nSims, nCores)
-   
-    p = params;
-    simParam = simParams{simNo};
-    
-    %%% Define properties for this model
-    kFree = simParam.kFree;
-    kPara = simParam.kPara;
-    modelCode = simParam.modelCode;
-    
-    LL = simParams.LL;
-    
-    res = LL(:,1);
-    con = LL(:,2);
-    
-    patl = simParam.patl;
-    basal = simParam.gr>0;
-    
-    nBasal = sum(basal);
-    nFree = S-nBasal;
-    
-    %Assimilation efficiency is given in Brose et al as .45 and .85 for
-    %herbivores and carnivores, respectively.  This would correspond to
-    %the links we talkin bout.  Easy enough to figure:
-    eij = zeros(size(res));
-    eij(basal(res)) = .45;
-    eij(~basal(res)) = .85;  %Future: add an eij for parasitic links
-    wij = true(size(res));
-    
-    %Set the properties that we have; web-level properties, independent
-    %of parasite identity.
-    p.B0 = simParam.B0;
-    
-    p.res = res;
-    p.con = con;
-    p.eij = eij;
-    p.wij = wij;
-    p.basal = basal;
-    p.r = simParams.gr;
-    p.modelCode = modelCode;
-    
-    %Pre-allocate final data.
-    yFinals = zeros(S,1);
-    yMeans = zeros(S,1);
-    yStds = zeros(S,1);
-    
-    ZFree = 10^kFree;
-    
-    %%% Define the parameters that change with parasite identities.
-    ax = zeros(S,1);
-    y = zeros(S,1);
-    M = zeros(S,1);
-    para = simParam.para;
-    free = ~para;
-    
-    %assimilation rates
-    y(free) = yFree;
-    y(para) = yPara;
-    
-    %scaling constant
-    ax(free) = axFree;
-    ax(para) = axPara;
-    
-    %bodymass
-    M(free) = ZFree.^(patl(free)-1);
-    M(para) = 10.^(kPara + kFree*(patl(para)-2));
-    
-    %metabolic rate
-    x = ax.*M.^(-0.25);
-    x(basal) = 0;
-    
-    %Save parameters to parameter structre.
-    p.x = x;
-    p.para = para;
-    p.M = M;
-    p.yij = y(con);
-    %%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    %Integrate!
-    sol = integrateParasiteExperiments(p);    
- 
-    %Save the extinction times and B0 snapshots. Get the intial conditions and the final conditions as well. Doesn't matter,r eally! 
-    extcts{simNo} = [sol.extctTime;sol.B0s];
-    endSol = sol.(sprintf('sol%u',sol.n));
-    xEnd = endSol.x(end);
-    xRange = linspace(xEnd,xEnd-999,1000);
-    TS(:,:,simNo) = deval(endSol,xRange);
+if appending %load old outputs and add the new ones.
+    oldSimParams = load('simParams.mat');
+    simParams = [oldSimParams;simParams];
 
-    %sol is too large to save. a single run can be as much as 77MB. Which
-    %obviously doesn't scale well for 21000 runs.
+    oldData = load('rawOutputs.mat');
+    TS = cat(3,oldData.TS,TS);
+    extcts = [oldData.extcts; extcts];
+    bs = [oldData.bs;bs];
+    rs = [oldData.rs;rs];
 end
 
-oldSimParams = load('../simParams.mat');
-simParams = [oldSimParams;simParams];
-save('../simParams.mat','simParams');
+%Save the outputs
+save('simParams.mat','simParams');
+save('rawOutputs.mat','extcts','TS','bs','rs','-v7.3');
 
-oldData = load('../out.mat');
-TS = cat(3,oldData.TS,TS);
-extcts = [oldData.extcts; extcts];
-save('../out.mat','extcts','TS','-v7.3');
+%Save quite a bit of time by running these abundance curves in parallel.
+
+%process the data to a form that is a bit more manageable.
+run('parseData.m')
 
 

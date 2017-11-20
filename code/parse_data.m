@@ -21,14 +21,22 @@
            TL: [40×1 double]     %This is nothing.
          patl: [40×1 double]     %This is the prey-averaged trophic level.
 %}
-load '../out.mat'
-load '../simParams.mat'
-load '../metaSimData.mat'
+if ~exist('simParams')
+    load 'rawOutputs.mat'
+    load 'simParams.mat'
+    load 'metaSimData.mat'
+end
 
-%The goal of this code is to convert the contents of out.mat to complicated multi-dimensional arrays that I can plot.
+%The goal of this code is to convert the contents of rawoutputs.mat to complicated 
+%multi-dimensional arrays that I can plot.
+
 finalBiomasses = nan(S,nWeb,numel(fParAll0),nFacts(1),nFacts(2),nFacts(3),nFacts(4));
 meanBiomasses = nan(S,nWeb,numel(fParAll0),nFacts(1),nFacts(2),nFacts(3),nFacts(4));
 stdBiomasses = nan(S,nWeb,numel(fParAll0),nFacts(1),nFacts(2),nFacts(3),nFacts(4));
+
+meanTotalBiomasses = nan(nWeb,numel(fParAll0),nFacts(1),nFacts(2),nFacts(3),nFacts(4));
+stdTotalBiomasses = nan(nWeb,numel(fParAll0),nFacts(1),nFacts(2),nFacts(3),nFacts(4));
+
 
 nSims = numel(extcts);
 
@@ -46,7 +54,16 @@ for ii = 1:nSims
     meanBiomasses(:,webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level) = mean(TS(:,:,ii),2);
     finalBiomasses(:,webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level) = TS(:,end,ii);
     stdBiomasses(:,webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level) = std(TS(:,:,ii),0,2);
+    
+    %Total biomass is weird to me. Why? -glad you asked. It's because the scale of species biomasses
+    %varies geometrically. So simply summing up to get a total biomass ends up being skewed by a 
+    %few very abundant species, with the last few decimals changing slightly because of most of 
+    %the rest - the rest that have a profound impact on the overall state we are in. AT least, they
+    %have a profound impact on the persistence metric! 
+
+    meanTotalBiomasses(webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level) = mean(sum(TS(:,:,ii)));
+    stdTotalBiomasses(webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level) = std(sum(TS(:,:,ii)));
 
 end
 
-save('../out.mat','meanBiomasses','finalBiomasses','stdBiomasses');
+save('out.mat','meanBiomasses','finalBiomasses','stdBiomasses','meanTotalBiomasses','stdTotalBiomasses');
