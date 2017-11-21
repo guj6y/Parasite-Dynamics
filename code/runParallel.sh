@@ -39,7 +39,6 @@ module load matlab/r2016b
 ### run your executable program with begin and end date and time output
 date
 matlab -nodisplay -nodesktop -nosplash < cluster_ParaDynExp.m  > ../run.log
-### /usr/bin/time mpirun -np 12 ./cluster_ParaDynExp.m
 date
 
 mv par-exp.* $DIRNAME

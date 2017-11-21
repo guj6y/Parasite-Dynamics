@@ -50,31 +50,32 @@ plotoptsd/.style={color=linecolord,mark=\markFour}
                   error bars/.cd,
 		  y explicit, y dir=both,
 		]
-table[linecolora,x =x,y =yOn,y error =yMarginOn,col sep = comma]{#1-values-subplot-#2};
+table[linecolora,x =x,y =yOn,y error =mOn,col sep = comma]{#1-values-subplot-#2};
 \addplot+[
 		  plotoptsb,
           error bars/.cd,
 		  y explicit, y dir=both,
 		]
-table[linecolorb,x =x,y =yOff,y error =yMarginOff,col sep = comma]{#1-values-subplot-#2};
+table[linecolorb,x =x,y =yOff,y error =mOff,col sep = comma]{#1-values-subplot-#2};
 }
 
 \newcommand{\addGhostSplitPlotToFigure}[2]{
 \addplot+[
 		  draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}+\thisrow{yMarginOn}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}+\thisrow{mOn}},col sep = comma]{#1-values-subplot-#2};
 \addplot+[
           draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}+\thisrow{yMarginOff}},col sep = comma]{#1-values-subplot-#2}; \addplot+[
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}+\thisrow{mOff}},col sep = comma]{#1-values-subplot-#2}; 
+\addplot+[
 		  draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}-\thisrow{yMarginOn}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}-\thisrow{mOn}},col sep = comma]{#1-values-subplot-#2};
 \addplot+[
           draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{yMarginOff}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{mOff}},col sep = comma]{#1-values-subplot-#2};
 }
 
 
@@ -176,25 +177,25 @@ table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{yMarginOff}
                   error bars/.cd,
 		  y explicit, y dir=both,
 	             ]
-            table[linecolora,x =x,y =y3,y error =y3Margin,col sep = comma]{#1-diffs};
+            table[linecolora,x=x, y=y3, y error=m3, col sep=comma]{#1-diffs};
             \addplot+[
 		  plotoptsb,
                   error bars/.cd,
 		  y explicit, y dir=both,
 	             ]
-            table[linecolorb,x =x,y =y4,y error =y4Margin,col sep = comma]{#1-diffs};
+            table[linecolorb, x=x, y=y4,y error=m4, col sep=comma]{#1-diffs};
             \addplot+[
 		  plotoptsc,
                   error bars/.cd,
 		  y explicit, y dir=both,
 	             ]
-            table[linecolorc,x =x,y =y1,y error =y1Margin,col sep = comma]{#1-diffs};
+            table[linecolorc,x=x, y=y1, y error=m1, col sep=comma]{#1-diffs};
             \addplot+[
 		  plotoptsd,
                   error bars/.cd,
 		  y explicit, y dir=both,
 	             ]
-            table[linecolord,x =x,y =y2,y error =y2Margin,col sep = comma]{#1-diffs};
+            table[linecolord, x=x, y=y2, y error=m2, col sep= comma]{#1-diffs};
             \legend{Adding Refuge,Adding Concomittant,Predator BSR $10$ to $10^2$, Parasite BSR $10^{-3}$ to $10^{-4}$};
         \end{axis}
             \node [text width =.5\linewidth,align=center,anchor=south] at (boo.north) {Main Effect of Each Factor};
