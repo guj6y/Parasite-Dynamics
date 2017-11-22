@@ -142,8 +142,6 @@ Tinterval = [tnow Tfinal];
 
 B0 = p.B0;
 
-sol = struct;
-
 solOut.extctOrder = zeros(p.S,1);
 B0s = zeros(p.S,p.S);
 B0s(:,1) = B0;

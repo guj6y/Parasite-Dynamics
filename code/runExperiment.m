@@ -5,9 +5,9 @@
 %Setting up the arrays and structures.
 
 try 
-    load 'metaSimData.mat'
-    load 'simParams.mat'
-    load 'webData.mat'
+    load '../raw/metaSimData.mat'
+    load '../raw/simParams.mat'
+    load '../raw/webData.mat'
  
     appending = true;
     fprintf('We are appending data to a simulation that has already been run.\n');
@@ -97,7 +97,7 @@ else %If we're not appending
     nFParDone = 0;
     nKParasDone = [];
 end
-save('../metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
+save('../raw/metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
 
 simParams = cell(nSims,1);
 [simParams{:}] = deal(struct('web',0 ...
@@ -235,7 +235,7 @@ for ii = 1:nWeb
 end
 
 %Save the webData.
-save('../webData.mat','webData')
+save('../raw/webData.mat','webData')
 
 %%%All these parameters are the same for all simulations. Can change these, but it would have to be done
 %%%manually (i.e. would need to copy webData files to a new directory, modify code so that it loads
@@ -315,10 +315,10 @@ params = struct(...
 [TS, extcts,bs,rs] = integrateExperiment(simParams,params);
 
 if appending %load old outputs and add the new ones.
-    oldSimParams = load('simParams.mat');
+    oldSimParams = load('../raw/simParams.mat');
     simParams = [oldSimParams;simParams];
 
-    oldData = load('rawOutputs.mat');
+    oldData = load('../raw/rawOutputs.mat');
     TS = cat(3,oldData.TS,TS);
     extcts = [oldData.extcts; extcts];
     bs = [oldData.bs;bs];
@@ -326,12 +326,13 @@ if appending %load old outputs and add the new ones.
 end
 
 %Save the outputs
-save('simParams.mat','simParams');
-save('rawOutputs.mat','extcts','TS','bs','rs','-v7.3');
+save('../raw/simParams.mat','simParams');
+save('../raw/rawOutputs.mat','extcts','TS','bs','rs','-v7.3');
 
 %Save quite a bit of time by running these abundance curves in parallel.
 
 %process the data to a form that is a bit more manageable.
 run('parseData.m')
 
-
+%save the plotting data.
+run('makePlottingData.m')

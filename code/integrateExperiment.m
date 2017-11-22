@@ -1,4 +1,4 @@
-function [TS,extct,bs,rs] = integrateExperiment(simParams,params)
+function [TS,extcts,bs,rs] = integrateExperiment(simParams,params)
 
 %This automatically makes the parallel pool use every core possible. on ocelote, their
 %default is (for some reason?) 12.
@@ -21,7 +21,7 @@ parfor  (simNo = 1:nSims, nCores)
     kPara = simParam.kPara;
     modelCode = simParam.modelCode;
     
-    LL = simParams.LL;
+    LL = simParam.LL;
     
     res = LL(:,1);
     con = LL(:,2);
@@ -29,8 +29,6 @@ parfor  (simNo = 1:nSims, nCores)
     patl = simParam.patl;
     basal = simParam.gr>0;
     
-    nBasal = sum(basal);
-    nFree = S-nBasal;
     
     %Assimilation efficiency is given in Brose et al as .45 and .85 for
     %herbivores and carnivores, respectively.  This would correspond to
@@ -49,13 +47,8 @@ parfor  (simNo = 1:nSims, nCores)
     p.eij = eij;
     p.wij = wij;
     p.basal = basal;
-    p.r = simParams.gr;
+    p.r = simParam.gr;
     p.modelCode = modelCode;
-    
-    %Pre-allocate final data.
-    yFinals = zeros(S,1);
-    yMeans = zeros(S,1);
-    yStds = zeros(S,1);
     
     ZFree = 10^kFree;
     

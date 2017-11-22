@@ -26,19 +26,29 @@
 ### NOTE: /usr/share/Modules/init/csh -CAPITAL M in Modules
 ###     source /usr/share/Modules/init/csh
 
-DIRNAME=RUN$((1000+$RANDOM%9000))$((1000+$RANDOM%9000))
-echo $DIRNAME >> .gitignore
+DIRNAME=$(date +%F-%Hh%Mm%Ss);
 
-mkdir ~guj6y/parasites_Cluster/$DIRNAME
-cp -r ~guj6y/parasites_Cluster/code ~guj6y/parasites_Cluster/$DIRNAME
+cd ..
 
-cd ~guj6y/parasites_Cluster/$DIRNAME/code
+echo "data/$DIRNAME/raw" >> .gitignore
+
+mkdir "data/$DIRNAME/raw"
+mkdir "data/$DIRNAME/figures"
+mkdir "data/$DIRNAME/logs"
+
+cp -r code "data/$DIRNAME/"
+
+cd "data/$DIRNAME/code"
 
 module load matlab/r2016b
 
 ### run your executable program with begin and end date and time output
 date
-matlab -nodisplay -nodesktop -nosplash < cluster_ParaDynExp.m  > ../run.log
+matlab -nodisplay -nodesktop -nosplash < runExperiment.m  > ../logs/run.log
 date
 
-mv par-exp.* $DIRNAME
+mv par-exp* ../logs
+cd ..
+rm -r code
+
+

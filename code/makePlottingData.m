@@ -1,9 +1,9 @@
-if ~exist('simParams')
-        
-    load 'out.mat'
-    load 'simParams.mat'
-    load 'metaSimData.mat'
+if ~exist('simParams','var')
+    load '../raw/out.mat'
+    load '../raw/simParams.mat'
+    load '../raw/metaSimData.mat'
 end
+cd ../figures/
 
 numberOfFactors = numel(nFacts); 
  
@@ -12,55 +12,58 @@ nFPar = numel(fParAll0);
 alpha = 0.05;
 
 speciesCategories = {'all','para','free','basal'};
-statisticUsed = {'per','bio','cv'};
+statisticUsed = {'per','bio','cv','abc-common','abc-natural'};
 %make split data ('on' and 'off' for the 2-split; numbered
 %for the full split
 data = biomasses;
 
 iiHeader2Split = 'x,yOn,mOn,yOff,mOff\n';
 iiheaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4\n';
-allStats = {persistences,biomasses,cvs};
+allStats = {persistences,biomasses,cvs,abc.common,abc.natural};
 %Think about automating this?
 statCode = statisticUsed{1};
 stat = persistences;
 
-for statCode = 1:3
+for statCode = 1:5
+    if statCode < 4 
+        stat = allStats{statCode};
+    elseif statCode == 4
+        speciesCategories = {'slopes','rSquared'};
+    end
     
-    stat = allStats{statCode};
     statID = statisticUsed{statCode};
     
     for spCat = speciesCategories
         
-        filenamePrefix = sprintf('%s-%s',statID,spCat);
+        filenamePrefix = sprintf('%s-%s',statID,spCat{:});
 
         meanDiffs= nan(nFPar,numberOfFactors);
         marginDiffs = nan(nFPar,numberOfFactors);
         
         for ii = 1:numberOfFactors %numberOfFactors will always be 4.
             factSize = nFacts(ii);
-            selector = cell(size(stat.(spCat)));
+            selector = cell(size(stat.(spCat{:})));
             selector{:} = deal(':');
             
             meansSplit    = zeros(nFPar,factSize);
             marginsSplit  = zeros(nFPar,factSize);
             margins2Split = zeros(nFPar,factSize);
 
-            iiHeaderFullSplit  = 'x,';
             jjOn = 2;
             jjOff = 1;
             for jj = 1:factSize %originally was 2, but can handle more.
                 selector{ii+2} = jj;
               
                 
-                datajj  = permute(data.(spCat)(selector{:}),[1,3,4,5,6,2]);
-                datajj  = reshape(dataOn,[],nFPar);
+                datajj  = permute(stat.(spCat{:})(selector{:}),[1,3,4,5,6,2]);
+                datajj  = reshape(datajj,[],nFPar);
                 if jj == jjOff
                     dataOff = datajj;
                 elseif jj == jjOn
                     dataOn = datajj;
                 end
-                meanjj  = mean(dataOn,'omitnan');
-                stdjj   = std(dataOn,'omitnan');
+                meanjj  = mean(datajj,'omitnan');
+                stdjj   = std(datajj,'omitnan');
                 njj = sum(isfinite(datajj));
 
                 nObs = sum(isfinite(meanjj));
@@ -92,8 +95,8 @@ for statCode = 1:3
             marginDiffs(:,ii) = marginDiff;
             
             headersii(end) = [];
-            split2FileName = sprintf('../../figures/%s-2-subplot-%u',filenamePrefix,ii);
-            fid2Split = fopen(split2FileName,'w')
+            split2FileName = sprintf('%s-2-subplot-%u',filenamePrefix,ii);
+            fid2Split = fopen(split2FileName,'w');
 
             fprintf(fid2Split,iiHeaders2Split);
             fprintf(fid2Split,[fParAll0'...
@@ -107,7 +110,7 @@ for statCode = 1:3
             
             iiHeaderFullSplit = strcat(iiHeaderYs,iiHeaderMs,'\n');
 
-            splitNFileName = sprintf('../../figures/%s-full-subplot-%u',filenamePrefix,ii);
+            splitNFileName = sprintf('%s-full-subplot-%u',filenamePrefix,ii);
             fidNSplit = fopen(splitNFileName,'w');
             fprintf(fidNSplit,iiHeaderFullSPlit);
             fprintf(fidNSplit,[fParAll0'...
@@ -117,7 +120,7 @@ for statCode = 1:3
             fclose(fidNSplit);
             selector{ii+2} = ':';
         end
-        diffFilename = sprintf('../../figures/%s-diffs',filenamePrefix);
+        diffFilename = sprintf('%s-diffs',filenamePrefix);
         fidDiff = fopen(diffFilename,'w');
         fprintf(fidDiff,iiHeaderDiffSplit);
         fprintf(fidDiff,[fParAll0'...
@@ -125,7 +128,6 @@ for statCode = 1:3
                         ,marginDiffs'...
                         ]'...
                 );
-        fclose(fidDiff)
-
+        fclose(fidDiff);
     end
 end

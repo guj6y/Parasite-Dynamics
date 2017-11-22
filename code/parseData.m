@@ -21,10 +21,10 @@
            TL: [40×1 double]     %This is nothing.
          patl: [40×1 double]     %This is the prey-averaged trophic level.
 %}
-if ~exist('simParams')
-    load 'rawOutputs.mat'
-    load 'simParams.mat'
-    load 'metaSimData.mat'
+if ~exist('simParams','var')
+    load '../raw/rawOutputs.mat'
+    load '../raw/simParams.mat'
+    load '../raw/metaSimData.mat'
 end
 
 %The goal of this code is to convert the contents of rawoutputs.mat to complicated 
@@ -128,4 +128,4 @@ for ii = 1:nSims
     cvs.basal(thisSim_web{:}) = cvsBasalBiomass;
 end
 
-save('out.mat','persistences','biomasses','cvs','speciesTypes');
+save('../raw/out.mat','persistences','biomasses','cvs','speciesTypes','abc');
