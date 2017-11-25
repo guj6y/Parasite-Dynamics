@@ -1,4 +1,4 @@
-function [TS,extcts,bs,rs] = integrateExperiment(simParams,params)
+function [TS,extcts,bs,rs] = integrateExperiment(simParams,params,S,nSims)
 
 %This automatically makes the parallel pool use every core possible. on ocelote, their
 %default is (for some reason?) 12.
@@ -60,17 +60,17 @@ parfor  (simNo = 1:nSims, nCores)
     free = ~para;
     
     %assimilation rates
-    y(free) = yFree;
-    y(para) = yPara;
+    y(free) = p.yFree;
+    y(para) = p.yPara;
     
     %scaling constant
-    ax(free) = axFree;
-    ax(para) = axPara;
+    ax(free) = p.axFree;
+    ax(para) = p.axPara;
     
     %bodymass
     M(free) = ZFree.^(patl(free)-1);
     M(para) = 10.^(kPara + kFree*(patl(para)-2));
-    M(basal) = r(basal);
+    M(basal) = p.r(basal);
     %metabolic rate
     x = ax.*M.^(-0.25);
     x(basal) = 0;
@@ -99,14 +99,14 @@ parfor  (simNo = 1:nSims, nCores)
     abundance = mean(TS(:,:,simNo),2)./M;
     bsClass10 = round(log10(M));
     x10 = min(bsClass10):max(bsClass10);
-    y10 = log10(sum(abundance.*(bsClass10==bsRange10)))';
-    r10 = corr(x10,y10);
-    b10 = r*std(y10)./std(x10);
+    y10 = log10(sum(abundance.*(bsClass10==x10)));
+    r10 = corr(x10',y10');
+    b10 = r10*std(y10)./std(x10);
 
     bsClass = round(log(M));
     x = min(bsClass):max(bsClass);
-    y = log(sum(abundance.*(bsClass==bsRange)))';
-    r = corr(x,y);
+    y = log(sum(abundance.*(bsClass==x)));
+    r = corr(x',y');
     b = r*std(y)./std(x);
     
     bs(simNo,:) = [b10,b];

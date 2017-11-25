@@ -57,8 +57,7 @@ if appending
     
     doneModels = sum(allModels(:,1)==nKFreesDone,2)&sum(allModels(:,2)==nKParasDone,2);
     modelsToRun = allModels(~doneModels,:);
-    nNewModels = length(modelsToRun);
-    
+    nNewModels = length(modelsToRun); 
     fParAll0 = [fParDone, fParNew];
     nFParAll = numel(fParAll0);
     nWeb = nWebsDone + nWebNew;
@@ -68,6 +67,16 @@ if appending
         + nWebNew*nAllModels*(nFParDone-1) ... All models and old parasite fractions run on the new webs.
         + nWebsDone*nNewModels*(nFParDone-1) ... New Models on Old Webs with Old Fractions.
         + nWebNew*(numel(nKFreesDone)); ... Old kFrees on new webs.
+
+        newWebData = cell(nWebNew,1);
+[newWebData{:}] = deal(struct('web',0 ...
+                    ,'LL',zeros(0,2) ...
+                    ,'B0',zeros(S,1) ...
+                    ,'gr',zeros(S,1) ...
+                    ,'patl',zeros(S,1) ...
+                    ,'parOrder',zeros(S,1) ...
+                    ));
+webData = [webData; newWebData];
 else %If we're not appending
     nWeb = 100;
     
@@ -83,8 +92,8 @@ else %If we're not appending
 
     nFacts = [nFact1,nFact2,nFact3,nFact4];
 
-    models = fullfact(nFacts);
-    nModels = length(models);
+    allModels = fullfact(nFacts);
+    nModels = length(allModels);
 
     fParAll0 = [0 0.025 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5];
     nfPar = numel(fParAll0);
@@ -92,12 +101,16 @@ else %If we're not appending
     nSims = nWeb*(nFact1) ... Run 1 simulation for each kFree @ 0% parasites.
           + nWeb*nModels*(nfPar-1); ... run each web for each model for all but one fraction of parasites.
     
+    nWebNew = 0;
     nWebsDone = 0;
     nKFreesDone = [];
+    kFreesDone = [];
     nFParDone = 0;
     nKParasDone = [];
-end
-save('../raw/metaSimData.mat','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
+    kParasDone = [];
+end 
+
+save('../raw/metaSimData.mat','S','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
 
 simParams = cell(nSims,1);
 [simParams{:}] = deal(struct('web',0 ...
@@ -115,15 +128,6 @@ simParams = cell(nSims,1);
     ,'patl',zeros(40,1)...
     ));
 
-newWebData = cell(nWebNew,1);
-[newWebData{:}] = deal(struct('web',0 ...
-                    ,'LL',zeros(0,2) ...
-                    ,'B0',zeros(S,1) ...
-                    ,'gr',zeros(S,1) ...
-                    ,'patl',zeros(S,1) ...
-                    ,'parOrder',zeros(S,1) ...
-                    ));
-webData = [webData; newWebData];
 %%% Parameters of the Niche Webs
 S = 40;
 C = .15;
@@ -164,7 +168,6 @@ for ii = 1:nWeb
                 basal(kk) = true;
             end
         end
-        
         B0 = .95*rand(S,1)+.05;
         gr = basal.*(randn(S,1)*.1+1);
         
@@ -287,6 +290,10 @@ params = struct(...
     ,'h',h...
     ,'eijBas',0.45 ...
     ,'eijCon',0.85 ...
+    ,'yFree',8 ...
+    ,'yPara',8 ...
+    ,'axFree',axFree ...
+    ,'axPara',axPara ...
     ... Link Level properties:
     ,'res',[]...
     ,'con',[]...
@@ -312,7 +319,7 @@ params = struct(...
     ,'options',odeset()...
     );
 
-[TS, extcts,bs,rs] = integrateExperiment(simParams,params);
+[TS, extcts,bs,rs] = integrateExperiment(simParams,params,S,nSims);
 
 if appending %load old outputs and add the new ones.
     oldSimParams = load('../raw/simParams.mat');

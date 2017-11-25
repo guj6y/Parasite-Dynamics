@@ -16,10 +16,10 @@
 #PBS -l select=1:ncpus=28:mem=168gb:pcmem=6gb
 
 ### Specify "wallclock time" required for this job, hhh:mm:ss
-#PBS -l walltime=12:00:00
+#PBS -l walltime=24:00:00
 ### Specify total cpu time required for this job, hhh:mm:ss
 ### total cputime = walltime * ncpus
-#PBS -l cput=336:00:00
+#PBS -l cput=672:00:00
 
 ### Load required modules/libraries if needed (openmpi example)
 ### Use "module avail" command to list all available modules
@@ -28,10 +28,11 @@
 
 DIRNAME=$(date +%F-%Hh%Mm%Ss);
 
-cd ..
+cd ~/Parasite-Dynamics
 
 echo "data/$DIRNAME/raw" >> .gitignore
 
+mkdir "data/$DIRNAME"
 mkdir "data/$DIRNAME/raw"
 mkdir "data/$DIRNAME/figures"
 mkdir "data/$DIRNAME/logs"
@@ -47,7 +48,7 @@ date
 matlab -nodisplay -nodesktop -nosplash < runExperiment.m  > ../logs/run.log
 date
 
-mv par-exp* ../logs
+mv ~/Parasite-Dynamcs/code/par-exp* ../logs
 cd ..
 rm -r code
 

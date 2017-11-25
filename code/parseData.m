@@ -64,12 +64,12 @@ for ii = 1:nSims
     webNo = simParams{ii}.web;
     fact1Level = simParams{ii}.kFree == kFrees;
     fact2Level = simParams{ii}.kPara == kParas;
-    fact3Level = simParams{ii}.fracFree;
-    fact4Level = simParams{ii}.fracPara;
-    fParLevel = simParams{ii}.fPar == fParALll0;
+    fact3Level = simParams{ii}.fracFree == fracFrees;
+    fact4Level = simParams{ii}.fracPara == fracParas;
+    fParLevel = simParams{ii}.fPar == fParAll0;
     
     thisSim_web = {webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level};
-    thisSim_S = {1:S,thisSim_Web};
+    thisSim_S = [1:S,thisSim_web];
 
     para = simParams{ii}.para;
     basal = simParams{ii}.gr>0;
@@ -79,11 +79,11 @@ for ii = 1:nSims
     speciesTypes.free(thisSim_S{:})  = free;
     speciesTypes.basal(thisSim_S{:}) = basal;
     
-    abc.common.slopes(thisSim_web{:})  = bs(simNo,1);
-    abc.natural.slopes(thisSim_web{:}) = bs(simNo,2);
+    abc.common.slopes(thisSim_web{:})  = bs(ii,1);
+    abc.natural.slopes(thisSim_web{:}) = bs(ii,2);
 
-    abc.common.rSquared(thisSim_web{:})  = rs(simNo,1);
-    abc.natural.rSquared(thisSim_web{:}) = rs(simNo,2);
+    abc.common.rSquared(thisSim_web{:})  = rs(ii,1);
+    abc.natural.rSquared(thisSim_web{:}) = rs(ii,2);
 
     
     %Total biomass is weird to me. Why? -glad you asked. It's because the scale of species biomasses
@@ -122,10 +122,10 @@ for ii = 1:nSims
     biomasses.free(thisSim_web{:})  = meanFreeBiomass;
     biomasses.basal(thisSim_web{:}) = meanBasalBiomass;
 
-    cvs.all(thisSim_web{:})   = cvsAllBiomass;
-    cvs.para(thisSim_web{:})  = cvsParaBiomass;
-    cvs.free(thisSim_web{:})  = cvsFreeBiomass;
-    cvs.basal(thisSim_web{:}) = cvsBasalBiomass;
+    cvs.all(thisSim_web{:})   = cvAllBiomass;
+    cvs.para(thisSim_web{:})  = cvParaBiomass;
+    cvs.free(thisSim_web{:})  = cvFreeBiomass;
+    cvs.basal(thisSim_web{:}) = cvBasalBiomass;
 end
 
 save('../raw/out.mat','persistences','biomasses','cvs','speciesTypes','abc');

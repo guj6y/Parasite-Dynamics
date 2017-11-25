@@ -1,0 +1,18 @@
+{Undefined function or variable 'fParALll0'.
+
+Error in parseData (line 69)
+    fParLevel = simParams{ii}.fPar == fParALll0;
+
+Error in run (line 96)
+evalin('caller', [script ';']);
+} 
+{Expected one output from a curly brace or dot indexing expression, but there
+were 38400 results.
+
+Error in makePlottingData (line 46)
+            selector{:} = deal(':');
+
+Error in run (line 96)
+evalin('caller', [script ';']);
+} 
+mv: cannot stat `/home/u26/guj6y/Parasite-Dynamcs/code/par-exp*': No such file or directory

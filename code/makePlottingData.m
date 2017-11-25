@@ -17,20 +17,19 @@ statisticUsed = {'per','bio','cv','abc-common','abc-natural'};
 %for the full split
 data = biomasses;
 
-iiHeader2Split = 'x,yOn,mOn,yOff,mOff\n';
-iiheaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4\n';
+iiHeaders2Split = 'x,yOn,mOn,yOff,mOff\n';
+iiHeaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4\n';
 allStats = {persistences,biomasses,cvs,abc.common,abc.natural};
 %Think about automating this?
 statCode = statisticUsed{1};
 stat = persistences;
 
 for statCode = 1:5
-    if statCode < 4 
-        stat = allStats{statCode};
-    elseif statCode == 4
+    if statCode == 4
         speciesCategories = {'slopes','rSquared'};
     end
     
+    stat = allStats{statCode};
     statID = statisticUsed{statCode};
     
     for spCat = speciesCategories
@@ -43,7 +42,7 @@ for statCode = 1:5
         for ii = 1:numberOfFactors %numberOfFactors will always be 4.
             factSize = nFacts(ii);
             selector = cell(size(stat.(spCat{:})));
-            selector{:} = deal(':');
+            [selector{:}] = deal(':');
             
             meansSplit    = zeros(nFPar,factSize);
             marginsSplit  = zeros(nFPar,factSize);
@@ -51,6 +50,9 @@ for statCode = 1:5
 
             jjOn = 2;
             jjOff = 1;
+            iiHeaderYs = 'x,';
+            iiHeaderMs = '';
+            formatAllSplit = '%.3f,';
             for jj = 1:factSize %originally was 2, but can handle more.
                 selector{ii+2} = jj;
               
@@ -74,12 +76,13 @@ for statCode = 1:5
                 tCrit2 = tinv(1-alpha/(2*m2),njj-1);
                 tCritN = tinv(1-alpha/(2*mNFact),njj-1);
                 
-                marginsSplit(:,jj) = tCritN*stdjj/sqrt(njj);
-                margins2Split(:,jj) = tCrit2*stdjj/sqrt(njj);
+                marginsSplit(:,jj) = tCritN.*stdjj./sqrt(njj);
+                margins2Split(:,jj) = tCrit2.*stdjj./sqrt(njj);
 
                 meansSplit(:,jj) = meanjj;
-                iiHeaderYs= strcat(iiHeaderYs,sprintf('y%u,',jj));
-                iiHeaderMs= strcat(iiHeaderMs,sprintf('m%u,',jj));
+                iiHeaderYs = strcat(iiHeaderYs,sprintf('y%u,',jj));
+                iiHeaderMs = strcat(iiHeaderMs,sprintf('m%u,',jj));
+                formatAllSplit = strcat(formatAllSplit,'%.9e,');
             end
             dataDiff = dataOn-dataOff;
             nDiff = sum(isfinite(dataDiff));
@@ -89,17 +92,19 @@ for statCode = 1:5
             mDiff = sum(isfinite(meanDiff));
             meanDiffs(:,ii) = meanDiff;
             tCritDiff = tinv(1-alpha/(2*mDiff),nDiff-1);
-            marginDiff = stdDiff/sqrt(nDiff)*tCritDiff;
+            marginDiff = stdDiff./sqrt(nDiff).*tCritDiff;
             
             
             marginDiffs(:,ii) = marginDiff;
             
-            headersii(end) = [];
+            iiHeaderMs(end:end+1) = '\n';
+            formatAllSplit(end:end+1) = '\n';
             split2FileName = sprintf('%s-2-subplot-%u',filenamePrefix,ii);
             fid2Split = fopen(split2FileName,'w');
-
-            fprintf(fid2Split,iiHeaders2Split);
-            fprintf(fid2Split,[fParAll0'...
+%Need to get a format string of %.9f, entries.
+            fprintf(fid2Split,'%s',iiHeaders2Split);
+            fprintf(fid2Split,'%.2f,%.9e,%.9e,%.9e,%.9e\n',...
+                              [fParAll0'...
                               ,meansSplit(:,jjOn)...
                               ,margins2Split(:,jjOn)...
                               ,meansSplit(:,jjOff)...
@@ -112,8 +117,9 @@ for statCode = 1:5
 
             splitNFileName = sprintf('%s-full-subplot-%u',filenamePrefix,ii);
             fidNSplit = fopen(splitNFileName,'w');
-            fprintf(fidNSplit,iiHeaderFullSPlit);
-            fprintf(fidNSplit,[fParAll0'...
+            fprintf(fidNSplit,'%s',iiHeaderFullSplit);
+            fprintf(fidNSplit,formatAllSplit...
+                              ,[fParAll0'...
                               ,meansSplit...
                               ,marginsSplit]'...
                    );
@@ -122,10 +128,11 @@ for statCode = 1:5
         end
         diffFilename = sprintf('%s-diffs',filenamePrefix);
         fidDiff = fopen(diffFilename,'w');
-        fprintf(fidDiff,iiHeaderDiffSplit);
-        fprintf(fidDiff,[fParAll0'...
-                        ,meanDiffs'...
-                        ,marginDiffs'...
+        diffFormat = strcat('%.3f,',repmat('%.9e,',1,7),'%.9e\n');
+        fprintf(fidDiff,'%s',iiHeaderDiffSplit);
+        fprintf(fidDiff,diffFormat,[fParAll0'...
+                        ,meanDiffs...
+                        ,marginDiffs...
                         ]'...
                 );
         fclose(fidDiff);
