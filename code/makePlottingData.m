@@ -17,8 +17,8 @@ statisticUsed = {'per','bio','cv','abc-common','abc-natural'};
 %for the full split
 data = biomasses;
 
-iiHeaders2Split = 'x,yOn,mOn,yOff,mOff\n';
-iiHeaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4\n';
+iiHeaders2Split = 'x,yOn,mOn,yOff,mOff';
+iiHeaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4';
 allStats = {persistences,biomasses,cvs,abc.common,abc.natural};
 %Think about automating this?
 statCode = statisticUsed{1};
@@ -82,13 +82,13 @@ for statCode = 1:5
                 meansSplit(:,jj) = meanjj;
                 iiHeaderYs = strcat(iiHeaderYs,sprintf('y%u,',jj));
                 iiHeaderMs = strcat(iiHeaderMs,sprintf('m%u,',jj));
-                formatAllSplit = strcat(formatAllSplit,'%.9e,');
+                formatAllSplit = strcat(formatAllSplit,'%.9e,%.9e,');
             end
             dataDiff = dataOn-dataOff;
             nDiff = sum(isfinite(dataDiff));
             
-            meanDiff = mean(dataDiff);
-            stdDiff = std(dataDiff);
+            meanDiff = mean(dataDiff,'omitnan');
+            stdDiff = std(dataDiff,'omitnan');
             mDiff = sum(isfinite(meanDiff));
             meanDiffs(:,ii) = meanDiff;
             tCritDiff = tinv(1-alpha/(2*mDiff),nDiff-1);
@@ -97,13 +97,13 @@ for statCode = 1:5
             
             marginDiffs(:,ii) = marginDiff;
             
-            iiHeaderMs(end:end+1) = '\n';
-            formatAllSplit(end:end+1) = '\n';
+            iiHeaderMs(end) = [];
+            formatAllSplit(end) = [];
             split2FileName = sprintf('%s-2-subplot-%u',filenamePrefix,ii);
             fid2Split = fopen(split2FileName,'w');
 %Need to get a format string of %.9f, entries.
             fprintf(fid2Split,'%s',iiHeaders2Split);
-            fprintf(fid2Split,'%.2f,%.9e,%.9e,%.9e,%.9e\n',...
+            fprintf(fid2Split,'\n%.2f,%.9e,%.9e,%.9e,%.9e',...
                               [fParAll0'...
                               ,meansSplit(:,jjOn)...
                               ,margins2Split(:,jjOn)...
@@ -113,12 +113,12 @@ for statCode = 1:5
                    );
             fclose(fid2Split);
             
-            iiHeaderFullSplit = strcat(iiHeaderYs,iiHeaderMs,'\n');
+            iiHeaderFullSplit = strcat(iiHeaderYs,iiHeaderMs);
 
             splitNFileName = sprintf('%s-full-subplot-%u',filenamePrefix,ii);
             fidNSplit = fopen(splitNFileName,'w');
             fprintf(fidNSplit,'%s',iiHeaderFullSplit);
-            fprintf(fidNSplit,formatAllSplit...
+            fprintf(fidNSplit,sprintf('\n%s',formatAllSplit)...
                               ,[fParAll0'...
                               ,meansSplit...
                               ,marginsSplit]'...
@@ -130,7 +130,8 @@ for statCode = 1:5
         fidDiff = fopen(diffFilename,'w');
         diffFormat = strcat('%.3f,',repmat('%.9e,',1,7),'%.9e\n');
         fprintf(fidDiff,'%s',iiHeaderDiffSplit);
-        fprintf(fidDiff,diffFormat,[fParAll0'...
+        fprintf(fidDiff,sprintf('\n%s',diffFormat),...
+                        [fParAll0'...
                         ,meanDiffs...
                         ,marginDiffs...
                         ]'...
