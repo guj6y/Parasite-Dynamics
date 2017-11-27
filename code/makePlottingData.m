@@ -128,7 +128,7 @@ for statCode = 1:5
         end
         diffFilename = sprintf('%s-diffs',filenamePrefix);
         fidDiff = fopen(diffFilename,'w');
-        diffFormat = strcat('%.3f,',repmat('%.9e,',1,7),'%.9e\n');
+        diffFormat = strcat('%.3f,',repmat('%.9e,',1,7),'%.9e');
         fprintf(fidDiff,'%s',iiHeaderDiffSplit);
         fprintf(fidDiff,sprintf('\n%s',diffFormat),...
                         [fParAll0'...
