@@ -41,7 +41,7 @@ for statCode = 1:5
         
         for ii = 1:numberOfFactors %numberOfFactors will always be 4.
             factSize = nFacts(ii);
-            selector = cell(size(stat.(spCat{:})));
+            selector = cell(numel(size(stat.(spCat{:}))));
             [selector{:}] = deal(':');
             
             meansSplit    = zeros(nFPar,factSize);
@@ -59,6 +59,7 @@ for statCode = 1:5
                 
                 datajj  = permute(stat.(spCat{:})(selector{:}),[1,3,4,5,6,2]);
                 datajj  = reshape(datajj,[],nFPar);
+                
                 if jj == jjOff
                     dataOff = datajj;
                 elseif jj == jjOn
