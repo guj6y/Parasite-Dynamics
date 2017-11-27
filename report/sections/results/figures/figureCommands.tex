@@ -50,32 +50,32 @@ plotoptsd/.style={color=linecolord,mark=\markFour}
                   error bars/.cd,
 		  y explicit, y dir=both,
 		]
-table[linecolora,x =x,y =yOn,y error =mOn,col sep = comma]{#1-values-subplot-#2};
+table[linecolora,x =x,y =yOn,y error =mOn,col sep = comma]{#1-subplot-#2};
 \addplot+[
 		  plotoptsb,
           error bars/.cd,
 		  y explicit, y dir=both,
 		]
-table[linecolorb,x =x,y =yOff,y error =mOff,col sep = comma]{#1-values-subplot-#2};
+table[linecolorb,x =x,y =yOff,y error =mOff,col sep = comma]{#1-subplot-#2};
 }
 
 \newcommand{\addGhostSplitPlotToFigure}[2]{
 \addplot+[
 		  draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}+\thisrow{mOn}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}+\thisrow{mOn}},col sep = comma]{#1-subplot-#2};
 \addplot+[
           draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}+\thisrow{mOff}},col sep = comma]{#1-values-subplot-#2}; 
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}+\thisrow{mOff}},col sep = comma]{#1-subplot-#2}; 
 \addplot+[
 		  draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}-\thisrow{mOn}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOn}-\thisrow{mOn}},col sep = comma]{#1-subplot-#2};
 \addplot+[
           draw = none,
 		]
-table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{mOff}},col sep = comma]{#1-values-subplot-#2};
+table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{mOff}},col sep = comma]{#1-subplot-#2};
 }
 
 
