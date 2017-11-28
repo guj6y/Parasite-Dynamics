@@ -17,7 +17,6 @@ statisticUsed = {'per','bio','cv','abc-common','abc-natural'};
 %for the full split
 data = biomasses;
 
-iiHeaders2Split = 'x,yOn,mOn,yOff,mOff';
 iiHeaderDiffSplit = 'x,y1,y2,y3,y4,m1,m2,m3,m4';
 allStats = {persistences,biomasses,cvs,abc.common,abc.natural};
 %Think about automating this?
@@ -49,13 +48,12 @@ for statCode = 1:5
 
             selector2 = cell(numel(size(stat.(spCat{:}))));
             [selector2{:}] = deal(':');
-            
             selector2{4} = [jjOff jjOn];
             
             meansSplit    = zeros(nFPar,factSize);
             means2Split    = zeros(nFPar,2);
             marginsSplit  = zeros(nFPar,factSize);
-            margins2Split = zeros(nFPar,factSize);
+            margins2Split = zeros(nFPar,2);
 
             iiHeaderYs = 'x,';
             iiHeaderMs = '';
@@ -66,6 +64,7 @@ for statCode = 1:5
                 
                 datajj  = permute(stat.(spCat{:})(selector{:}),[1,3,4,5,6,2]);
                 datajj  = reshape(datajj,[],nFPar);
+                
                 datajj2 = permute(stat.(spCat{:})(selector2{:}),[1,3,4,5,6,2]);
                 datajj2  = reshape(datajj2,[],nFPar);
 
@@ -89,6 +88,7 @@ for statCode = 1:5
                 %These are useful if we are doing an all for all bonferroni. 
                 m2 = 2*nObs;
                 mNFact = factSize*nObs;
+                
                 tCrit2 = tinv(1-alpha/(2*m2),njj-1);
                 tCritN = tinv(1-alpha/(2*mNFact),njj-1);
                 
@@ -101,6 +101,7 @@ for statCode = 1:5
                 iiHeaderYs = strcat(iiHeaderYs,sprintf('y%u,',jj));
                 iiHeaderMs = strcat(iiHeaderMs,sprintf('m%u,',jj));
                 formatAllSplit = strcat(formatAllSplit,'%.9e,%.9e,');
+                selector2{4} = [jjOff jjOn];
             end
             dataDiff = dataOn-dataOff;
             nDiff = sum(isfinite(dataDiff));
@@ -117,6 +118,8 @@ for statCode = 1:5
             
             iiHeaderMs(end) = [];
             formatAllSplit(end) = [];
+            
+            iiHeaders2Split = 'x,yOn,mOn,yOff,mOff';
             split2FileName = sprintf('%s-2-subplot-%u',filenamePrefix,ii);
             fid2Split = fopen(split2FileName,'w');
 %Need to get a format string of %.9f, entries.
