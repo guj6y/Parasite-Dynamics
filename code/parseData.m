@@ -59,6 +59,8 @@ speciesTypes = struct('para',nanSpeciesArray...
                      ,'basal',nanSpeciesArray...
                      );
 
+simNumbers = nanArray;
+
 for ii = 1:nSims
     
     webNo = simParams{ii}.web;
@@ -71,6 +73,7 @@ for ii = 1:nSims
     thisSim_web = {webNo,fParLevel,fact1Level,fact2Level,fact3Level,fact4Level};
     thisSim_S = [1:S,thisSim_web];
 
+    simNumbers(thisSim_web{:}) = ii; 
     para = simParams{ii}.para;
     basal = simParams{ii}.gr>0;
     free = ~(para|basal);
