@@ -100,14 +100,24 @@ parfor  (simNo = 1:nSims, nCores)
     bsClass10 = round(log10(M));
     x10 = min(bsClass10):max(bsClass10);
     y10 = log10(sum(abundance.*(bsClass10==x10)));
-    r10 = corr(x10',y10');
-    b10 = r10*std(y10)./std(x10);
+    
+    finiteY10 = isfinite(y10);
+    x10 = x10(finiteY10);
+    y10 = y10(finiteY10);
+    
+    r10 = corr(x10',y10','rows','complete');
+    b10 = r10*std(y10,'omitnan')./std(x10);
 
     bsClass = round(log(M));
     x = min(bsClass):max(bsClass);
     y = log(sum(abundance.*(bsClass==x)));
-    r = corr(x',y');
-    b = r*std(y)./std(x);
+    
+    finiteY = isfinite(y);
+    x = x(finiteY);
+    y = y(finiteY);
+    
+    r = corr(x',y','rows','complete');
+    b = r*std(y,'omitnan')./std(x);
     
     bs(simNo,:) = [b10,b];
     rs(simNo,:) = [r10^2,r^2];

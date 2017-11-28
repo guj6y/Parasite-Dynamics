@@ -1,6 +1,5 @@
 %It isn't at all clear what you load here. So:
-%out.mat contains extct and TS. 
-%  extct is a cell array with nSims cells. Each cell contains a 41xn array. (1,:) slices the event times (including start and end). (2:end,ii) slices the biomasses of all species at the ii-th extinction event.
+%out.mat contains extct and TS.  %  extct is a cell array with nSims cells. Each cell contains a 41xn array. (1,:) slices the event times (including start and end). (2:end,ii) slices the biomasses of all species at the ii-th extinction event.
 %  TS is a 3-d array of size 40x1000xnSims. This is the last 1000 time steps of the biomasses for all species. This should be useful for analyzing the equilibrium state (check for oscillations, fft,etc.)
 %
 %simParams
