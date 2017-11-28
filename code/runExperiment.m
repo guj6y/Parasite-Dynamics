@@ -3,7 +3,7 @@
 % also parses the data.
 
 %Setting up the arrays and structures.
-
+S=40;
 try 
     load '../raw/metaSimData.mat'
     load '../raw/simParams.mat'
