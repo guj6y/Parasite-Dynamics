@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  25 NOV 2017 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.2.14)  27 NOV 2017 11:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -611,7 +611,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.14}).
 
 ===== Image 'pdf/perAllDiff' is up-to-date. ======
 
-Overfull \hbox (47.2384pt too wide) in paragraph at lines 18--19
+Overfull \hbox (47.2374pt too wide) in paragraph at lines 18--19
 [][]
  []
 
@@ -633,7 +633,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
 ===== Image 'pdf/perParaDiff' is up-to-date. ======
 
-Overfull \hbox (47.2384pt too wide) in paragraph at lines 28--29
+Overfull \hbox (47.2374pt too wide) in paragraph at lines 28--29
 [][]
  []
 
@@ -644,7 +644,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
 ===== Image 'pdf/perParaSplit' is up-to-date. ======
 
-Overfull \hbox (114.45554pt too wide) in paragraph at lines 33--34
+Overfull \hbox (109.83025pt too wide) in paragraph at lines 33--34
 [][]
  []
 
@@ -675,49 +675,333 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
+===== Image 'pdf/cvAllDiff' is up-to-date. ======
+
+Overfull \hbox (84.75053pt too wide) in paragraph at lines 48--49
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+\openout3 = `pdf/cvAllSplit.md5'.
+
 ===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
-n-error -interaction=batchmode -jobname "pdf/cvAllDiff" "\def\tikzexternalrealj
-ob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white "p
-df/cvAllDiff.pdf" "pdf/cvAllDiff.png"; mv pdf/cvAllDiff.png png;}' ========
+n-error -interaction=batchmode -jobname "pdf/cvAllSplit" "\def\tikzexternalreal
+job{allFigures}\input{allFigures}" {; convert -density 300 -transparent white "
+pdf/cvAllSplit.pdf" "pdf/cvAllSplit.png"; mv pdf/cvAllSplit.png png;}' ========
+
 \openout3 = `allFigures.auxlock'.
 
 runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
- "pdf/cvAllDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; co
-nvert -density 300 -transparent white "pdf/cvAllDiff.pdf" "pdf/cvAllDiff.png"; 
-mv pdf/cvAllDiff.png png;})...executed.
+ "pdf/cvAllSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; c
+onvert -density 300 -transparent white "pdf/cvAllSplit.pdf" "pdf/cvAllSplit.png
+"; mv pdf/cvAllSplit.png png;})...executed.
 
 \openout3 = `allFigures.auxlock'.
 
 
-! Package tikz Error: Sorry, the system call 'pdflatex -shell-escape -halt-on-e
-rror -interaction=batchmode -jobname "pdf/cvAllDiff" "\def\tikzexternalrealjob{
-allFigures}\input{allFigures}" {; convert -density 300 -transparent white "pdf/
-cvAllDiff.pdf" "pdf/cvAllDiff.png"; mv pdf/cvAllDiff.png png;}' did NOT result 
-in a usable output file 'pdf/cvAllDiff' (expected one of .pdf:.jpg:.jpeg:.png:)
-. Please verify that you have enabled system calls. For pdflatex, this is 'pdfl
-atex -shell-escape'. Sometimes it is also named 'write 18' or something like th
-at. Or maybe the command simply failed? Error messages can be found in 'pdf/cvA
-llDiff.log'. If you continue now, I'll try to typeset the picture.
+Overfull \hbox (159.16354pt too wide) in paragraph at lines 53--54
+[][]
+ []
 
-See the tikz package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.48 ...n Difference in Total Biomass Covariation}
-                                                  
-? X
- 
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+\openout3 = `pdf/cvFreeDiff.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/cvFreeDiff" "\def\tikzexternalreal
+job{allFigures}\input{allFigures}" {; convert -density 300 -transparent white "
+pdf/cvFreeDiff.pdf" "pdf/cvFreeDiff.png"; mv pdf/cvFreeDiff.png png;}' ========
+
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/cvFreeDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; c
+onvert -density 300 -transparent white "pdf/cvFreeDiff.pdf" "pdf/cvFreeDiff.png
+"; mv pdf/cvFreeDiff.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (86.69481pt too wide) in paragraph at lines 58--59
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+
+ []
+
+\openout3 = `pdf/cvFreeSplit.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/cvFreeSplit" "\def\tikzexternalrea
+ljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white 
+"pdf/cvFreeSplit.pdf" "pdf/cvFreeSplit.png"; mv pdf/cvFreeSplit.png png;}' ====
+====
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/cvFreeSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; 
+convert -density 300 -transparent white "pdf/cvFreeSplit.pdf" "pdf/cvFreeSplit.
+png"; mv pdf/cvFreeSplit.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (160.9131pt too wide) in paragraph at lines 63--64
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+\openout3 = `pdf/cvParaDiff.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/cvParaDiff" "\def\tikzexternalreal
+job{allFigures}\input{allFigures}" {; convert -density 300 -transparent white "
+pdf/cvParaDiff.pdf" "pdf/cvParaDiff.png"; mv pdf/cvParaDiff.png png;}' ========
+
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/cvParaDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; c
+onvert -density 300 -transparent white "pdf/cvParaDiff.pdf" "pdf/cvParaDiff.png
+"; mv pdf/cvParaDiff.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (70.36179pt too wide) in paragraph at lines 68--69
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+\openout3 = `pdf/cvParaSplit.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/cvParaSplit" "\def\tikzexternalrea
+ljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white 
+"pdf/cvParaSplit.pdf" "pdf/cvParaSplit.png"; mv pdf/cvParaSplit.png png;}' ====
+====
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/cvParaSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; 
+convert -density 300 -transparent white "pdf/cvParaSplit.pdf" "pdf/cvParaSplit.
+png"; mv pdf/cvParaSplit.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (144.7748pt too wide) in paragraph at lines 73--74
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+\openout3 = `pdf/bioAllDiff.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioAllDiff" "\def\tikzexternalreal
+job{allFigures}\input{allFigures}" {; convert -density 300 -transparent white "
+pdf/bioAllDiff.pdf" "pdf/bioAllDiff.png"; mv pdf/bioAllDiff.png png;}' ========
+
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioAllDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; c
+onvert -density 300 -transparent white "pdf/bioAllDiff.pdf" "pdf/bioAllDiff.png
+"; mv pdf/bioAllDiff.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (32.84865pt too wide) in paragraph at lines 78--79
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
+\openout3 = `pdf/bioAllSplit.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioAllSplit" "\def\tikzexternalrea
+ljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white 
+"pdf/bioAllSplit.pdf" "pdf/bioAllSplit.png"; mv pdf/bioAllSplit.png png;}' ====
+====
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioAllSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; 
+convert -density 300 -transparent white "pdf/bioAllSplit.pdf" "pdf/bioAllSplit.
+png"; mv pdf/bioAllSplit.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (107.26065pt too wide) in paragraph at lines 83--84
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
+
+ []
+
+\openout3 = `pdf/bioFreeDiff.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioFreeDiff" "\def\tikzexternalrea
+ljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white 
+"pdf/bioFreeDiff.pdf" "pdf/bioFreeDiff.png"; mv pdf/bioFreeDiff.png png;}' ====
+====
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioFreeDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; 
+convert -density 300 -transparent white "pdf/bioFreeDiff.pdf" "pdf/bioFreeDiff.
+png"; mv pdf/bioFreeDiff.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (34.7929pt too wide) in paragraph at lines 88--89
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+\openout3 = `pdf/bioFreeSplit.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioFreeSplit" "\def\tikzexternalre
+aljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white
+ "pdf/bioFreeSplit.pdf" "pdf/bioFreeSplit.png"; mv pdf/bioFreeSplit.png png;}' 
+========
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioFreeSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {;
+ convert -density 300 -transparent white "pdf/bioFreeSplit.pdf" "pdf/bioFreeSpl
+it.png"; mv pdf/bioFreeSplit.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (108.9108pt too wide) in paragraph at lines 93--94
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+ []
+
+\openout3 = `pdf/bioParaDiff.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioParaDiff" "\def\tikzexternalrea
+ljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white 
+"pdf/bioParaDiff.pdf" "pdf/bioParaDiff.png"; mv pdf/bioParaDiff.png png;}' ====
+====
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioParaDiff" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {; 
+convert -density 300 -transparent white "pdf/bioParaDiff.pdf" "pdf/bioParaDiff.
+png"; mv pdf/bioParaDiff.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (40.04253pt too wide) in paragraph at lines 98--99
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+\openout3 = `pdf/bioParaSplit.md5'.
+
+===== 'mode=convert with system call': Invoking 'pdflatex -shell-escape -halt-o
+n-error -interaction=batchmode -jobname "pdf/bioParaSplit" "\def\tikzexternalre
+aljob{allFigures}\input{allFigures}" {; convert -density 300 -transparent white
+ "pdf/bioParaSplit.pdf" "pdf/bioParaSplit.png"; mv pdf/bioParaSplit.png png;}' 
+========
+\openout3 = `allFigures.auxlock'.
+
+runsystem(pdflatex -shell-escape -halt-on-error -interaction=batchmode -jobname
+ "pdf/bioParaSplit" "\def\tikzexternalrealjob{allFigures}\input{allFigures}" {;
+ convert -density 300 -transparent white "pdf/bioParaSplit.pdf" "pdf/bioParaSpl
+it.png"; mv pdf/bioParaSplit.png png;})...executed.
+
+\openout3 = `allFigures.auxlock'.
+
+
+Overfull \hbox (107.16028pt too wide) in paragraph at lines 103--104
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+[1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pdf
+/perAllDiff.pdf>] [2 <./pdf/perAllSplit.pdf>] [3 <./pdf/perParaDiff.pdf>]
+[4 <./pdf/perParaSplit.pdf>] [5 <./pdf/perFreeDiff.pdf>] [6 <./pdf/perFreeSplit
+.pdf>] [7 <./pdf/cvAllDiff.pdf>] [8 <./pdf/cvAllSplit.pdf>] [9 <./pdf/cvFreeDif
+f.pdf>] [10 <./pdf/cvFreeSplit.pdf>] [11 <./pdf/cvParaDiff.pdf>] [12 <./pdf/cvP
+araSplit.pdf>] [13 <./pdf/bioAllDiff.pdf>] [14 <./pdf/bioAllSplit.pdf>]
+[15 <./pdf/bioFreeDiff.pdf>] [16 <./pdf/bioFreeSplit.pdf>] [17 <./pdf/bioParaDi
+ff.pdf>] [18 <./pdf/bioParaSplit.pdf>] (./allFigures.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 23230 strings out of 494141
- 618215 string characters out of 6155521
- 763352 words of memory out of 5000000
- 26221 multiletter control sequences out of 15000+600000
+ 23312 strings out of 494141
+ 618967 string characters out of 6155521
+ 765352 words of memory out of 5000000
+ 26293 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  420 hyphenation exceptions out of 8191
- 70i,3n,120p,706b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-No pages of output.
+ 70i,5n,120p,706b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/loca
+l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on allFigures.pdf (18 pages, 223392 bytes).
 PDF statistics:
- 9 PDF objects out of 1000 (max. 8388607)
+ 418 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 103 words of extra memory for PDF output out of 10000 (max. 10000000)
 
