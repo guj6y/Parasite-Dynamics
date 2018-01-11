@@ -1,5 +1,51 @@
-\section{Persistence of Final States}
-\subsection{All Species}
+\section{Results}
+
+\subsection{Disruption of Food Webs}
+
+Averaging across all 100 webs, we observed a decrease in overall persistence with increasing fractions of consumers as parasites (figure \ref{fig:perAllSplit}). We also observed an overall decrease in average biomass with increasing fractions of parasitism (figure \ref{fig:totalBioSplit}). 
+%TODO: Next sentence needs to be verified by looking at biomass per species; maybe it just affects the persistence.
+Thus, parasites negatively impacted both the number of consumer species and the total biomass of those species. 
+%%
+Basal species almost never went extinct (never in webs with free-liver consumer-resource body size ratio of 10, and in fewer than 5\% of simulations with that ratio at 100) and on average maintained a constant level of biomass across different levels of parasitism.
+%TODO: Next sentence needs to be verified by checking the biomasses at extinction events.
+%TODO: Is it top-down or bottom-up? Or maybe middle out?
+%TODO: Can look at persistence of herbivores (and other species that eat plants) - they likely determinethe entire final structure.
+This suggests that the final, stable (in terms of species extinction) web configurations for all models require a fixed quantity of basal biomass and could imply bottom-up control of food webs.
+\footnote{This needs to be worked out a bit better and probably needs to be shown with flow plots.}
+%%
+
+Somewhat surprisingly, inflicting concomittant losses on the parasites had little impact on the average parasitic persistence (figures \ref{fig:perParaSplit-b}, \ref{fig:perParaDiff}) or average parasitic biomass (figures \ref{fig:totalBioSplit-c}, \ref{fig:totalBioSplit-d}). This is likely because parasites of a particular host are able to exert much higher pressure on that host than other free-living predators of that host due to the parasites' much higher metabolic rates. Concomittant losses for a parasite are directly tied to the ability of free-living consumers to consume the parasite's hosts. A parasite will always be able to extract more biomass from its host than the consumers of its host.
+\footnote{Concomittant predation may slow down extinction due to parasitism but maybe won't impact the actual outcome of hosts. Could look into extinction times, but I also think that the identity of species that go extinct might be changing.}
+
+In contrast to the effects of concomittant losses, the addition of a host-refuge (that is, protecting parasites from predation when they are within hosts) is very disruptive to persistence (figure \ref{fig:perAllSplit-a}). Host refuge has little effect on food web biomass (figures \ref{fig:totalBioSplit-a} and \ref{fig:totalBioSplit-b}), even at high levels of parasitism. 
+%%TODO: How would I prove such a thing?
+This could suggest an underlying biomass distribution and web configuration determined solely by body sizes.  
+%%
+
+Another striking pattern is the importance of free-living body size ratios. Though the webs with a predator-prey body size ratio of 10 had higher persistence on average (figure \ref{fig:perAllSplit-c}, they had much lower biomass (figures \ref{fig:totalBioSplit-e} and \ref{fig:totalBioSplit-f}). 
+
+%%The following are paragraphs dedicated to each figure. Nonsense. Fold these into the figure captions, doy.
+
+
+Figure \ref{fig:perAllDiff} shows the main effect of changing each factor simulations. Roughly speaking, this is the distance between the two curves in each panel of figure \ref{fig:perAllSplit}. This figure emphasizes the effect that each factor has on overall persistence; we see clearly the impact that each factor has on overall persistence.
+
+Figure \ref{fig:perParaSplit} first of all shows the striking difference in amount of parasites that are able to persist in these simulatinos. The mean persistence is never above 25\%. We see fairly significant differences across a wide range of parasitism levels in all factors except for concomittant losses. There is a small, bu consistent, decresase in persistence across all levels of parasitism when adding concomittant losses. This is in stark contrast to protecting parasites from predation within their hosts, where we see that adding the refuge cuts the persistence in half at the highest level of parasitism. At low levels of parasitism, we see an even larger difference between the two predator-prey body size ratios, with parasites more than twice as persistent in webs with a predator-prey body size ratio of 10 than 100. The parasite-host body size ratio shows a significant and consistent difference between the two ratios, with  the larger parasites having about 5\% higher persistence across all parasitism levels.
+
+
+Figure \ref{fig:perParaDiff} shows the main effect of each factor on parasite persistence. While of roughly the same magniutde as the effects in figure \ref{fig:perAllDiff}, these represent much larger relative changes in persistence. This figure also shows significant effects for concomittant predation because it better controls for the other factors (it also has a less severe Bonferroni Correction).
+
+
+\subsection{Free Living Species}
+Something weird happened at 0\% parasitism; Working on fixing that one, the rest are fine though..
+
+I think the key take-away is that free livers are also going extinct at higher rates; the effect isn't too severe, though. Figure \ref{fig:perFreeSplit-a} shows that parasites are slightly more disruptive of the free livers with a refuge than without. Figure \ref{fig:perFreeSplit-c} shows that larger free livers are more robust to parasites. This might not be surprising since we should expect to have a smaller persistent set of species anyway - so we are more likely to convert a species to parasite that would have gone extinct anyway.
+
+We see in this figure the increasing impact that refuge has as parasitism levels increasing, and the decreasing influence of different predator-prey body size ratios as parasitism increases.
+
+\section{Coefficients of Variation}
+These were all pretty small. No average was bove 0.1; that could correspond to some fraction of webs with fairly high coefficients of variation; may be interesting to understand if that was consistent across different types of simulations; these webs will be predisposed to oscillations. May be interesting to also see if they disappear after certain species are switched to parasites.
+
+\section{Fraction of Biomass}
 
 \begin{figure}[h!]
     \begin{minipage}{.45\textwidth}
@@ -20,17 +66,13 @@
 
     \caption{This figure shows the persistence at each level of each factor, averaged over each other factor ($n=800$). Each dot represents the average persistence over all webs and all other factors. Error bars represent Bonferroni corrected 95\% confidence intervals ($m=24$). \label{fig:perAllSplit}}
 \end{figure}
+
 Figure \ref{fig:perAllSplit} shows the average persistence under each of the different treatments. Each dot represents the average over all simulations with the corresponding factor. Surprisingly, concomittant losses had very little impact on overall persistence in food webs. On the other hand, protecting parasitic life stages within hosts from predation had a large effect on persistence at higher levels of parasitism. Changing the parasite-host body size ratio had little affect on total persistence. Changing the predator-prey body size ratio had a significant effect at low levels of parasitism; this agrees with results from the supplementary materials of \cite{Otto2007}.
-\newpage
+
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{figures/png/perAllDiff.png}
     \caption{This figure shows the main effect of each factor on overall persistence. Dots represent the average change in persistence over all webs after making the specified change ($n=800$), error bars represent Bonferroni-corrected 95\% confidence intervals ($m=12$).\label{fig:perAllDiff}}
 \end{figure}
-Figure \ref{fig:perAllDiff} shows the main effect of changing each factor simulations. Roughly speaking, this is the distance between the two curves in each panel of figure \ref{fig:perAllSplit}. This figure emphasizes the effect that each factor has on overall persistence; we see clearly the impact that each factor has on overall persistence.
-
-\newpage
-
-\subsection{Parasitic Species}
 
 \begin{figure}[h!]
     \begin{minipage}{.45\textwidth}
@@ -52,20 +94,16 @@ Figure \ref{fig:perAllDiff} shows the main effect of changing each factor simula
     \caption{This figure shows the persistence of parasites at each level of each factor, averaged over each other factor ($n=800$). Each dot represents the average persistence over all webs and all other factors. Error bars represent Bonferroni corrected 95\% confidence intervals ($m=22$). \label{fig:perParaSplit}}
 \end{figure}
 
-Figure \ref{fig:perParaSplit} first of all shows the striking difference in amount of parasites that are able to persist in these simulatinos. The mean persistence is never above 25\%. We see fairly significant differences across a wide range of parasitism levels in all factors except for concomittant losses. There is a small, bu consistent, decresase in persistence across all levels of parasitism when adding concomittant losses. This is in stark contrast to protecting parasites from predation within their hosts, where we see that adding the refuge cuts the persistence in half at the highest level of parasitism. At low levels of parasitism, we see an even larger difference between the two predator-prey body size ratios, with parasites more than twice as persistent in webs with a predator-prey body size ratio of 10 than 100. The parasite-host body size ratio shows a significant and consistent difference between the two ratios, with  the larger parasites having about 5\% higher persistence across all parasitism levels.
-
-\newpage
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{figures/png/perParaDiff.png}
     \caption{This figure shows the main effect of each factor on the persistence of parasites. Dots represent the average change in persistence over all webs after making the specified change ($n=800$), error bars represent Bonferroni-corrected 95\% confidence intervals ($m=11$).\label{fig:perParaDiff}}
 \end{figure}
 
-Figure \ref{fig:perParaDiff} shows the main effect of each factor on parasite persistence. While of roughly the same magniutde as the effects in figure \ref{fig:perAllDiff}, these represent much larger relative changes in persistence. This figure also shows significant effects for concomittant predation because it better controls for the other factors (it also has a less severe Bonferroni Correction).
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{figures/png/perFreeDiff.png}
+    \caption{This figure shows the main effect of each factor on the persistence of free livers. Dots represent the average change in persistence over all webs after making the specified change ($n=800$), error bars represent Bonferroni-corrected 95\% confidence intervals ($m=12$).\label{fig:perFreeDiff}}
+\end{figure}
 
-
-\newpage
-\subsection{Free Living Species}
-Something weird happened at 0\% parasitism; Working on fixing that one, the rest are fine though..
 \begin{figure}[h!]
     \begin{minipage}{.45\textwidth}
         \phantomsubcaption{\label{fig:perFreeSplit-a}}
@@ -79,72 +117,83 @@ Something weird happened at 0\% parasitism; Working on fixing that one, the rest
     \begin{minipage}{.45\textwidth}
         \phantomsubcaption{\label{fig:perFreeSplit-c}}
     \end{minipage}
-    \begin{minipage}{.45\textwidth}
+    \begin{minipage}{.45\textwidth
+         }
         \phantomsubcaption{\label{fig:perFreeSplit-d}}
     \end{minipage}
 
     \caption{This figure shows the persistence of free livers at each level of each factor, averaged over each other factor ($n=800$). Each dot represents the average persistence over all webs and all other factors. Error bars represent Bonferroni corrected 95\% confidence intervals ($m=24$). \label{fig:perFreeSplit}}
 \end{figure}
 
-I think the key take-away is that free livers are also going extinct at higher rates; the effect isn't too severe, though. Figure \ref{fig:perFreeSplit-a} shows that parasites are slightly more disruptive of the free livers with a refuge than without. Figure \ref{fig:perFreeSplit-c} shows that larger free livers are more robust to parasites. This might not be surprising since we should expect to have a smaller persistent set of species anyway - so we are more likely to convert a species to parasite that would have gone extinct anyway.
 
-\newpage
-
-\begin{figure}[h!]
-    \includegraphics[width=\textwidth]{figures/png/perFreeDiff.png}
-    \caption{This figure shows the main effect of each factor on the persistence of free livers. Dots represent the average change in persistence over all webs after making the specified change ($n=800$), error bars represent Bonferroni-corrected 95\% confidence intervals ($m=12$).\label{fig:perFreeDiff}}
-\end{figure}
-
-We see in this figure the increasing impact that refuge has as parasitism levels increasing, and the decreasing influence of different predator-prey body size ratios as parasitism increases.
-
-\section{Coefficients of Variation}
-These weren't calculated right. I am updating the code.
-\subsection{All Species}
-
-\subsection{Parasitic Species}
-
-\subsection{Free Living Species}
-
-\section{Fraction Parsitic Biomass}
-
+%TODO: add lines showing the species richness for each type of critter.
 \begin{figure}[h!]
     \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:fracParaBioSplit-a}}
+        \phantomsubcaption{\label{fig:fracBioSplit-a}}
     \end{minipage}
     \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:fracParaBioSplit-b}}
+        \phantomsubcaption{\label{fig:fracBioSplit-b}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:fracBioSplit-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:fracBioSplit-d}}
     \end{minipage}
    
-    \includegraphics[width=\textwidth]{figures/png/fracParaBioSplit.png}
+    \includegraphics[width=\textwidth]{figures/png/fracBioSplit.png}
 
     \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:fracParaBioSplit-c}}
+        \phantomsubcaption{\label{fig:fracBioSplit-e}}
     \end{minipage}
     \begin{minipage}{.45\textwidth}
-        \phantomsubcaption{\label{fig:fracParaBioSplit-d}}
+        \phantomsubcaption{\label{fig:fracBioSplit-f}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:fracBioSplit-g}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:fracBioSplit-h}}
     \end{minipage}
 
-    \caption{This figure shows the average fraction of parasitic biomass at each level of each factor, averaged over each other factor ($n=800$). Each dot represents the average persistence over all webs and all other factors. Error bars represent Bonferroni corrected 95\% confidence intervals ($m=24$). \label{fig:fracParaBioSplit}}
+    \caption{This figure shows the average relative distribution of biomass for each level of each factor.\label{fig:fracBioSplit}}
 \end{figure}
-
-This figure is interesting since it shows that biomass fraction of parasites is roughly proportional to their overall species abundance within the web. We see lower parasite biomass fractions when parasites have a refuge within their host, when predators are 100 times bigger than their prey, and when parasites are $10^{-4}$ the size of their prey.
 
 \newpage
+
 \begin{figure}[h!]
-    \includegraphics[width=\textwidth]{figures/png/fracParaBioDifff.png}
-    \caption{This figure shows the main effect of each factor on the average fraction of parasitic biomass. Dots represent the average change in persistence over all webs after making the specified change ($n=800$), error bars represent Bonferroni-corrected 95\% confidence intervals ($m=12$).\label{fig:fracParaBioDiff}}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-a}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-b}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-c}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-d}}
+    \end{minipage}
+   
+    \includegraphics[width=\textwidth]{figures/png/bioTotalSplit.png}
+
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-e}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-f}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-g}}
+    \end{minipage}
+    \begin{minipage}{.45\textwidth}
+        \phantomsubcaption{\label{fig:totalBioSplit-h}}
+    \end{minipage}
+
+    \caption{This figure shows the average distribution of biomass for each level of each factor.\label{fig:totalBioSplit}}
 \end{figure}
 
-\section{Total Biomass}
-
-\section{Species Abundance Curves}
-
- 
-\subsection{Slopes}
-
-\subsection{$R^2$ Values}
-
-
+\newpage
 
 \bibliography{Bib_green}
 \bibliographystyle{apalike}
