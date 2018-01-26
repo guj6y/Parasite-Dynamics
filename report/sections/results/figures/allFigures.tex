@@ -3,7 +3,7 @@
 \usepackage{subcaption,tikz,pgfplots,pgfplotstable,filecontents}
 
 \pgfplotsset{compat=newest,table/search path={../../../../data/figures}}
-\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{groupplots,fillbetween}
 
 \input{figureCommands.tex}
 \input{pngExport.tex}
@@ -17,7 +17,6 @@
 \begin{figure}
     \makeDiffFigure{per-all}{Mean Difference in Persistence}
 \end{figure}
-
 \tikzsetnextfilename{perAllSplit}
 \begin{figure}
     \makeSplitFigure{per-all-2}{Mean Persistence of All Species}
@@ -27,7 +26,6 @@
 \begin{figure}
     \makeDiffFigure{per-para}{Mean Difference in Parasite Persistence}
 \end{figure}
-
 \tikzsetnextfilename{perParaSplit}
 \begin{figure}
     \makeSplitFigure{per-para-2}{Mean Persistence of Parasites}
@@ -102,24 +100,162 @@
 \begin{figure}
     \makeSplitFigure{bio-para-2}{Mean Parasite Biomass}
 \end{figure}
-%\tikzsetnextfilename{fracParaBioSplit}
-%\begin{figure}
-%   \makeSplitFigure{fracParaBio}{Mean Fraction of Parasitic Biomass}
-%\end{figure}
 
-%\tikzsetnextfilename{fracParaBioDifff}
-%\begin{figure}
-%    \makeDiffFigure{fracParaBio}{Mean Difference in Fraction of Parasitic Biomass}
-%\end{figure}
 
-%\tikzsetnextfilename{totalBioDiff}
-%\begin{figure}
-%    \makeDiffFigure{totalBio}{Mean Difference in Total Biomass}
-%\end{figure}
+\tikzsetnextfilename{abcCommonSlopes}
+\begin{figure}
+    \makeSplitFigure{abc-common-slopes-2}{Slope of Species abundance Curves ($log$)}
+\end{figure}
 
-%\tikzsetnextfilename{totalBioSplit}
-%\begin{figure}
-%    \makeSplitFigure{totalBio}{Mean Total Biomass}
-%\end{figure}
+\tikzsetnextfilename{abcNaturalSlopes}
+\begin{figure}
+    \makeSplitFigure{abc-natural-slopes-2}{Slope of Species abundance Curves ($ln$)}
+\end{figure}
 
+\tikzsetnextfilename{abcCommonRSquared}
+\begin{figure}
+    \makeSplitFigure{abc-common-rSquared-2}{$R^2$ of Species abundance Curves ($log$)}
+\end{figure}
+
+\tikzsetnextfilename{abcNaturalRSquared}
+\begin{figure}
+    \makeSplitFigure{abc-natural-rSquared-2}{$R^2$ of Species abundance Curves ($ln$)}
+\end{figure}
+
+\tikzsetnextfilename{fracBioSplit}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 4,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Fraction of Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor =center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt, },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0, xmax=0.5,
+                        ymin = 0,ymax = 1,
+                        y=3cm,
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \makeFracBioPlot{3}{Off}{0}
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \makeFracBioPlot{3}{On}{0.030}
+            \nextgroupplot[legend style={name = {leg2a}}]
+            \makeFracBioPlot{4}{Off}{0}
+            \nextgroupplot[legend style={name = {leg2b}}]
+            \makeFracBioPlot{4}{On}{0.03}
+            \nextgroupplot[legend style={name = {leg3a}}]
+            \makeFracBioPlot{1}{Off}{0}
+            \nextgroupplot[legend style={name = {leg3b}}]
+            \makeFracBioPlot{1}{On}{0}
+            \nextgroupplot[legend style={name = {leg4a}}]
+            \makeFracBioPlot{2}{Off}{0}
+            \nextgroupplot[legend style={name = {leg4b}}]
+            \makeFracBioPlot{2}{On}{0.03}
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{Without Refuge\label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{With Refuge\label{fig:frac-bio-b}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg2a.north) {\subcaption[]{Without Concomittant\label{fig:frac-bio-c}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg2b.north) {\subcaption[]{With Concomittant\label{fig:frac-bio-d}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg3a.north) {\subcaption[]{$Z_f = 10$\label{fig:frac-bio-e}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg3b.north) {\subcaption[]{$Z_f = 100$\label{fig:frac-bio-f}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg4a.north) {\subcaption[]{$Z_p = 10^{-3}$\label{fig:frac-bio-g}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg4b.north) {\subcaption[]{$Z_p = 10^{-4}$\label{fig:frac-bio-h}}};
+    \end{tikzpicture}
+\end{figure}
+
+\tikzsetnextfilename{bioTotalSplit}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 4,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       %yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0, xmax=0.5,
+                        ymin = 0,%ymax = 1,
+                        %y=3cm,
+                        y=.15cm
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \makeBioPlot{3}{Off}{0}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \makePhantomBioPlot
+            \makeBioPlot{3}{On}{0.030}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg2a}}]
+            \makePhantomBioPlot
+            \makeBioPlot{4}{Off}{0}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg2b}}]
+            \makePhantomBioPlot
+            \makeBioPlot{4}{On}{0.03}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg3a}}]
+            \makePhantomBioPlot
+            \makeBioPlot{1}{Off}{0}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg3b}}]
+            \makePhantomBioPlot
+            \makeBioPlot{1}{On}{0}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg4a}}]
+            \makePhantomBioPlot
+            \makeBioPlot{2}{Off}{0}
+            \makePhantomBioPlot
+            \nextgroupplot[legend style={name = {leg4b}}]
+            \makePhantomBioPlot
+            \makeBioPlot{2}{On}{0.03}
+            \makePhantomBioPlot
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{Without Refuge\label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{With Refuge\label{fig:frac-bio-b}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg2a.north) {\subcaption[]{Without Concomittant\label{fig:frac-bio-c}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg2b.north) {\subcaption[]{With Concomittant\label{fig:frac-bio-d}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg3a.north) {\subcaption[]{$Z_f = 10$\label{fig:frac-bio-e}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg3b.north) {\subcaption[]{$Z_f = 100$\label{fig:frac-bio-f}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg4a.north) {\subcaption[]{$Z_p = 10^{-3}$\label{fig:frac-bio-g}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg4b.north) {\subcaption[]{$Z_p = 10^{-4}$\label{fig:frac-bio-h}}};
+    \end{tikzpicture}
+\end{figure}
 \end{document}
