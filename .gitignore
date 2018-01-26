@@ -9,6 +9,8 @@
 *.fdb*
 *.nfs*
 *.jpg
+*.swp
+*.texfig
 data/2017-11-22-10h42m11s/raw
 data/2017-11-22-10h59m21s/raw
 data/2017-11-22-11h07m33s/raw
