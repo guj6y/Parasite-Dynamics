@@ -1,5 +1,8 @@
 \usetikzlibrary{plotmarks}
-\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{groupplots,fillbetween}
+\pgfplotstableset{
+    col sep=comma
+}
 
 \colorlet{linecolora}{blue}
 \colorlet{linecolorb}{red}
@@ -200,4 +203,101 @@ table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{mOff}},col 
         \end{axis}
             \node [text width =.5\linewidth,align=center,anchor=south] at (boo.north) {Main Effect of Each Factor};
     \end{tikzpicture}
+}
+
+\newcommand{\makeFracBioPlot}[3]{
+    \addlegendimage{area legend,fill=green,fill opacity = 0.5};
+    \addlegendentry{Basal};
+    \addlegendimage{area legend,fill=blue,fill opacity = 0.5};
+    \addlegendentry{Free};
+    \addlegendimage{area legend,fill=red,fill opacity = 0.5};
+    \addlegendentry{Parasite};
+    \pgfplotstableread{bio-all-2-subplot-#1}\total
+    \pgfplotstableread{bio-basal-2-subplot-#1}\basal
+    \pgfplotstableread{bio-free-2-subplot-#1}\free
+    \pgfplotstableread{bio-para-2-subplot-#1}\para
+    \pgfplotstablecreatecol[copy column from table={\free}{y#2}]{bioFree}{\total}
+    \pgfplotstablecreatecol[copy column from table={\basal}{y#2}]{bioBasal}{\total}
+    \pgfplotstablecreatecol[copy column from table={\para}{y#2}]{bioPara}{\total}
+    \pgfplotstablecreatecol[expr={\thisrow{bioPara}/\thisrow{y#2}}]{fracPara}{\total}
+    \pgfplotstablecreatecol[expr={\thisrow{bioBasal}/\thisrow{y#2}}]{fracBasal}{\total}
+    \pgfplotstablecreatecol[expr={(\thisrow{bioBasal}+\thisrow{bioFree})/\thisrow{y#2}}]{fracFreeBasal}{\total}
+    \path[name path = bottom] (axis cs:#3,0) -- (axis cs:0.5,0);
+    \path[name path = top] (axis cs:#3,1) -- (axis cs: 0.5,1);
+    \addplot[name path = basal,thick,red,draw = none] table [x=x, y =fracBasal]{\total};
+    \addplot[name path = para,thick,blue, draw = none] table [x=x, y expr =\thisrow{fracBasal}+\thisrow{fracPara}]{\total};
+%    \addplot[name path = free,thick,red] table [x=x, y expr =1-\thisrow{fracBasal} - \thisrow{fracPara}]{\total};
+    \addplot[fill=green,fill opacity = 0.5, draw = none] fill between [of = basal and bottom];
+    \addplot[fill=blue,fill opacity = 0.5, draw = none] fill between [of = top and para];
+    \addplot[fill=red,fill opacity = 0.5, draw = none] fill between [of = para and basal];
+}
+
+\newcommand{\makeBioPlot}[3]{
+    \addlegendimage{area legend,fill=green,fill opacity = 0.5};
+    \addlegendentry{Basal};
+    \addlegendimage{area legend,fill=blue,fill opacity = 0.5};
+    \addlegendentry{Free};
+    \addlegendimage{area legend,fill=red,fill opacity = 0.5};
+    \addlegendentry{Parasite};
+    \pgfplotstableread{bio-all-2-subplot-#1}\all
+    \pgfplotstableread{bio-basal-2-subplot-#1}\basal
+    \pgfplotstableread{bio-free-2-subplot-#1}\free
+    \pgfplotstableread{bio-para-2-subplot-#1}\para
+    \pgfplotstablecreatecol[copy column from table={\free}{y#2}]{bioFree}{\all}
+    \pgfplotstablecreatecol[copy column from table={\basal}{y#2}]{bioBasal}{\all}
+    \pgfplotstablecreatecol[copy column from table={\para}{y#2}]{bioPara}{\all}
+    \path[name path = bottom] (axis cs:#3,0) -- (axis cs:0.5,0);
+    \addplot[name path = basal,draw = none] table [x=x, y =bioBasal]{\all};
+    \addplot[name path = para, draw = none] table [x=x, y expr =\thisrow{bioBasal}+\thisrow{bioFree}]{\all};
+    \addplot[name path = free, draw = none] table [x=x, y expr =\thisrow{bioBasal}+\thisrow{bioFree}+\thisrow{bioPara}]{\all};
+%    \addplot[name path = total,thick,black] table [x=x, y expr =\thisrow{y#2}]{\all};
+    \addplot[fill=green,fill opacity = 0.5, draw = none] fill between [of = basal and bottom];
+    \addplot[fill=blue,fill opacity = 0.5, draw = none] fill between [of = basal and para];
+    \addplot[fill=red,fill opacity = 0.5, draw = none] fill between [of = para and free];
+}
+\newcommand{\makePhantomBioPlot}{
+    \pgfplotstableread{bio-all-2-subplot-1}\totala
+    \addplot+[
+            forget plot,
+            draw = none,
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOn}]{\totala};
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOff}]{\totala};
+    \pgfplotstableread{bio-all-2-subplot-2}\totalb
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOn}]{\totalb};
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOff}]{\totalb};
+    \pgfplotstableread{bio-all-2-subplot-3}\totalc
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOn}]{\totalc};
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOff}]{\totalc};
+    \pgfplotstableread{bio-all-2-subplot-4}\totald
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOn}]{\totald};
+    \addplot+[
+            forget plot,
+            draw = none
+            ] 
+    table [draw = none, mark = none,x=x, y expr = \thisrow{yOff}]{\totald};
 }
