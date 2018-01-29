@@ -2,7 +2,7 @@
 
 \usepackage{subcaption,tikz,pgfplots,pgfplotstable,filecontents}
 
-\pgfplotsset{compat=newest,table/search path={../../../../data/figures}}
+\pgfplotsset{compat=newest,table/search path={../../../../data/figures,../../../../data/figures-fullBreakdown}}
 \usepgfplotslibrary{groupplots,fillbetween}
 
 \input{figureCommands.tex}
@@ -258,4 +258,196 @@
             \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg4b.north) {\subcaption[]{$Z_p = 10^{-4}$\label{fig:frac-bio-h}}};
     \end{tikzpicture}
 \end{figure}
+
+
+\tikzsetnextfilename{bio-null-smallFree}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 1,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       %yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0.025, xmax=0.5,
+                        ymin = 0,%ymax = 1,
+                        %y=3cm,
+                        %y=.15cm
+                        minor tick num = 1,
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \fullSplitBioPlot{null}{smallFree}{bigPara};
+            \phantomFullSplitBioPlot{null}{smallFree}{smallPara};
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \fullSplitBioPlot{null}{smallFree}{smallPara};
+            \phantomFullSplitBioPlot{null}{smallFree}{bigPara};
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{$Z_p=10^{-3}$ \label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{$Z_p=10^{-4}$\label{fig:frac-bio-b}}};
+    \end{tikzpicture}
+\end{figure}
+
+\tikzsetnextfilename{bio-null-bigFree}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 1,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       %yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0.025, xmax=0.5,
+                        ymin = 0,%ymax = 1,
+                        %y=3cm,
+                        %y=.15cm
+                        minor tick num = 1,
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \fullSplitBioPlot{null}{bigFree}{bigPara};
+            \phantomFullSplitBioPlot{null}{bigFree}{smallPara};
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \fullSplitBioPlot{null}{bigFree}{smallPara};
+            \phantomFullSplitBioPlot{null}{bigFree}{bigPara};
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{$Z_p=10^{-3}$ \label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{$Z_p=10^{-4}$\label{fig:frac-bio-b}}};
+    \end{tikzpicture}
+\end{figure}
+
+
+\tikzsetnextfilename{bio-full-smallFree}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 1,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       %yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0.025, xmax=0.5,
+                        ymin = 0,%ymax = 1,
+                        %y=3cm,
+                        %y=.15cm
+                        minor tick num = 1,
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \fullSplitBioPlot{full}{smallFree}{bigPara};
+            \phantomFullSplitBioPlot{full}{smallFree}{smallPara};
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \fullSplitBioPlot{full}{smallFree}{smallPara};
+            \phantomFullSplitBioPlot{full}{smallFree}{bigPara};
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{$Z_p=10^{-3}$ \label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{$Z_p=10^{-4}$\label{fig:frac-bio-b}}};
+    \end{tikzpicture}
+\end{figure}
+
+\tikzsetnextfilename{bio-full-bigFree}
+\begin{figure}
+    \begin{tikzpicture}
+        \begin{groupplot}[
+                        group style = {group size = 2 by 1,
+                                       group name = bioFracPlots,
+                                       xlabels at = edge bottom,
+                                       ylabels at = edge left,
+                                       %yticklabels at = edge left,
+                                       vertical sep = 40pt,
+                                       %xticklabels at = edge bottom,
+                                        },
+                        xlabel = {Fraction Consumers as parasites},
+                        ylabel = {Biomass},
+                        y tick label style = {font=\small,
+                                              /pgf/number format/fixed}, 
+                        x tick label style = {font=\small}, 
+                        scaled y ticks=false,
+                        legend columns = 3,
+                        legend style={at={(0.5,1)}, 
+                                        font=\tiny,
+                                        anchor=center,
+                                      },
+                        y label style = {font=\small,
+                                         inner sep = 1pt,
+                                         },
+                        grid = both,
+                        unbounded coords = jump,
+                        xmin=0.025, xmax=0.5,
+                        ymin = 0,%ymax = 1,
+                        %y=3cm,
+                        %y=.15cm
+                        minor tick num = 1,
+                        ]
+            \setcounter{subfigure}{0}
+            \nextgroupplot[legend style={name = {leg1a}}]
+            \fullSplitBioPlot{full}{bigFree}{bigPara};
+            \phantomFullSplitBioPlot{full}{bigFree}{smallPara};
+            \nextgroupplot[legend style={name = {leg1b}}]
+            \fullSplitBioPlot{full}{bigFree}{smallPara};
+            \phantomFullSplitBioPlot{full}{bigFree}{bigPara};
+        \end{groupplot}
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1a.north) {\subcaption[]{$Z_p=10^{-3}$ \label{fig:frac-bio-a}}};
+            \node [inner sep = 0pt,text width =.5\linewidth,align=center,anchor=south] at (leg1b.north) {\subcaption[]{$Z_p=10^{-4}$\label{fig:frac-bio-b}}};
+    \end{tikzpicture}
+\end{figure}
+
+
 \end{document}

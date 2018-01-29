@@ -232,6 +232,30 @@ table[draw = none,mark =none, x =x,y expr = {\thisrow{yOff}-\thisrow{mOff}},col 
     \addplot[fill=red,fill opacity = 0.5, draw = none] fill between [of = para and basal];
 }
 
+\newcommand{\fullSplitBioPlot}[3]{
+    \addlegendimage{area legend,fill=green,fill opacity = 0.5};
+    \addlegendentry{Basal};
+    \addlegendimage{area legend,fill=blue,fill opacity = 0.5};
+    \addlegendentry{Free};
+    \addlegendimage{area legend,fill=red,fill opacity = 0.5};
+    \addlegendentry{Parasite};
+    \pgfplotstableread{#1-#2-#3}\para
+    \path[name path = bottom] (axis cs:0.025,0) -- (axis cs: 0.5,0);
+    \addplot[name path = basal,thick,red, draw = none] table [x=x, y = yBioBasal]{\para};
+    \addplot[name path = free,thick,red, draw = none] table [x=x, y expr = \thisrow{yBioBasal}+\thisrow{yBioFree}]{\para};
+    \addplot[name path = para,thick,red, draw = none] table [x=x, y expr = \thisrow{yBioBasal} + \thisrow{yBioFree} + \thisrow{yBioPara}]{\para};
+    \addplot[fill=green,fill opacity = 0.5, draw = none] fill between [of = basal and bottom];
+    \addplot[fill=blue,fill opacity = 0.5, draw = none] fill between [of = basal and free];
+    \addplot[fill=red,fill opacity = 0.5, draw = none] fill between [of = free and para];
+}
+
+\newcommand{\phantomFullSplitBioPlot}[3]{
+    \pgfplotstableread{#1-#2-#3}\para
+    \addplot[name path = basal,thick,red, draw = none] table [x=x, y = yBioBasal]{\para};
+    \addplot[name path = free,thick,red, draw = none] table [x=x, y expr = \thisrow{yBioBasal}+\thisrow{yBioFree}]{\para};
+    \addplot[name path = para,thick,red, draw = none] table [x=x, y expr = \thisrow{yBioBasal} + \thisrow{yBioFree} + \thisrow{yBioPara}]{\para};
+}
+
 \newcommand{\makeBioPlot}[3]{
     \addlegendimage{area legend,fill=green,fill opacity = 0.5};
     \addlegendentry{Basal};
