@@ -1,3 +1,5 @@
+%HC = hand calculation
+
 \section{Results}
 
 \subsection{Disruption of Food Webs}
@@ -31,7 +33,7 @@ In contrast to the effects of concomittant losses, the addition of a host-refuge
 
 Another striking pattern is the importance of free-living body size ratios. Though the webs with predators 10 times bigger than their prey had higher persistence on average (figure \ref{fig:perAllSplit-c}), all types of species within these food webs had lower biomass. 
 %these webs had much lower biomass across all species types
-(figures \ref{fig:totalBioSplit-e} and \ref{fig:totalBioSplit-f}). This difference became less pronounced at higher levels of parasitism. Parasite-host body size ratios had little effect on the overall persistence of the web, but smaller parasites on average resulted in less biomass and lower parasite persistence. 
+(figures \ref{fig:totalBioSplit-e} and \ref{fig:totalBioSplit-f}). This decreased biomass of all types of species became less pronounced at higher levels of parasitism. Parasite-host body size ratios had little effect on the overall persistence of the web, but smaller parasites on average resulted in less biomass and lower parasite persistence. 
 
 %%The following are paragraphs dedicated to each figure. Nonsense. Fold these into the figure captions, doy.
 
