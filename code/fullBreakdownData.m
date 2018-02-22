@@ -15,7 +15,9 @@ selector = [1 1;
             1 2;
             2 1;
             2 2];
-header = 'x,yPerAll,sPerAll,yPerPara,sPerPara,yPerFree,sPerFree,yBioBasal,sBioBasal,yBioFree,sBioFree,yBioPara,sBioPara,yBioAll,sBioAll,yActPara,sActPara,yActFree,sActFree,yActBasal,sActBasal,yActAll,sActAll';
+header = strcat('x,yPerAll,sPerAll,yPerPara,sPerPara,yPerFree,sPerFree,',...
+    'yBioBasal,sBioBasal,yBioFree,sBioFree,yBioPara,sBioPara,yBioAll,sBioAll,',...
+    'yActBasal,sActBasal,yActFree,sActFree,yActPara,sActPara,yActAll,sActAll')
 fParAll = [0,0.025,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5];
 
 fileFormat = repmat('%.9e,',1,23);

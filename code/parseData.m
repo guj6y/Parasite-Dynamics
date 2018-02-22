@@ -81,8 +81,8 @@ for ii = 1:nSims
     x = zeros(S,1);
     kFree = kFrees(fact1Level);
     kPara = kParas(fact2Level);
-    patl = simParams.patl;
-    M(Free) = (10.^kFree).^(patl(free)-1);
+    patl = simParams{ii}.patl;
+    M(free) = (10.^kFree).^(patl(free)-1);
     M(para) = 10.^(kPara + kFree*(patl(para)-2));
     x = .314.*M.^(-0.25);
     x(basal) = simParams{ii}.gr(basal);
@@ -143,18 +143,18 @@ for ii = 1:nSims
     
     freeActivityTS  = sum(TS(free,:,ii).*x(free));
     paraActivityTS  = sum(TS(para,:,ii).*x(para));
-    basalActivtyTS  = sum(TS(basal,:,ii).*x(basal)).*(1-basalBiomassTS/5);
-    totalActivityTS = totalActivityTS = freeActivityTS + paraActivityTS + basalActivityTS;
+    basalActivityTS  = sum(TS(basal,:,ii).*x(basal)).*(1-basalBiomassTS/5);
+    totalActivityTS = freeActivityTS + paraActivityTS + basalActivityTS;
     
-    meanAllActivity   = mean(allActivityTS);
+    meanAllActivity   = mean(totalActivityTS);
     meanParaActivity  = mean(paraActivityTS);
     meanFreeActivity  = mean(freeActivityTS);
     meanBasalActivity = mean(basalActivityTS);
     
-    activities.all(thisSim_web{:})   = meanAllActivty;
-    activities.para(thisSim_web{:})  = meanParaActivty;
-    activities.free(thisSim_web{:})  = meanFreeActivty;
-    activities.basal(thisSim_web{:}) = meanBasalActivty;
+    activities.all(thisSim_web{:})   = meanAllActivity;
+    activities.para(thisSim_web{:})  = meanParaActivity;
+    activities.free(thisSim_web{:})  = meanFreeActivity;
+    activities.basal(thisSim_web{:}) = meanBasalActivity;
 
 end
 
