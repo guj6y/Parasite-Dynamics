@@ -50,6 +50,7 @@ nanStruct = struct('all',nanArray...
 persistences = nanStruct;
 cvs = nanStruct;
 biomasses = nanStruct;
+activities = nanStruct;
 
 nanSpeciesArray = nan(S,nWeb,nFPar,nFacts(1),nFacts(2),nFacts(3),nFacts(4));
 
@@ -61,7 +62,6 @@ speciesTypes = struct('para',nanSpeciesArray...
 simNumbers = nanArray;
 
 for ii = 1:nSims
-    
     webNo = simParams{ii}.web;
     fact1Level = simParams{ii}.kFree == kFrees;
     fact2Level = simParams{ii}.kPara == kParas;
@@ -76,7 +76,17 @@ for ii = 1:nSims
     para = simParams{ii}.para;
     basal = simParams{ii}.gr>0;
     free = ~(para|basal);
-
+    
+    M = zeros(S,1);
+    x = zeros(S,1);
+    kFree = kFrees(fact1Level);
+    kPara = kParas(fact2Level);
+    patl = simParams.patl;
+    M(Free) = (10.^kFree).^(patl(free)-1);
+    M(para) = 10.^(kPara + kFree*(patl(para)-2));
+    x = .314.*M.^(-0.25);
+    x(basal) = simParams{ii}.gr(basal);
+     
     speciesTypes.para(thisSim_S{:})  = para;
     speciesTypes.free(thisSim_S{:})  = free;
     speciesTypes.basal(thisSim_S{:}) = basal;
@@ -87,6 +97,7 @@ for ii = 1:nSims
     abc.common.rSquared(thisSim_web{:})  = rs(ii,1);
     abc.natural.rSquared(thisSim_web{:}) = rs(ii,2);
 
+
     
     %Total biomass is weird to me. Why? -glad you asked. It's because the scale of species biomasses
     %varies geometrically. So simply summing up to get a total biomass ends up being skewed by a 
@@ -94,6 +105,7 @@ for ii = 1:nSims
     %the rest - the rest that have a profound impact on the overall state we are in. AT least, they
     %have a profound impact on the persistence metric! 
     meanBiomasses = mean(TS(:,:,ii),2);
+   
     persistences.all(thisSim_web{:})   = mean(meanBiomasses>0);
     persistences.para(thisSim_web{:})  = mean(meanBiomasses(para)>0);
     persistences.free(thisSim_web{:})  = mean(meanBiomasses(free)>0);
@@ -108,7 +120,7 @@ for ii = 1:nSims
     meanParaBiomass  = mean(paraBiomassTS);
     meanFreeBiomass  = mean(freeBiomassTS);
     meanBasalBiomass = mean(basalBiomassTS);
-
+    
     stdAllBiomass   = std(allBiomassTS);
     stdParaBiomass  = std(paraBiomassTS);
     stdFreeBiomass  = std(freeBiomassTS);
@@ -128,6 +140,22 @@ for ii = 1:nSims
     cvs.para(thisSim_web{:})  = cvParaBiomass;
     cvs.free(thisSim_web{:})  = cvFreeBiomass;
     cvs.basal(thisSim_web{:}) = cvBasalBiomass;
+    
+    freeActivityTS  = sum(TS(free,:,ii).*x(free));
+    paraActivityTS  = sum(TS(para,:,ii).*x(para));
+    basalActivtyTS  = sum(TS(basal,:,ii).*x(basal)).*(1-basalBiomassTS/5);
+    totalActivityTS = totalActivityTS = freeActivityTS + paraActivityTS + basalActivityTS;
+    
+    meanAllActivity   = mean(allActivityTS);
+    meanParaActivity  = mean(paraActivityTS);
+    meanFreeActivity  = mean(freeActivityTS);
+    meanBasalActivity = mean(basalActivityTS);
+    
+    activities.all(thisSim_web{:})   = meanAllActivty;
+    activities.para(thisSim_web{:})  = meanParaActivty;
+    activities.free(thisSim_web{:})  = meanFreeActivty;
+    activities.basal(thisSim_web{:}) = meanBasalActivty;
+
 end
 
-save('../raw/out.mat','persistences','biomasses','cvs','speciesTypes','abc');
+save('../raw/out.mat','persistences','biomasses','cvs','speciesTypes','abc','activities');

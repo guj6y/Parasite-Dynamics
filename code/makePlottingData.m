@@ -1,11 +1,11 @@
-if ~exist('simParams','var')
-    load '../raw/out.mat'
-    load '../raw/simParams.mat'
-    load '../raw/metaSimData.mat'
+if ~exist('persistences','var')
+run('parseData.m')
 end
+
 cd ../figures/
 
 numberOfFactors = numel(nFacts); 
+
  
 nFPar = numel(fParAll0);
 
