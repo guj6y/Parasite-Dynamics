@@ -51,6 +51,9 @@ persistences = nanStruct;
 cvs = nanStruct;
 biomasses = nanStruct;
 
+finalFracConsumers = struct('free',nanArray...
+                            'para',nanArray);
+                             
 activities = nanStruct;
 activities.con = nanArray;
 
@@ -112,6 +115,13 @@ for ii = 1:nSims
     persistences.para(thisSim_web{:})  = mean(meanBiomasses(para)>0);
     persistences.free(thisSim_web{:})  = mean(meanBiomasses(free)>0);
     persistences.basal(thisSim_web{:}) = mean(meanBiomasses(basal)>0);
+
+    numConsumers  = sum(meanBiomasses > 0);
+    numParsites   = sum(meanBiomasses(para) > 0);
+    numFreeLivers = sum(meanBiomasses(free) > 0);
+    
+    fracConsumers.para(thisSim_web{:}) = numParasites./numConsumers;
+    fracConsumers.free(thisSim_web}:}) = numFreeLivers./numcConsumers;
 
     allBiomassTS   = sum(TS(:,:,ii),1);
     paraBiomassTS  = sum(TS(para,:,ii),1);
