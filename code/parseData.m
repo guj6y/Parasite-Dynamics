@@ -141,9 +141,9 @@ for ii = 1:nSims
     cvs.free(thisSim_web{:})  = cvFreeBiomass;
     cvs.basal(thisSim_web{:}) = cvBasalBiomass;
     
-    freeActivityTS  = sum(TS(free,:,ii).*x(free));
-    paraActivityTS  = sum(TS(para,:,ii).*x(para));
-    basalActivityTS  = sum(TS(basal,:,ii).*x(basal)).*(1-basalBiomassTS/5);
+    freeActivityTS  = sum(TS(free,:,ii).*x(free),1);
+    paraActivityTS  = sum(TS(para,:,ii).*x(para),1);
+    basalActivityTS  = sum(TS(basal,:,ii).*x(basal),1).*(1-basalBiomassTS/5);
     totalActivityTS = freeActivityTS + paraActivityTS + basalActivityTS;
     
     meanAllActivity   = mean(totalActivityTS);
