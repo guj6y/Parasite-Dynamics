@@ -50,7 +50,9 @@ nanStruct = struct('all',nanArray...
 persistences = nanStruct;
 cvs = nanStruct;
 biomasses = nanStruct;
+
 activities = nanStruct;
+activities.con = nanArray;
 
 nanSpeciesArray = nan(S,nWeb,nFPar,nFacts(1),nFacts(2),nFacts(3),nFacts(4));
 
@@ -143,18 +145,21 @@ for ii = 1:nSims
     
     freeActivityTS  = sum(TS(free,:,ii).*x(free),1);
     paraActivityTS  = sum(TS(para,:,ii).*x(para),1);
-    basalActivityTS  = sum(TS(basal,:,ii).*x(basal),1).*(1-basalBiomassTS/5);
-    totalActivityTS = freeActivityTS + paraActivityTS + basalActivityTS;
+    basalActivityTS = sum(TS(basal,:,ii).*x(basal),1).*(1-basalBiomassTS/5);
+    conActivityTS   = freeActivityTS + paraActivityTS;
+    totalActivityTS = conActivityTS + basalActivityTS;
     
     meanAllActivity   = mean(totalActivityTS);
     meanParaActivity  = mean(paraActivityTS);
     meanFreeActivity  = mean(freeActivityTS);
     meanBasalActivity = mean(basalActivityTS);
+    meanConActivity   = mean(conActivityTS);
     
     activities.all(thisSim_web{:})   = meanAllActivity;
     activities.para(thisSim_web{:})  = meanParaActivity;
     activities.free(thisSim_web{:})  = meanFreeActivity;
     activities.basal(thisSim_web{:}) = meanBasalActivity;
+    activities.con(thisSim_web{:})   = meanConActivity;
 
 end
 
