@@ -18,11 +18,11 @@ selector = [1 1;
 header = strcat('x,yPerAll,sPerAll,yPerPara,sPerPara,yPerFree,sPerFree,',...
     'yBioBasal,sBioBasal,yBioFree,sBioFree,yBioPara,sBioPara,yBioAll,sBioAll,',...
     'yActBasal,sActBasal,yActFree,sActFree,yActPara,sActPara,yActAll,sActAll,yActCon,sActCon,sActConResid,',...
-    'yFracPara,sFracPara,yFracFree,yFracPara');
+    'yFracPara,sFracPara,yFracFree,sFracFree');
     
 fParAll = [0,0.025,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5];
 
-fileFormat = repmat('%.9e,',1,29);
+fileFormat = repmat('%.9e,',1,30);
 fileFormat = fileFormat(1:end-1);
 
 for plotNo = 1:4;    
