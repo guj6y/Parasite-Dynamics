@@ -18,11 +18,11 @@ selector = [1 1;
 header = strcat('x,yPerAll,sPerAll,yPerPara,sPerPara,yPerFree,sPerFree,',...
     'yBioBasal,sBioBasal,yBioFree,sBioFree,yBioPara,sBioPara,yBioAll,sBioAll,',...
     'yActBasal,sActBasal,yActFree,sActFree,yActPara,sActPara,yActAll,sActAll,yActCon,sActCon,sActConResid,',...
-    'yFracPara,sFracPara,yFracFree,sFracFree');
+    'yFracPara,sFracPara,yFracFree,sFracFree,yFracBasal,sFracBasal');
     
 fParAll = [0,0.025,0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5];
 
-fileFormat = repmat('%.9e,',1,30);
+fileFormat = repmat('%.9e,',1,32);
 fileFormat = fileFormat(1:end-1);
 
 for plotNo = 1:4;    
@@ -45,8 +45,9 @@ for plotNo = 1:4;
     actAll   = squeeze(activities.all(:,:,freeSize,:,modelNo,modelNo));    
     actCon   = squeeze(activities.con(:,:,freeSize,:,modelNo,modelNo));    
 
-    fracPara = squeeze(finalFracConsumers.para(:,:,freeSize,:,modelNo,modelNo));
-    fracFree = squeeze(finalFracConsumers.free(:,:,freeSize,:,modelNo,modelNo));
+    fracPara  = squeeze(frac.para(:,:,freeSize,:,modelNo,modelNo));
+    fracFree  = squeeze(frac.free(:,:,freeSize,:,modelNo,modelNo));
+    fracBasal = squeeze(frac.basal(:,:,freeSize,:,modelNo,modelNo));
 
     meanPerAll  = squeeze(mean(perAll));
     meanPerPara = squeeze(mean(perPara));
@@ -56,11 +57,13 @@ for plotNo = 1:4;
     stdPerPara = squeeze(std(perPara));
     stdPerFree = squeeze(std(perFree));
    
-    meanFracPara = squeeze(mean(fracPara));
-    meanFracFree = squeeze(mean(fracFree));
+    meanFracPara = squeeze(mean(fracPara,'omitnan'));
+    meanFracFree = squeeze(mean(fracFree,'omitnan'));
+    meanFracBasal = squeeze(mean(fracBasal,'omitnan'));
     
-    stdFracPara = squeeze(std(fracPara));
-    stdFracFree = squeeze(std(fracFree));
+    stdFracPara = squeeze(std(fracPara,'omitnan'));
+    stdFracFree = squeeze(std(fracFree,'omitnan'));
+    stdFracBasal = squeeze(std(fracBasal,'omitnan'));
     
     meanBioBasal = squeeze(mean(bioBasal));
     meanBioPara  = squeeze(mean(bioPara));
@@ -93,13 +96,13 @@ for plotNo = 1:4;
                            meanBioBasal(:,1),stdBioBasal(:,1),meanBioFree(:,1),stdBioFree(:,1),meanBioPara(:,1),stdBioPara(:,1),meanBioAll(:,1),stdBioAll(:,1),...
                            meanActBasal(:,1),stdActBasal(:,1),meanActFree(:,1),stdActFree(:,1),meanActPara(:,1),stdActPara(:,1),...
                            meanActAll(:,1),stdActAll(:,1),meanActCon(:,1),stdActCon(:,1),stdActCon_resid(:,1),...
-                           meanFracPara(:,1),stdFracPara(:,1),meanFracFree(:,1),stdFracFree(:,1)];
+                           meanFracPara(:,1),stdFracPara(:,1),meanFracFree(:,1),stdFracFree(:,1),meanFracBasal(:,1),stdFracBasal(:,1)];
 
      matrixSaveSmallPara = [fParAll',meanPerAll(:,2),stdPerAll(:,2),meanPerPara(:,2),stdPerPara(:,2),meanPerFree(:,2),stdPerFree(:,2),...
                            meanBioBasal(:,2),stdBioBasal(:,2),meanBioFree(:,2),stdBioFree(:,2),meanBioPara(:,2),stdBioPara(:,2),meanBioAll(:,2),stdBioAll(:,2),...
                            meanActBasal(:,2),stdActBasal(:,2),meanActFree(:,2),stdActFree(:,2),meanActPara(:,2),stdActPara(:,2),...
                            meanActAll(:,2),stdActAll(:,2),meanActCon(:,2),stdActCon(:,2),stdActCon_resid(:,2),...
-                           meanFracPara(:,2),stdFracPara(:,2),meanFracFree(:,2),stdFracFree(:,2)];
+                           meanFracPara(:,2),stdFracPara(:,2),meanFracFree(:,2),stdFracFree(:,2),meanFracBasal(:,2),stdFracBasal(:,2)];
 
     
     fileName = sprintf('%s-%s-bigPara',modelNames{modelNo},freeNames{freeSize});
