@@ -45,8 +45,8 @@ for plotNo = 1:4;
     actAll   = squeeze(activities.all(:,:,freeSize,:,modelNo,modelNo));    
     actCon   = squeeze(activities.con(:,:,freeSize,:,modelNo,modelNo));    
 
-    fracPara = squeeze(finalFracConsumers.para(:,:,freeSize,:,modelNo,modelNo));
-    fracFree = squeeze(finalFracConsumers.free(:,:,freeSize,:,modelNo,modelNo));
+    fracPara = squeeze(fracConsumers.para(:,:,freeSize,:,modelNo,modelNo));
+    fracFree = squeeze(fracConsumers.free(:,:,freeSize,:,modelNo,modelNo));
 
     meanPerAll  = squeeze(mean(perAll));
     meanPerPara = squeeze(mean(perPara));

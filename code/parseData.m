@@ -116,10 +116,10 @@ for ii = 1:nSims
     persistences.free(thisSim_web{:})  = mean(meanBiomasses(free)>0);
     persistences.basal(thisSim_web{:}) = mean(meanBiomasses(basal)>0);
 
-    numConsumers  = sum(meanBiomasses > 0);
     numParasites   = sum(meanBiomasses(para) > 0);
     numFreeLivers = sum(meanBiomasses(free) > 0);
-    
+    numConsumers = numParasites+numFreeLivers;
+
     fracConsumers.para(thisSim_web{:}) = numParasites./numConsumers;
     fracConsumers.free(thisSim_web{:}) = numFreeLivers./numConsumers;
 
