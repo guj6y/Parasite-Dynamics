@@ -20,8 +20,9 @@
 ### Specify total cpu time required for this job, hhh:mm:ss
 ### total cputime = walltime * ncpus
 #PBS -l cput=672:00:00
-#PBS -M guj6y@email.arizona.edu
+
 #PBS -m bea
+#PBS -M guj6y@email.arizona.edu
 
 ### Load required modules/libraries if needed (openmpi example)
 ### Use "module avail" command to list all available modules
