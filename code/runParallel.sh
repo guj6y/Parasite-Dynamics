@@ -38,6 +38,7 @@ echo "data/$DIRNAME/raw" >> .gitignore
 mkdir "data/$DIRNAME"
 mkdir "data/$DIRNAME/raw"
 mkdir "data/$DIRNAME/figures"
+mkdir "data/$DIRNAME/figures-fullBreakdown"
 mkdir "data/$DIRNAME/logs"
 
 cp -r code "data/$DIRNAME/"
@@ -50,9 +51,4 @@ module load matlab/r2016b
 date
 matlab -nodisplay -nodesktop -nosplash < runExperiment.m  > ../logs/run.log
 date
-
-mv ~/Parasite-Dynamcs/code/par-exp* ../logs
-cd ..
-rm -r code
-
 

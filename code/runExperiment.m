@@ -81,7 +81,7 @@ else %If we're not appending
     nWeb = 100;
     
     kFrees = [1 2];    %Models(1): BSR exponents for free livers
-    kParas = [-3 -4];  %Models(2): BSR exponents for free livers
+    kParas = [-3 -4 -17 -20];  %Models(2): BSR exponents for free livers
     fracFrees = [false true]; %Models(3): including fraction of free living time (binary)
     fracParas = [false true]; %Models(4): including concomittant links (binary)
 
@@ -95,8 +95,7 @@ else %If we're not appending
     allModels = fullfact(nFacts);
     nModels = length(allModels);
 
-    fParAll0 = [0, linspace(1,17,8)/34];
-
+    fParAll0 = [0 0.025 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5];
     nfPar = numel(fParAll0);
 
     nSims = nWeb*(nFact1) ... Run 1 simulation for each kFree @ 0% parasites.
@@ -131,7 +130,6 @@ simParams = cell(nSims,1);
 
 %%% Parameters of the Niche Webs
 S = 40;
-nBasal = 6;
 C = .15;
 
 simNo = 0;
@@ -154,21 +152,24 @@ for ii = 1:nWeb
         nFree = S-sum(basal);
     else
         webBad = true;
+ 
         while webBad
             [res, con,~,~,~] = NicheModel_nk(S,C);
             simMx = calculateSimilarity(res,con);
-            %Need to decide if each species is a basal.
-            basal = false(S,1);
-            for kk = 1:S
-                if sum(con==kk)==0
-                    basal(kk) = true;
-                end
-            end
-            gr = basal;
-            webBad = (max(max(simMx))==1) | (sum(basal) ~= 6);
+            mx = sparse(res,con,1,S,S);
+            webBad = max(max(simMx))==1;
         end
     
+        %Need to decide if each species is a basal.
+        basal = false(S,1);
+        
+        for kk = 1:S
+            if sum(con==kk)==0
+                basal(kk) = true;
+            end
+        end
         B0 = .95*rand(S,1)+.05;
+        gr = basal.*(randn(S,1)*.1+1);
         
         SList = 1:S;
         idxPar = datasample(SList(~basal),sum(~basal),'Replace',false);
@@ -191,7 +192,7 @@ for ii = 1:nWeb
     end
     
     for  model = allModels'
-            
+        
         kFree = kFrees(model(1));
         kPara = kParas(model(2));
         
@@ -342,3 +343,6 @@ run('parseData.m')
 
 %save the plotting data.
 run('makePlottingData.m')
+
+%save the new data.
+run('fullBreakdown.m')
