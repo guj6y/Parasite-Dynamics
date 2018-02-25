@@ -4,6 +4,7 @@
 
 %Setting up the arrays and structures.
 S=40;
+
 try 
     load '../raw/metaSimData.mat'
     load '../raw/simParams.mat'
@@ -80,6 +81,9 @@ webData = [webData; newWebData];
 else %If we're not appending
     nWeb = 100;
     
+    nBasal = 6;
+    nFree = S-nBasal;
+    
     kFrees = [1 2];    %Models(1): BSR exponents for free livers
     kParas = [-3 -4 -17 -20];  %Models(2): BSR exponents for free livers
     fracFrees = [false true]; %Models(3): including fraction of free living time (binary)
@@ -95,7 +99,7 @@ else %If we're not appending
     allModels = fullfact(nFacts);
     nModels = length(allModels);
 
-    fParAll0 = [0 0.025 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5];
+    fParAll0 = [0 linspace(1,17,9)/nFree];
     nfPar = numel(fParAll0);
 
     nSims = nWeb*(nFact1) ... Run 1 simulation for each kFree @ 0% parasites.
@@ -110,7 +114,7 @@ else %If we're not appending
     kParasDone = [];
 end 
 
-save('../raw/metaSimData.mat','S','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts')
+save('../raw/metaSimData.mat','S','nWeb','kFrees','kParas','fracFrees','fracParas','fParAll0','nFacts','nBasal')
 
 simParams = cell(nSims,1);
 [simParams{:}] = deal(struct('web',0 ...
@@ -157,19 +161,22 @@ for ii = 1:nWeb
             [res, con,~,~,~] = NicheModel_nk(S,C);
             simMx = calculateSimilarity(res,con);
             mx = sparse(res,con,1,S,S);
-            webBad = max(max(simMx))==1;
+            
+            %Need to decide if each species is a basal.
+            basal = false(S,1);
+            
+            for kk = 1:S
+                if sum(con==kk)==0
+                    basal(kk) = true;
+                end
+            end
+            
+            gr = basal;
+            webBad = (max(max(simMx))==1) | sum(basal)~=nBasal;
         end
     
-        %Need to decide if each species is a basal.
-        basal = false(S,1);
         
-        for kk = 1:S
-            if sum(con==kk)==0
-                basal(kk) = true;
-            end
-        end
         B0 = .95*rand(S,1)+.05;
-        gr = basal.*(randn(S,1)*.1+1);
         
         SList = 1:S;
         idxPar = datasample(SList(~basal),sum(~basal),'Replace',false);
